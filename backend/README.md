@@ -6,10 +6,17 @@
 $ docker build -t jphacks2020 .
 
 // ここから
-$ yarn install
-
+$ chmod 755 start.sh
+$ chmod 755 wait-for-it.sh
 // Docker起動
 $ docker-compose up
+web_1  | * Environment: development
+web_1  | * Listening on tcp://0.0.0.0:3000
+web_1  | Use Ctrl-C to stop
+// これが出たらローカルサーバーが立つので起動
+
+// dbの確認
+$ docker-compose exec db mysql -uroot -ppass -D jphacks2020_development
 
 // Docker切る
 $ docker-compose down

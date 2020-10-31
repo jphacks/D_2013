@@ -2,13 +2,14 @@ version: '3'
 services:
   web: # Ruby on Railsが起動するコンテナ
     build: .
+    command: ["./wait-for-it.sh", "db:3306", "--", "./start.sh"]
     ports:
       - '3000:3000' # localhostの3000ポートでアクセスできるようにする
     volumes:
       - .:/jphacks2020 # アプリケーションファイルの同期
     depends_on:
       - db
-    command: ["./start.sh"]
+    # command: ["./start.sh"]
     # command: ["rails", "server", "-b", "0.0.0.0"]
   db: # MySQLが起動するコンテナ
     image: mysql:8.0.21
