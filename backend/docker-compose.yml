@@ -8,7 +8,8 @@ services:
       - .:/jphacks2020 # アプリケーションファイルの同期
     depends_on:
       - db
-    command: ["rails", "server", "-b", "0.0.0.0"]
+    command: ["./start.sh"]
+    # command: ["rails", "server", "-b", "0.0.0.0"]
   db: # MySQLが起動するコンテナ
     image: mysql:8.0.21
     volumes:
