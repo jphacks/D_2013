@@ -41,7 +41,7 @@ jobs:
 
       - name: Run Prettier For Backend
         run: |
-          ./node_modules/.bin/prettier --write '**/*.rb'
+          node_modules/.bin/prettier --write '**/*.rb'
         working-directory: ./backend
 
       - name: Commit format
