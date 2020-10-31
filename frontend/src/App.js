@@ -19,3 +19,52 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+// 参考までに昔に書いたことあるもの
+// process.cwd = function () {
+//   return "/";
+// };
+
+// const Stack = createStackNavigator();
+// const Tab = createBottomTabNavigator();
+
+// const StackNavigatorProps = {
+//   mode: "modal",
+//   headerMode: "none",
+//   options: { cardStyle: { backgroundColor: "transparent" } },
+// };
+
+// const TabScreen = () => (
+//   <Tab.Navigator>
+//     <Tab.Screen name="Timeline" component={Timeline} />
+//     <Tab.Screen name="PostMap" component={PostMap} />
+//     <Tab.Screen name="Account" component={Account} />
+//   </Tab.Navigator>
+// );
+
+// const App = () => (
+//   <>
+//     <NavigationContainer>
+//       <Stack.Navigator {...StackNavigatorProps}>
+//         <Stack.Screen name="TabScreen" component={TabScreen} />
+//         <Stack.Screen
+//           name="newPost"
+//           component={NewPostModal}
+//           options={{
+//             title: "Modal",
+//             headerStyle: {
+//               backgroundColor: "#fff",
+//             },
+//             headerTitleStyle: {
+//               fontWeight: "bold",
+//             },
+//             cardStyle: { backgroundColor: "transparent" },
+//           }}
+//         />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//     <FlashMessage position="top" />
+//   </>
+// );
+
+// export default App;

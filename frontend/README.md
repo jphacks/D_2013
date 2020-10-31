@@ -5,9 +5,16 @@ React-Native / Expo で環境構築
 
 ## setup
 ```
-cd src
-- yarn start
-- yarn android
-- yarn ios
-- yarn web
+// expoをインストール
+$ yarn global add expo
+$ yarn global add expo-cli
+
+// ライブラリをインストール
+$ yarn
+
+// 起動
+$ cd src
+$ yarn start
+
+ -> QRコードが表示されるので、スマホで取って Expo client で表示させる
 ```
