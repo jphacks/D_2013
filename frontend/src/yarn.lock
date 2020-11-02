@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@asmadsen/react-native-unity-view@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@asmadsen/react-native-unity-view/-/react-native-unity-view-0.0.7.tgz#de1ac02b831a352c85cd64b9e885b5df393c0c72"
+  integrity sha512-HJKIS1+L/+5VV1n1D3lFjXIF1g2Vjd7vUXu/lc11+rXRfSqUfNkFRXnFOmdAL2Pa0LsJvkgVH8gJnKXfPncebg==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.8.3":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"
