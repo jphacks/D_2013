@@ -5,7 +5,6 @@ module.exports = function (socket, io) {
     if (!data) {
       return;
     }
-    console.log('test : ' + data);
     // 自クライアントへ
     // socket.emit('funcname', data);
     // 自分以外へ

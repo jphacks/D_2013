@@ -25,5 +25,5 @@ $ cd server
 $ yarn
 
 // server起動する
-$ yurn run start
+$ yarn run start
 ```

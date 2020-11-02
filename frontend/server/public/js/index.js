@@ -12,12 +12,10 @@ function sendTest() {
 
 // メッセージ表示イベント（receiveTest）を受信する
 socket.on('receiveTest', function (data) {
-  console.log('receiveTest for client');
   // 画面上にメッセージを表示
   let t = document.getElementById('thread');
   let p = document.createElement("p");
   let text = document.createTextNode(data);
   p.appendChild(text);
   t.appendChild(p);
-  //テストとは言えわろた
 });

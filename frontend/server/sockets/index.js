@@ -7,8 +7,5 @@ module.exports = function (server) {
   io.sockets.on('connection', function (socket) {
     require('./test')(socket, io);
 
-    // ...
-    // require(./'~~~')(socket, io);
-
   });
 };
