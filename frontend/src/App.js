@@ -1,63 +1,76 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import config from './utils/config';
-import * as Facebook from 'expo-facebook';
-import * as firebase from 'firebase';
+import config from "./utils/config";
+import * as Facebook from "expo-facebook";
+import * as firebase from "firebase";
 
-import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base';
+import {
+  Container,
+  Content,
+  Header,
+  Form,
+  Input,
+  Item,
+  Button,
+  Label,
+} from "native-base";
 import { render } from "react-dom";
 
 firebase.initializeApp(config);
 
 export default function App() {
-  this.state = ({
-    email: '',
-    password: ''
-  });
+  this.state = {
+    email: "",
+    password: "",
+  };
 
   signUpUser = (email, password) => {
     try {
       if (this.state.password.length < 6) {
-        alert('みじけーんだよ');
-        return
+        alert("みじけーんだよ");
+        return;
       }
       firebase.auth().createUserWithEmailAndPassword(email, password);
     } catch (error) {
       console.log(error.toString());
     }
-
-  }
+  };
 
   loginUser = (email, password) => {
     try {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
-        console.log(user);
-      })
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(function (user) {
+          console.log(user);
+        });
     } catch (error) {
       console.log(error.toString());
     }
-  }
+  };
 
   loginWithFacebook = async () => {
-    await Facebook.initializeAsync(
-      '374656767218522'
-    );
+    await Facebook.initializeAsync("374656767218522");
 
-    const { type, token } = await Facebook.logInWithReadPermissionsAsync({ permissions: ['email', 'public_profile'] }
-    );
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ["email", "public_profile"],
+    });
 
-    if (type == 'success') {
-      const credential = firebase.auth.FacebookAuthProvider.credential(token)
+    if (type == "success") {
+      const credential = firebase.auth.FacebookAuthProvider.credential(token);
 
-      firebase.auth().signInWithCredential(credential).catch((error) => {
-        console.log(error)
-      });
+      firebase
+        .auth()
+        .signInWithCredential(credential)
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }
+  };
 
   return (
-    <Container style={styles.container} >
+    <Container style={styles.container}>
       <Form>
         <Item>
           <Label>Email</Label>
@@ -78,45 +91,46 @@ export default function App() {
           />
         </Item>
 
-        <Button style={{ marginTop: 10 }}
+        <Button
+          style={{ marginTop: 10 }}
           full
           rounded
           success
           onPress={() => this.loginUser(this.state.email, this.state.password)}
         >
-          <Text style={{ color: 'white' }}>Login</Text>
+          <Text style={{ color: "white" }}>Login</Text>
         </Button>
 
-        <Button style={{ marginTop: 10 }}
+        <Button
+          style={{ marginTop: 10 }}
           full
           rounded
           primary
           onPress={() => this.signUpUser(this.state.email, this.state.password)}
         >
-          <Text style={{ color: 'white' }}>Sign Up</Text>
+          <Text style={{ color: "white" }}>Sign Up</Text>
         </Button>
 
-        <Button style={{ marginTop: 10 }}
+        <Button
+          style={{ marginTop: 10 }}
           full
           rounded
           primary
           onPress={() => this.loginWithFacebook()}
         >
-          <Text style={{ color: 'white' }}>Login with Facebook</Text>
+          <Text style={{ color: "white" }}>Login with Facebook</Text>
         </Button>
-
       </Form>
-    </Container >
+    </Container>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
 

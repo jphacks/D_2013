@@ -6,5 +6,5 @@ export let config = {
   storageBucket: "sampleauthwithfacebook.appspot.com",
   messagingSenderId: "843483616334", //
   appId: "1:843483616334:web:182a478c05aeee3b87df1f",
-  measurementId: "G-DD5PWJ9SLG"
-}
+  measurementId: "G-DD5PWJ9SLG",
+};
