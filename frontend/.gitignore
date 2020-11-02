@@ -105,5 +105,3 @@ dist
 .expo/*
 
 app.json
-
-./src/utils/config.js
