@@ -18,3 +18,12 @@ $ yarn start
 
  -> QRコードが表示されるので、スマホで取って Expo client で表示させる
 ```
+
+## server setup
+```
+// 知らんけど
+$ cd server
+$ yarn
+
+// server起動する
+$ node server.js
