@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+/**
+ * サーバの設定
+ */
+
+// モジュールのロード
+const app = require('../server');
+const http = require('http');
+
+// ポートの設定を行う
+const port = process.env.PORT || 8080;
+app.set('port', port);
+
+// サーバオブジェクトを生成する
+const server = http.createServer(app);
+
+// Socket.IOの処理
+require('../sockets')(server);
+
+// 接続を待ち受ける
+server.listen(port);
+server.on('listening', onListening);
+
+function onListening() {
+    // ログ出力
+    console.log('Example app listening on port ' + port + '!');
+}
