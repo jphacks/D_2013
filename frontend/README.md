@@ -10,6 +10,7 @@ $ yarn global add expo
 $ yarn global add expo-cli
 
 // ライブラリをインストール
+$ cd src
 $ yarn
 
 // 起動
