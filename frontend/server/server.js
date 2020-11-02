@@ -1,12 +1,17 @@
 const express = require('express');
-const app = express();
+const routes = require('./routes/index');
+const server = express();
 
-const port = '8080';
+server.use('/', routes);
 
-app.get('/', (req, res) => {
-  res.send('hello Express');
-})
+// views/ フォルダ以下のテンプレートを利用する
+server.set('views', './views');
 
-app.listen(port, () => {
-  console.log('listen: ' + port);
-});
+// テンプレートエンジンにejsを利用する
+server.set('view engine', 'ejs');
+
+// public/ フォルダ以下の静的ファイルを読み込む
+server.use(express.static('public'));
+
+// サーバオブジェクトを外部ファイルへエクスポートする
+module.exports = server;

@@ -21,9 +21,9 @@ $ yarn start
 
 ## server setup
 ```
-// 知らんけど
 $ cd server
 $ yarn
 
 // server起動する
-$ node server.js
+$ yurn run start
+```
