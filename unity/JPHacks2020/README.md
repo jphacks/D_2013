@@ -1,7 +1,7 @@
 # Unityファイル構成
 
 Assets/<br>
-  ┣  Plugin/ （DOTweenやUniRxなどの外部プラグインを入れるためのフォルダ）<br>
+  ┣  ExternalAssets/ （DOTweenやUnityのアセットなどを入れるためのフォルダ）<br>
   ┃　┣ DOTween/ <br>
   ┃　┣ ...<br>
   ┣ Prefabs/ （Unityで制作したPrefabを入れるためのフォルダ←Resources内に入れる可能性大）<br>
