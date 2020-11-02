@@ -3,7 +3,7 @@
 React-Native / Expo で環境構築
 基本ライブラリはyarnにてinstall
 
-## setup
+## react-native setup
 ```
 // expoをインストール
 $ yarn global add expo
