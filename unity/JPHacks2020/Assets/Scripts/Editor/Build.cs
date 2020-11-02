@@ -14,10 +14,10 @@ public class Build : MonoBehaviour
   static readonly string apkPath = Path.Combine(ProjectPath, "Builds/" + Application.productName + ".apk");
 
   private static readonly string androidExportPath =
-      Path.GetFullPath(Path.Combine(ProjectPath, "../../android/UnityExport"));
+      Path.GetFullPath(Path.Combine(ProjectPath, "../../frontend/android/UnityExport"));
 
   private static readonly string iosExportPath =
-      Path.GetFullPath(Path.Combine(ProjectPath, "../../ios/UnityExport"));
+      Path.GetFullPath(Path.Combine(ProjectPath, "../../frontend/ios/UnityExport"));
 
   [MenuItem("ReactNative/Export Android (Unity 2019.4.*) %&n", false, 1)]
   public static void DoBuildAndroidLibrary()
@@ -90,7 +90,6 @@ public class Build : MonoBehaviour
     }
 
     EditorUserBuildSettings.iOSBuildConfigType = iOSBuildType.Release;
-
     var options = BuildOptions.AcceptExternalModificationsToPlayer;
     var report = BuildPipeline.BuildPlayer(
         GetEnabledScenes(),
@@ -127,7 +126,9 @@ public class Build : MonoBehaviour
         .Where(s => s.enabled)
         .Select(s => s.path)
         .ToArray();
-
+    // string[] scenes = new string[1];
+    // scenes[0] = "Title";
+    Debug.Log(scenes[0]);
     return scenes;
   }
 }
