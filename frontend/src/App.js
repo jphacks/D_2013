@@ -1,7 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import config from "./utils/config";
+import { config } from "./utils/config.js";
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
@@ -19,119 +22,219 @@ import { render } from "react-dom";
 
 firebase.initializeApp(config);
 
-export default function App() {
-  this.state = {
-    email: "",
-    password: "",
-  };
-
+class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = ({
+      email: '',
+      password: ''
+    })
+  }
   signUpUser = (email, password) => {
     try {
       if (this.state.password.length < 6) {
-        alert("最低６文字以上でおねがいします");
-        return;
+        alert('みじけーんだよ');
+        return
       }
       firebase.auth().createUserWithEmailAndPassword(email, password);
+      this.props.navigation.navigate('Setting');
     } catch (error) {
       console.log(error.toString());
     }
-  };
+
+  }
 
   loginUser = (email, password) => {
     try {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(function (user) {
-          console.log(user);
-        });
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
+        console.log(user);
+        this.props.navigation.navigate('Setting');
+      })
     } catch (error) {
       console.log(error.toString());
     }
-  };
+  }
 
-  loginWithFacebook = async () => {
-    await Facebook.initializeAsync("374656767218522");
+  async loginWithFacebook() {
+    await Facebook.initializeAsync(
+      '374656767218522'
+    );
 
-    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-      permissions: ["email", "public_profile"],
-    });
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync({ permissions: ['email', 'public_profile'] }
+    );
 
-    type == "success"
-      ? ((credential = firebase.auth.FacebookAuthProvider.credential(token)),
-        firebase
-          .auth()
-          .signInWithCredential(credential)
-          .catch((error) => {
-            console.log(error);
-          }))
-      : console.log(error);
-  };
+    type == "success" ? (
+      credential = firebase.auth.FacebookAuthProvider.credential(token),
+      firebase.auth().signInWithCredential(credential).catch((error) => {
+        console.log(error);
+      }),
 
-  return (
-    <Container style={styles.container}>
-      <Form>
-        <Item>
-          <Label>Email</Label>
-          <Input
-            autoCorrect={false}
-            autoCapitalize="none"
-            onChangeText={(email) => this.setState({ email })}
-          />
-        </Item>
+      this.props.navigation.navigate('Setting')
+    ) : (console.log(error));
+  }
+  render() {
+    return (
+      <Container style={Styles.container}>
+        <Text style={{ color: '#888', fontSize: 18 }}>タコ天にちょっと勝ちたい</Text>
+        <Form>
+          <Item>
+            <Label>Eメール</Label>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={(email) => this.setState({ email })}
+            />
+          </Item>
 
-        <Item>
-          <Label>Password</Label>
-          <Input
-            secureTextEntry={true}
-            autoCorrect={false}
-            autoCapitalize="none"
-            onChangeText={(password) => this.setState({ password })}
-          />
-        </Item>
+          <Item>
+            <Label>パスワード</Label>
+            <Input
+              secureTextEntry={true}
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={(password) => this.setState({ password })}
+            />
+          </Item>
 
-        <Button
-          style={{ marginTop: 10 }}
+          <Button style={{ marginTop: 10 }}
+            full
+            rounded
+            success
+            onPress={() => this.loginUser(this.state.email, this.state.password)}
+          >
+            <Text style={{ color: 'white' }}>ログイン</Text>
+          </Button>
+
+          <Button style={{ marginTop: 10 }}
+            full
+            rounded
+            primary
+            onPress={() => this.signUpUser(this.state.email, this.state.password)}
+          >
+            <Text style={{ color: 'white' }}>サインアップ</Text>
+          </Button>
+
+          <Button style={{ marginTop: 10 }}
+            full
+            rounded
+            primary
+            onPress={() => this.loginWithFacebook()}
+          >
+            <Text style={{ color: 'white' }}>Facebookログイン</Text>
+          </Button>
+
+        </Form>
+      </Container>
+    );
+  }
+}
+
+// setting
+class SettingScreen extends React.Component {
+  // class function
+
+  // render
+  render() {
+    return (
+      <View style={Styles.container}>
+        <Text style={{ color: '#888', fontSize: 18 }}>セッティング</Text>
+        {/* 睡眠時間 */}
+        <Button style={{ marginTop: 10 }}
           full
           rounded
           success
-          onPress={() => this.loginUser(this.state.email, this.state.password)}
-        >
-          <Text style={{ color: "white" }}>Login</Text>
-        </Button>
 
-        <Button
-          style={{ marginTop: 10 }}
+          onPress={() => this.props.navigation.navigate('SleepTimeSetting')}
+        >
+          <Text style={{ color: 'white' }}>睡眠時間設定</Text>
+        </Button>
+        {/* 起床時間 */}
+        <Button style={{ marginTop: 10 }}
           full
           rounded
-          primary
-          onPress={() => this.signUpUser(this.state.email, this.state.password)}
+          success
+          onPress={() => this.props.navigation.navigate('GetUpTimeSetting')}
         >
-          <Text style={{ color: "white" }}>Sign Up</Text>
+          <Text style={{ color: 'white' }}>起床時間設定</Text>
         </Button>
-
-        <Button
-          style={{ marginTop: 10 }}
+        {/* 派閥設定 */}
+        <Button style={{ marginTop: 10 }}
           full
           rounded
-          primary
-          onPress={() => this.loginWithFacebook()}
+          success
+          onPress={() => this.props.navigation.navigate('PartySetting')}
         >
-          <Text style={{ color: "white" }}>Login with Facebook</Text>
+          <Text style={{ color: 'white' }}>派閥設定</Text>
         </Button>
-      </Form>
-    </Container>
-  );
+
+      </View>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
+// 睡眠時間設定
+class SleepTimeSettingScreen extends React.Component {
+  render() {
+    return (
+      <View style={Styles.container}>
+        <Text style={{ color: '#888', fontSize: 18 }}>睡眠時間設定 Screen</Text>
+      </View>
+    );
+  }
+}
+
+// 起床時間設定
+class GetUpTimeSettingScreen extends React.Component {
+  render() {
+    return (
+      <View style={Styles.container}>
+        <Text style={{ color: '#888', fontSize: 18 }}>起床時間設定 Screen</Text>
+      </View>
+    );
+  }
+}
+
+// 派閥設定
+class PartySettingScreen extends React.Component {
+  render() {
+    return (
+      <View style={Styles.container}>
+        <Text style={{ color: '#888', fontSize: 18 }}>派閥設定 Screen</Text>
+      </View>
+    );
+  }
+}
+
+const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     padding: 10,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });
+
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Setting: SettingScreen,
+    SleepTimeSetting: SleepTimeSettingScreen,
+    GetUpTimeSetting: GetUpTimeSettingScreen,
+    PartySetting: PartySettingScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+
 
 // 参考までに昔に書いたことあるもの
 // process.cwd = function () {
