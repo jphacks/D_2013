@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class LightClickManager : MonoBehaviour
 {
-    int[] pos = new int[5];
-    int count = 1;
-    int previewCount = 0;
-    bool isPlay = false;
-    bool isPreview = false;
-    bool isRed = false;
-    int nextPos;
-    float timer;
+    private int[] _pos = new int[5];
+    private int _count = 1;
+    private int _previewCount = 0;
+    private bool _isPlay = false;
+    private bool _isPreview = false;
+    private bool _isRed = false;
+    private int _nextPos;
+    private float _timer;
 
     [SerializeField]private Button[] buttons;
 
@@ -21,6 +21,10 @@ public class LightClickManager : MonoBehaviour
     {
         SetNum();
 
+        /*for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].onClick.AddListener(() => OnClick(i));
+        }*/
         buttons[0].onClick.AddListener(() => OnClick(0));
         buttons[1].onClick.AddListener(() => OnClick(1));
         buttons[2].onClick.AddListener(() => OnClick(2));
@@ -30,22 +34,22 @@ public class LightClickManager : MonoBehaviour
         buttons[6].onClick.AddListener(() => OnClick(6));
         buttons[7].onClick.AddListener(() => OnClick(7));
         buttons[8].onClick.AddListener(() => OnClick(8));
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPreview)
+        if (_isPreview)
         {
-            if(timer > 0.5f)
+            if(_timer > 0.5f)
             {
-                isRed = false;
-                if(timer > 0.7f)
+                _isRed = false;
+                if(_timer > 0.7f)
                 {
-                    previewCount++;
-                    timer = 0;
-                    isRed = true;
+                    _previewCount++;
+                    _timer = 0;
+                    _isRed = true;
                 }
             }
 
@@ -53,44 +57,43 @@ public class LightClickManager : MonoBehaviour
             {
                 buttons[i].GetComponent<Image>().color = new Color(255, 255, 255);
             }
-            if(previewCount <= 4 && isRed)
-            {
-                buttons[pos[previewCount]].GetComponent<Image>().color = new Color(255, 0, 0);
 
+            if (_previewCount > _pos.Length - 1)
+            {
+                _isPreview = false;
+                _isPlay = true;
+                _previewCount = 0;
             }
-
-            if (previewCount > 4)
+            else
             {
-                isPreview = false;
-                isPlay = true;
-                previewCount = 0;
+                if(_isRed) buttons[_pos[_previewCount]].GetComponent<Image>().color = new Color(255, 0, 0);
             }
         }
-        timer += Time.deltaTime;
+        _timer += Time.deltaTime;
     }
 
     void SetNum()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < _pos.Length; i++)
         {
-            pos[i] = Random.RandomRange(0, 9);
-            Debug.Log(pos[i]);
+            _pos[i] = Random.RandomRange(0, 9);
+            Debug.Log(_pos[i]);
         }
-        nextPos = pos[0];
-        isPreview = true;
-        timer = 0;
+        _nextPos = _pos[0];
+        _isPreview = true;
+        _timer = 0;
     }
 
     void OnClick(int num)
     {
-        if (isPlay)
+        if (_isPlay)
         {
-            if (num == nextPos)
+            if (num == _nextPos)
             {
-                if (count < 5)
+                if (_count < _pos.Length)
                 {
-                    nextPos = pos[count];
-                    count++;
+                    _nextPos = _pos[_count];
+                    _count++;
                 }
                 else
                 {
@@ -99,9 +102,9 @@ public class LightClickManager : MonoBehaviour
             }
             else
             {
-                count = 1;
+                _count = 1;
                 Debug.Log("ALERT");
-                isPlay = false;
+                _isPlay = false;
                 SetNum();
             }
         }
