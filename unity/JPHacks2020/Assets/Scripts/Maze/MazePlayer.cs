@@ -40,10 +40,10 @@ namespace Maze
                     adjustY = 1;
                     break;
             }
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
+        // Update is called once per frame
+        void Update()
         {
             _directionX = _joystick.Direction.x;
             _directionY = _joystick.Direction.y;
@@ -66,6 +66,14 @@ namespace Maze
             }
             this.transform.position += new Vector3(adjustX * _speed *_directionX, 0, adjustY * _speed * _directionY);
         }
-    }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.gameObject.tag == "Player" && PlayerId == 1)
+            {
+                Debug.Log("clear");
+            }
+        }
+    }    
 }
 
