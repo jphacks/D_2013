@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import UnityView from '@asmadsen/react-native-unity-view';
+import UnityView from "@asmadsen/react-native-unity-view";
 import config from "./utils/config";
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
