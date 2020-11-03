@@ -19,6 +19,7 @@ import {
 import { render } from "react-dom";
 
 firebase.initializeApp(config);
+import UnityView from "@asmadsen/react-native-unity-view";
 
 export default function App() {
   this.state = {
@@ -72,7 +73,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Hello JPHacks2020!</Text>
-      <UnityView style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, }} />
+      <UnityView
+        style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: 0 }}
+      />
     </View>
     // <Container style={styles.container}>
     //   <Form>
