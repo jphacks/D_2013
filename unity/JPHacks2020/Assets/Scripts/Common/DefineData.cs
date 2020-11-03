@@ -29,7 +29,7 @@ namespace Common
         }
 
         // enumをScene名に変換
-        private static Dictionary<SCENE_NAME, string> transSceneName = new Dictionary<SCENE_NAME, string>() {
+        private static Dictionary<SCENE_NAME, string> _transSceneName = new Dictionary<SCENE_NAME, string>() {
             { SCENE_NAME.TITLE, "Title"},
             { SCENE_NAME.REGISTRATION, "Registration"},
             { SCENE_NAME.SERVICE_SETTING, "ServiceSetting"},
