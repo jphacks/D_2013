@@ -8,6 +8,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
+import DateTimePicker from "react-native-modal-datetime-picker";
+
 import {
   Container,
   Content,
@@ -185,10 +187,38 @@ class SleepTimeSettingScreen extends React.Component {
 
 // 起床時間設定
 class GetUpTimeSettingScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDateTimePickerVisible: false
+    };
+  }
+
+  showDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: true });
+  };
+
+  hideDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: false });
+  };
+
+  handleDatePicked = date => {
+    console.log("A date has been picked: ", date);
+    this.hideDateTimePicker();
+  };
+
   render() {
     return (
-      <View style={Styles.container}>
-        <Text style={{ color: '#888', fontSize: 18 }}>起床時間設定 Screen</Text>
+      <View>
+        <Button title="Show DatePicker" onPress={this.showDateTimePicker}>
+          <Text style={{ color: 'white' }}>時間設定</Text>
+        </Button>
+        <DateTimePicker
+          isVisible={this.state.isDateTimePickerVisible}
+          onConfirm={this.handleDatePicked}
+          mode="time"
+          onCancel={this.hideDateTimePicker}
+        />
       </View>
     );
   }
@@ -212,6 +242,7 @@ const Styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
   },
+
 });
 
 const RootStack = createStackNavigator(
