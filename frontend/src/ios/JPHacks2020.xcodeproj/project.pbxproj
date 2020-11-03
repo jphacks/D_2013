@@ -1,0 +1,706 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E7DFDC0DD14AD0F62D60AF3 /* libPods-JPHacks2020Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FB885173236DCC456BCEAC4 /* libPods-JPHacks2020Tests.a */; };
+		4B46071E2551DAD8004C38C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46071D2551DAD8004C38C2 /* AppDelegate.m */; };
+		4B4607202551DAD8004C38C2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B46071F2551DAD8004C38C2 /* GameScene.sks */; };
+		4B4607222551DAD8004C38C2 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4B4607212551DAD8004C38C2 /* Actions.sks */; };
+		4B4607252551DAD8004C38C2 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4607242551DAD8004C38C2 /* GameScene.m */; };
+		4B4607282551DAD8004C38C2 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4607272551DAD8004C38C2 /* GameViewController.m */; };
+		4B46072B2551DAD8004C38C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B4607292551DAD8004C38C2 /* Main.storyboard */; };
+		4B46072D2551DADB004C38C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B46072C2551DADB004C38C2 /* Assets.xcassets */; };
+		4B4607302551DADB004C38C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46072F2551DADB004C38C2 /* main.m */; };
+		4B46073A2551DADB004C38C2 /* JPHacks2020Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4607392551DADB004C38C2 /* JPHacks2020Tests.m */; };
+		4B4607452551DADB004C38C2 /* JPHacks2020UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4607442551DADB004C38C2 /* JPHacks2020UITests.m */; };
+		4B4607782551DBA9004C38C2 /* UnityFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4607772551DBA9004C38C2 /* UnityFramework.framework */; };
+		4B4607792551DBA9004C38C2 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4607772551DBA9004C38C2 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B00C6E28DFD8BC2CB1F11FD3 /* libPods-JPHacks2020.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 601AC2925826D19F8C43B23B /* libPods-JPHacks2020.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B4607362551DADB004C38C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B4607112551DAD8004C38C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B4607182551DAD8004C38C2;
+			remoteInfo = JPHacks2020;
+		};
+		4B4607412551DADB004C38C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B4607112551DAD8004C38C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B4607182551DAD8004C38C2;
+			remoteInfo = JPHacks2020;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4B46077A2551DBA9004C38C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4B4607792551DBA9004C38C2 /* UnityFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		23269726950DAB1217AF75CF /* Pods-JPHacks2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPHacks2020.debug.xcconfig"; path = "Target Support Files/Pods-JPHacks2020/Pods-JPHacks2020.debug.xcconfig"; sourceTree = "<group>"; };
+		3FB885173236DCC456BCEAC4 /* libPods-JPHacks2020Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JPHacks2020Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4607192551DAD8004C38C2 /* JPHacks2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JPHacks2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B46071C2551DAD8004C38C2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4B46071D2551DAD8004C38C2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4B46071F2551DAD8004C38C2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		4B4607212551DAD8004C38C2 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		4B4607232551DAD8004C38C2 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		4B4607242551DAD8004C38C2 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		4B4607262551DAD8004C38C2 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		4B4607272551DAD8004C38C2 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		4B46072A2551DAD8004C38C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4B46072C2551DADB004C38C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B46072E2551DADB004C38C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B46072F2551DADB004C38C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4B4607352551DADB004C38C2 /* JPHacks2020Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JPHacks2020Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4607392551DADB004C38C2 /* JPHacks2020Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JPHacks2020Tests.m; sourceTree = "<group>"; };
+		4B46073B2551DADB004C38C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B4607402551DADB004C38C2 /* JPHacks2020UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JPHacks2020UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4607442551DADB004C38C2 /* JPHacks2020UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JPHacks2020UITests.m; sourceTree = "<group>"; };
+		4B4607462551DADB004C38C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B4607772551DBA9004C38C2 /* UnityFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnityFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		601AC2925826D19F8C43B23B /* libPods-JPHacks2020.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JPHacks2020.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A91A8062CC8DCC217A550E /* Pods-JPHacks2020Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPHacks2020Tests.debug.xcconfig"; path = "Target Support Files/Pods-JPHacks2020Tests/Pods-JPHacks2020Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9AF5EEB02CF4C76F1B54E055 /* Pods-JPHacks2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPHacks2020.release.xcconfig"; path = "Target Support Files/Pods-JPHacks2020/Pods-JPHacks2020.release.xcconfig"; sourceTree = "<group>"; };
+		DD35FC5D8C5880F8BAF59430 /* Pods-JPHacks2020Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPHacks2020Tests.release.xcconfig"; path = "Target Support Files/Pods-JPHacks2020Tests/Pods-JPHacks2020Tests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B4607162551DAD8004C38C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B00C6E28DFD8BC2CB1F11FD3 /* libPods-JPHacks2020.a in Frameworks */,
+				4B4607782551DBA9004C38C2 /* UnityFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4607322551DADB004C38C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E7DFDC0DD14AD0F62D60AF3 /* libPods-JPHacks2020Tests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B46073D2551DADB004C38C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		067B0501DBC85ED1C71D4137 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23269726950DAB1217AF75CF /* Pods-JPHacks2020.debug.xcconfig */,
+				9AF5EEB02CF4C76F1B54E055 /* Pods-JPHacks2020.release.xcconfig */,
+				94A91A8062CC8DCC217A550E /* Pods-JPHacks2020Tests.debug.xcconfig */,
+				DD35FC5D8C5880F8BAF59430 /* Pods-JPHacks2020Tests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4B4607102551DAD8004C38C2 = {
+			isa = PBXGroup;
+			children = (
+				4B46071B2551DAD8004C38C2 /* JPHacks2020 */,
+				4B4607382551DADB004C38C2 /* JPHacks2020Tests */,
+				4B4607432551DADB004C38C2 /* JPHacks2020UITests */,
+				4B46071A2551DAD8004C38C2 /* Products */,
+				067B0501DBC85ED1C71D4137 /* Pods */,
+				B43DC23D57B517B7C1213FBF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4B46071A2551DAD8004C38C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B4607192551DAD8004C38C2 /* JPHacks2020.app */,
+				4B4607352551DADB004C38C2 /* JPHacks2020Tests.xctest */,
+				4B4607402551DADB004C38C2 /* JPHacks2020UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B46071B2551DAD8004C38C2 /* JPHacks2020 */ = {
+			isa = PBXGroup;
+			children = (
+				4B46071C2551DAD8004C38C2 /* AppDelegate.h */,
+				4B46071D2551DAD8004C38C2 /* AppDelegate.m */,
+				4B46071F2551DAD8004C38C2 /* GameScene.sks */,
+				4B4607212551DAD8004C38C2 /* Actions.sks */,
+				4B4607232551DAD8004C38C2 /* GameScene.h */,
+				4B4607242551DAD8004C38C2 /* GameScene.m */,
+				4B4607262551DAD8004C38C2 /* GameViewController.h */,
+				4B4607272551DAD8004C38C2 /* GameViewController.m */,
+				4B4607292551DAD8004C38C2 /* Main.storyboard */,
+				4B46072C2551DADB004C38C2 /* Assets.xcassets */,
+				4B46072E2551DADB004C38C2 /* Info.plist */,
+				4B46072F2551DADB004C38C2 /* main.m */,
+			);
+			path = JPHacks2020;
+			sourceTree = "<group>";
+		};
+		4B4607382551DADB004C38C2 /* JPHacks2020Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4B4607392551DADB004C38C2 /* JPHacks2020Tests.m */,
+				4B46073B2551DADB004C38C2 /* Info.plist */,
+			);
+			path = JPHacks2020Tests;
+			sourceTree = "<group>";
+		};
+		4B4607432551DADB004C38C2 /* JPHacks2020UITests */ = {
+			isa = PBXGroup;
+			children = (
+				4B4607442551DADB004C38C2 /* JPHacks2020UITests.m */,
+				4B4607462551DADB004C38C2 /* Info.plist */,
+			);
+			path = JPHacks2020UITests;
+			sourceTree = "<group>";
+		};
+		B43DC23D57B517B7C1213FBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B4607772551DBA9004C38C2 /* UnityFramework.framework */,
+				601AC2925826D19F8C43B23B /* libPods-JPHacks2020.a */,
+				3FB885173236DCC456BCEAC4 /* libPods-JPHacks2020Tests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B4607182551DAD8004C38C2 /* JPHacks2020 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B4607492551DADB004C38C2 /* Build configuration list for PBXNativeTarget "JPHacks2020" */;
+			buildPhases = (
+				4604A4D23DADD8CB54AA2C0E /* [CP] Check Pods Manifest.lock */,
+				4B4607152551DAD8004C38C2 /* Sources */,
+				4B4607162551DAD8004C38C2 /* Frameworks */,
+				4B4607172551DAD8004C38C2 /* Resources */,
+				93235DC564A6B00A9A3C0A29 /* [CP] Copy Pods Resources */,
+				4B46077A2551DBA9004C38C2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JPHacks2020;
+			productName = JPHacks2020;
+			productReference = 4B4607192551DAD8004C38C2 /* JPHacks2020.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B4607342551DADB004C38C2 /* JPHacks2020Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B46074C2551DADB004C38C2 /* Build configuration list for PBXNativeTarget "JPHacks2020Tests" */;
+			buildPhases = (
+				108F3B1631D1C03F32BF8834 /* [CP] Check Pods Manifest.lock */,
+				4B4607312551DADB004C38C2 /* Sources */,
+				4B4607322551DADB004C38C2 /* Frameworks */,
+				4B4607332551DADB004C38C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B4607372551DADB004C38C2 /* PBXTargetDependency */,
+			);
+			name = JPHacks2020Tests;
+			productName = JPHacks2020Tests;
+			productReference = 4B4607352551DADB004C38C2 /* JPHacks2020Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4B46073F2551DADB004C38C2 /* JPHacks2020UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B46074F2551DADB004C38C2 /* Build configuration list for PBXNativeTarget "JPHacks2020UITests" */;
+			buildPhases = (
+				4B46073C2551DADB004C38C2 /* Sources */,
+				4B46073D2551DADB004C38C2 /* Frameworks */,
+				4B46073E2551DADB004C38C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B4607422551DADB004C38C2 /* PBXTargetDependency */,
+			);
+			name = JPHacks2020UITests;
+			productName = JPHacks2020UITests;
+			productReference = 4B4607402551DADB004C38C2 /* JPHacks2020UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B4607112551DAD8004C38C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					4B4607182551DAD8004C38C2 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					4B4607342551DADB004C38C2 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 4B4607182551DAD8004C38C2;
+					};
+					4B46073F2551DADB004C38C2 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 4B4607182551DAD8004C38C2;
+					};
+				};
+			};
+			buildConfigurationList = 4B4607142551DAD8004C38C2 /* Build configuration list for PBXProject "JPHacks2020" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B4607102551DAD8004C38C2;
+			productRefGroup = 4B46071A2551DAD8004C38C2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B4607182551DAD8004C38C2 /* JPHacks2020 */,
+				4B4607342551DADB004C38C2 /* JPHacks2020Tests */,
+				4B46073F2551DADB004C38C2 /* JPHacks2020UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B4607172551DAD8004C38C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B46072B2551DAD8004C38C2 /* Main.storyboard in Resources */,
+				4B4607202551DAD8004C38C2 /* GameScene.sks in Resources */,
+				4B46072D2551DADB004C38C2 /* Assets.xcassets in Resources */,
+				4B4607222551DAD8004C38C2 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4607332551DADB004C38C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B46073E2551DADB004C38C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		108F3B1631D1C03F32BF8834 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JPHacks2020Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4604A4D23DADD8CB54AA2C0E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JPHacks2020-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93235DC564A6B00A9A3C0A29 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JPHacks2020/Pods-JPHacks2020-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JPHacks2020/Pods-JPHacks2020-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JPHacks2020/Pods-JPHacks2020-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B4607152551DAD8004C38C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B4607252551DAD8004C38C2 /* GameScene.m in Sources */,
+				4B4607282551DAD8004C38C2 /* GameViewController.m in Sources */,
+				4B4607302551DADB004C38C2 /* main.m in Sources */,
+				4B46071E2551DAD8004C38C2 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B4607312551DADB004C38C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B46073A2551DADB004C38C2 /* JPHacks2020Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B46073C2551DADB004C38C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B4607452551DADB004C38C2 /* JPHacks2020UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B4607372551DADB004C38C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B4607182551DAD8004C38C2 /* JPHacks2020 */;
+			targetProxy = 4B4607362551DADB004C38C2 /* PBXContainerItemProxy */;
+		};
+		4B4607422551DADB004C38C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B4607182551DAD8004C38C2 /* JPHacks2020 */;
+			targetProxy = 4B4607412551DADB004C38C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4B4607292551DAD8004C38C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B46072A2551DAD8004C38C2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4B4607472551DADB004C38C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4B4607482551DADB004C38C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B46074A2551DADB004C38C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23269726950DAB1217AF75CF /* Pods-JPHacks2020.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JPHacks2020/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JPHacks2020;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B46074B2551DADB004C38C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AF5EEB02CF4C76F1B54E055 /* Pods-JPHacks2020.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JPHacks2020/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JPHacks2020;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4B46074D2551DADB004C38C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94A91A8062CC8DCC217A550E /* Pods-JPHacks2020Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JPHacks2020Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JPHacks2020Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JPHacks2020.app/JPHacks2020";
+			};
+			name = Debug;
+		};
+		4B46074E2551DADB004C38C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD35FC5D8C5880F8BAF59430 /* Pods-JPHacks2020Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JPHacks2020Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JPHacks2020Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JPHacks2020.app/JPHacks2020";
+			};
+			name = Release;
+		};
+		4B4607502551DADB004C38C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JPHacks2020UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JPHacks2020UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JPHacks2020;
+			};
+			name = Debug;
+		};
+		4B4607512551DADB004C38C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JPHacks2020UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JPHacks2020UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JPHacks2020;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B4607142551DAD8004C38C2 /* Build configuration list for PBXProject "JPHacks2020" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B4607472551DADB004C38C2 /* Debug */,
+				4B4607482551DADB004C38C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B4607492551DADB004C38C2 /* Build configuration list for PBXNativeTarget "JPHacks2020" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B46074A2551DADB004C38C2 /* Debug */,
+				4B46074B2551DADB004C38C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B46074C2551DADB004C38C2 /* Build configuration list for PBXNativeTarget "JPHacks2020Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B46074D2551DADB004C38C2 /* Debug */,
+				4B46074E2551DADB004C38C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B46074F2551DADB004C38C2 /* Build configuration list for PBXNativeTarget "JPHacks2020UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B4607502551DADB004C38C2 /* Debug */,
+				4B4607512551DADB004C38C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4B4607112551DAD8004C38C2 /* Project object */;
+}
