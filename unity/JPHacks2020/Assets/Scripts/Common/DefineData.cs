@@ -19,6 +19,10 @@ namespace Common
             GAME_D
         };
 
+        /// <summary>
+        /// シーンの遷移を統一とバグの温床を極限まで減らすため
+        /// </summary>
+        /// <param name="scene">enumのシーン</param>
         public static void LoadScene(SCENE_NAME scene)
         {
             SceneManager.LoadScene(transSceneName[scene]);

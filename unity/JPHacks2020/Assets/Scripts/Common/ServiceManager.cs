@@ -5,7 +5,7 @@ using System;
 
 namespace Common
 {
-    public class GameManager : SingletonMonoBehaviour<GameManager>
+    public class ServiceManager : SingletonMonoBehaviour<ServiceManager>
     {
         private string _userName;
         private DateTime _sleepTime;
