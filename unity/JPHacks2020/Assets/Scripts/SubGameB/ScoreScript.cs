@@ -11,20 +11,21 @@ namespace Mole
         [SerializeField] Text scoretext;
 
         private int _score=0;
+        private int _clearScore = 15;
         // Start is called before the first frame update
         void Start()
         {
             scoretext.text = _score.ToString();
             
-            moleButton[0].onClick.AddListener(() => addPoint(0));
-            moleButton[1].onClick.AddListener(() => addPoint(1));
-            moleButton[2].onClick.AddListener(() => addPoint(2));
-            moleButton[3].onClick.AddListener(() => addPoint(3));
-            moleButton[4].onClick.AddListener(() => addPoint(4));
-            moleButton[5].onClick.AddListener(() => addPoint(5));
-            moleButton[6].onClick.AddListener(() => addPoint(6));
-            moleButton[7].onClick.AddListener(() => addPoint(7));
-            moleButton[8].onClick.AddListener(() => addPoint(8));
+            moleButton[0].onClick.AddListener(() => AddPoint(0));
+            moleButton[1].onClick.AddListener(() => AddPoint(1));
+            moleButton[2].onClick.AddListener(() => AddPoint(2));
+            moleButton[3].onClick.AddListener(() => AddPoint(3));
+            moleButton[4].onClick.AddListener(() => AddPoint(4));
+            moleButton[5].onClick.AddListener(() => AddPoint(5));
+            moleButton[6].onClick.AddListener(() => AddPoint(6));
+            moleButton[7].onClick.AddListener(() => AddPoint(7));
+            moleButton[8].onClick.AddListener(() => AddPoint(8));
             
 
            
@@ -35,16 +36,20 @@ namespace Mole
         void Update()
         {
             scoretext.text = "スコア : " +  _score.ToString();
+            if (_score >= _clearScore) {
+                Debug.Log("CLEAR");
+            }
         }
 
         
 
-        private void addPoint(int num) {
+        private void AddPoint(int num) {
 
             
                 Debug.Log(num);
-            if (moleButton[num].transform.GetChild(0).gameObject.activeSelf) {
+            if (moleButton[num].transform.GetChild(0).gameObject.activeSelf || moleButton[num].transform.GetChild(1).gameObject.activeSelf) {
                 moleButton[num].transform.GetChild(0).gameObject.SetActive(false);
+                moleButton[num].transform.GetChild(1).gameObject.SetActive(false);
                 _score++;
             }
 
