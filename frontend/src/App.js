@@ -57,13 +57,15 @@ export default function App() {
       permissions: ["email", "public_profile"],
     });
 
-    type == "success" ? (
-      credential = firebase.auth.FacebookAuthProvider.credential(token),
-      firebase.auth().signInWithCredential(credential).catch((error) => {
-        console.log(error);
-      })
-
-    ) : (console.log(error));
+    type == "success"
+      ? ((credential = firebase.auth.FacebookAuthProvider.credential(token)),
+        firebase
+          .auth()
+          .signInWithCredential(credential)
+          .catch((error) => {
+            console.log(error);
+          }))
+      : console.log(error);
   };
 
   return (
