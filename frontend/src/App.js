@@ -28,7 +28,7 @@ export default function App() {
   signUpUser = (email, password) => {
     try {
       if (this.state.password.length < 6) {
-        alert("みじけーんだよ");
+        alert("最低６文字以上でおねがいします");
         return;
       }
       firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -57,16 +57,13 @@ export default function App() {
       permissions: ["email", "public_profile"],
     });
 
-    if (type == "success") {
-      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+    type == "success" ? (
+      credential = firebase.auth.FacebookAuthProvider.credential(token),
+      firebase.auth().signInWithCredential(credential).catch((error) => {
+        console.log(error);
+      })
 
-      firebase
-        .auth()
-        .signInWithCredential(credential)
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    ) : (console.log(error));
   };
 
   return (
