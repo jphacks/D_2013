@@ -1,0 +1,1 @@
+../../../../../node_modules/@asmadsen/react-native-unity-view/ios/UnityNativeModule.h
