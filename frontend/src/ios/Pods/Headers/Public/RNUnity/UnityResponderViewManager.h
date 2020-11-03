@@ -1,1 +1,0 @@
-../../../../../node_modules/@wowmaking/react-native-unity/ios/RNUnity/UnityResponderViewManager.h
