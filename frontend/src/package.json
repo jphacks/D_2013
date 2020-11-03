@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@asmadsen/react-native-unity-view": "^0.0.7",
+    "@react-native-community/cli-platform-ios": "^4.13.0",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
     "react": "16.13.1",

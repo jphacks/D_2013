@@ -13,6 +13,11 @@ $ yarn global add expo-cli
 $ cd src
 $ yarn
 
+// podfile install
+$ cd ios
+$ pod install
+(-> ない場合は $ sudo gem install -n /usr/local/bin cocoapods )
+
 // 起動
 $ cd src
 $ yarn start

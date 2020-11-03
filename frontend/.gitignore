@@ -105,3 +105,6 @@ dist
 .expo/*
 
 app.json
+
+src/ios/pods
+src/ios/UnityExport
