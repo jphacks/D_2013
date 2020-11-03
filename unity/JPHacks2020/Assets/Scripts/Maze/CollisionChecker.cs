@@ -6,10 +6,9 @@ namespace Maze
 {
     public class CollisionChecker : MonoBehaviour
     {
-        [SerializeField] bool _isPlayer;
-        [SerializeField] int _collisionNum;
-        [SerializeField] MazePlayer1 mazePlayer1;
-        [SerializeField] MazePlayer2 mazePlayer2;
+        [SerializeField] private int PlayerId;
+        [SerializeField] private int _collisionNum;
+        [SerializeField] private MazePlayer mazePlayer;
 
    
         private void OnCollisionEnter(Collision collision)
@@ -19,44 +18,16 @@ namespace Maze
                 switch (_collisionNum)
                 {
                     case 1:
-                        if (_isPlayer == true)
-                        {
-                            mazePlayer1.collisionFront = true;
-                        }
-                        else
-                        {
-                            mazePlayer2.collisionFront = true;
-                        }
+                        mazePlayer.collisionFront[PlayerId - 1] = true;
                         break;
                     case 2:
-                        if (_isPlayer == true)
-                        {
-                            mazePlayer1.collisionBack = true;
-                        }
-                        else
-                        {
-                            mazePlayer2.collisionBack = true;
-                        }
+                        mazePlayer.collisionBack[PlayerId - 1] = true;
                         break;
                     case 3:
-                        if (_isPlayer == true)
-                        {
-                            mazePlayer1.collisionRight = true;
-                        }
-                        else
-                        {
-                            mazePlayer2.collisionRight = true;
-                        }
+                        mazePlayer.collisionRight[PlayerId - 1] = true;
                         break;
                     case 4:
-                        if (_isPlayer == true)
-                        {
-                            mazePlayer1.collisionLeft = true;
-                        }
-                        else
-                        {
-                            mazePlayer2.collisionLeft = true;
-                        }
+                        mazePlayer.collisionLeft[PlayerId - 1] = true;
                         break;
                     default:
                         break;
@@ -70,44 +41,16 @@ namespace Maze
             switch (_collisionNum)
             {
                 case 1:
-                    if (_isPlayer == true)
-                    {
-                        mazePlayer1.collisionFront = false;
-                    }
-                    else
-                    {
-                        mazePlayer2.collisionFront = false;
-                    }
+                    mazePlayer.collisionFront[PlayerId - 1] = false;
                     break;
                 case 2:
-                    if (_isPlayer == true)
-                    {
-                        mazePlayer1.collisionBack = false;
-                    }
-                    else
-                    {
-                        mazePlayer2.collisionBack = false;
-                    }
+                    mazePlayer.collisionBack[PlayerId - 1] = false;
                     break;
                 case 3:
-                    if (_isPlayer == true)
-                    {
-                        mazePlayer1.collisionRight = false;
-                    }
-                    else
-                    {
-                        mazePlayer2.collisionRight = false;
-                    }
+                    mazePlayer.collisionRight[PlayerId - 1] = false;
                     break;
                 case 4:
-                    if (_isPlayer == true)
-                    {
-                        mazePlayer1.collisionLeft = false;
-                    }
-                    else
-                    {
-                        mazePlayer2.collisionLeft = false;
-                    }
+                    mazePlayer.collisionLeft[PlayerId - 1] = false;
                     break;
                 default:
                     break;

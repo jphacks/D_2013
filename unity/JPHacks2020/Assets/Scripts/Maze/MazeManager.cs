@@ -7,11 +7,8 @@ namespace Maze
     public class MazeManager : MonoBehaviour
     {
         //trueならP1が操作
-        [SerializeField] bool _isPlayer;
-        [SerializeField] GameObject _CameraP1;
-        [SerializeField] GameObject _CameraP2;
-        
-        
+        [SerializeField] private int _playerId;
+        [SerializeField] private GameObject[] _Camera;
 
         void OnEnable()
         {
@@ -21,14 +18,11 @@ namespace Maze
         // Start is called before the first frame update
         void Start()
         {
-            if(_isPlayer == true)
+            for(int i = 0;i < _Camera.Length; i++)
             {
-                _CameraP2.SetActive(false);
+                _Camera[i].SetActive(false);
             }
-            else
-            {
-                _CameraP1.SetActive(false);
-            }
+            _Camera[_playerId - 1].SetActive(true);
         }
 
         // Update is called once per frame

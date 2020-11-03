@@ -166,10 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 1
+  PlayerId: 1
   _collisionNum: 2
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 0}
+  mazePlayer: {fileID: 446961361}
 --- !u!65 &31201487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -410,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &241692665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -499,15 +498,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 241692664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c549e924b8d52409085c6a574f3612c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 02dbad541ecc84ddd80f8f82d2520a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 0
+  PlayerId: 2
   _joystick: {fileID: 1542452685}
-  collisionFront: 0
-  collisionBack: 0
-  collisionRight: 0
-  collisionLeft: 0
+  collisionFront: 0000
+  collisionBack: 0000
+  collisionRight: 0000
+  collisionLeft: 0000
 --- !u!1 &296880645
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,10 +568,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 0
+  PlayerId: 2
   _collisionNum: 1
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 241692669}
+  mazePlayer: {fileID: 241692669}
 --- !u!65 &296880649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -734,7 +732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &446961357
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -826,12 +824,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dbad541ecc84ddd80f8f82d2520a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 1
+  PlayerId: 1
   _joystick: {fileID: 1542452685}
-  collisionFront: 0
-  collisionBack: 0
-  collisionRight: 0
-  collisionLeft: 0
+  collisionFront: 0000
+  collisionBack: 0000
+  collisionRight: 0000
+  collisionLeft: 0000
 --- !u!54 &446961362
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1150,10 +1148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 0
+  PlayerId: 2
   _collisionNum: 2
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 241692669}
+  mazePlayer: {fileID: 241692669}
 --- !u!65 &914360951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1212,10 +1209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 1
+  PlayerId: 1
   _collisionNum: 3
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 0}
+  mazePlayer: {fileID: 446961361}
 --- !u!65 &924412423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1389,10 +1385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 0
+  PlayerId: 2
   _collisionNum: 3
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 241692669}
+  mazePlayer: {fileID: 241692669}
 --- !u!65 &985500880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1570,7 +1565,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 247.34297
+      value: 247.34277
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -1698,10 +1693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 1
+  PlayerId: 1
   _collisionNum: 1
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 0}
+  mazePlayer: {fileID: 446961361}
 --- !u!54 &1279328467
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1763,10 +1757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 1
+  PlayerId: 1
   _collisionNum: 4
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 0}
+  mazePlayer: {fileID: 446961361}
 --- !u!65 &1381357935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1869,10 +1862,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211bc8f6200b64ed1945acc219686561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 0
+  PlayerId: 2
   _collisionNum: 4
-  mazePlayer1: {fileID: 446961361}
-  mazePlayer2: {fileID: 241692669}
+  mazePlayer: {fileID: 241692669}
 --- !u!65 &1643849656
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1915,9 +1907,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f61343c65d19c4816b38429da6f94064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlayer: 1
-  _CameraP1: {fileID: 873221504}
-  _CameraP2: {fileID: 963194225}
+  _playerId: 2
+  _Camera:
+  - {fileID: 873221504}
+  - {fileID: 963194225}
 --- !u!4 &1816500346
 Transform:
   m_ObjectHideFlags: 0
