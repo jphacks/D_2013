@@ -25,7 +25,7 @@ namespace Common
         /// <param name="scene">enumのシーン</param>
         public static void LoadScene(SCENE_NAME scene)
         {
-            SceneManager.LoadScene(transSceneName[scene]);
+            SceneManager.LoadScene(_transSceneName[scene]);
         }
 
         // enumをScene名に変換
