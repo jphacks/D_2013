@@ -1,12 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { config } from "./utils/config.js";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
+import 'firebase/firestore';
 
 import DateTimePicker from "react-native-modal-datetime-picker";
 
@@ -23,35 +24,64 @@ import {
 import { render } from "react-dom";
 
 firebase.initializeApp(config);
+const db = firebase.firestore();
 
 class HomeScreen extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = ({
+      name: '',
       email: '',
-      password: ''
+      password: '',
+      user: null
     })
   }
-  signUpUser = (email, password) => {
+
+  signUpUser = (name, email, password) => {
+    const nav = () => {
+      this.props.navigation.navigate("Setting");
+    }
     try {
       if (this.state.password.length < 6) {
         alert('みじけーんだよ');
         return
       }
-      firebase.auth().createUserWithEmailAndPassword(email, password);
-      this.props.navigation.navigate('Setting');
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function (obj) {
+        // success
+        let id = obj.user.uid;
+        db.collection("users").doc(id).set({
+          name: name,
+          email: email
+        });
+        nav();
+      }).catch(error => {
+        // error
+        console.log(error);
+      })
     } catch (error) {
       console.log(error.toString());
     }
-
   }
 
-  loginUser = (email, password) => {
+  loginUser = (name, email, password) => {
+    const nav = () => {
+      this.props.navigation.navigate("Setting");
+    }
     try {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
-        console.log(user);
-        this.props.navigation.navigate('Setting');
-      })
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function (obj) {
+        // success
+        let id = obj.user.uid;
+
+        db.collection("users").doc(id).set({
+          name: name,
+          email: email
+        });
+        nav();
+      }).catch(error => {
+        // error
+        console.log(error);
+      });
     } catch (error) {
       console.log(error.toString());
     }
@@ -67,18 +97,30 @@ class HomeScreen extends React.Component {
 
     type == "success" ? (
       credential = firebase.auth.FacebookAuthProvider.credential(token),
-      firebase.auth().signInWithCredential(credential).catch((error) => {
+      firebase.auth().signInWithCredential(credential).then(function (obj) {
+        // success
+        console.log(obj.user.uid);
+      }).catch((error) => {
         console.log(error);
       }),
-
       this.props.navigation.navigate('Setting')
     ) : (console.log(error));
   }
+
   render() {
     return (
       <Container style={Styles.container}>
         <Text style={{ color: '#888', fontSize: 18 }}>タコ天にちょっと勝ちたい</Text>
         <Form>
+          <Item>
+            <Label>名前</Label>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={(name) => this.setState({ name })}
+            />
+          </Item>
+
           <Item>
             <Label>Eメール</Label>
             <Input
@@ -102,7 +144,7 @@ class HomeScreen extends React.Component {
             full
             rounded
             success
-            onPress={() => this.loginUser(this.state.email, this.state.password)}
+            onPress={() => this.loginUser(this.state.name, this.state.email, this.state.password)}
           >
             <Text style={{ color: 'white' }}>ログイン</Text>
           </Button>
@@ -111,7 +153,7 @@ class HomeScreen extends React.Component {
             full
             rounded
             primary
-            onPress={() => this.signUpUser(this.state.email, this.state.password)}
+            onPress={() => this.signUpUser(this.state.name, this.state.email, this.state.password)}
           >
             <Text style={{ color: 'white' }}>サインアップ</Text>
           </Button>
