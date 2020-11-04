@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
+
+import { WebView } from "react-native-webview";
 import { config } from "./utils/config.js";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
@@ -24,7 +26,23 @@ import {
 import { render } from "react-dom";
 
 firebase.initializeApp(config);
-const db = firebase.firestore();
+
+class UnityScreen extends React.Component {
+  render() {
+    return (
+      <View style={Styles.container}>
+        <Text>Hello JPHacks2020!</Text>
+        <WebView
+          originWhitelist={["*"]}
+          // ここに使用URLを流す
+          source={require("./ios/external/index.html")}
+          style={{ marginTop: 50, marginBottom: 50 }}
+        />
+        <Text>Hello JPHacks2020</Text>
+      </View>
+    );
+  }
+}
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -36,6 +54,9 @@ class HomeScreen extends React.Component {
       user: null,
     };
   }
+  onPressUnity = () => {
+    this.props.navigation.navigate("Unity");
+  };
 
   signUpUser = (name, email, password) => {
     const nav = () => {
@@ -193,6 +214,15 @@ class HomeScreen extends React.Component {
           >
             <Text style={{ color: "white" }}>Facebookログイン</Text>
           </Button>
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            primary
+            onPress={() => this.onPressUnity()}
+          >
+            <Text style={{ color: "white" }}>Unity</Text>
+          </Button>
         </Form>
       </Container>
     );
@@ -316,6 +346,7 @@ const Styles = StyleSheet.create({
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
+    Unity: UnityScreen,
     Setting: SettingScreen,
     SleepTimeSetting: SleepTimeSettingScreen,
     GetUpTimeSetting: GetUpTimeSettingScreen,
@@ -333,52 +364,3 @@ export default class App extends React.Component {
     return <AppContainer />;
   }
 }
-
-// 参考までに昔に書いたことあるもの
-// process.cwd = function () {
-//   return "/";
-// };
-
-// const Stack = createStackNavigator();
-// const Tab = createBottomTabNavigator();
-
-// const StackNavigatorProps = {
-//   mode: "modal",
-//   headerMode: "none",
-//   options: { cardStyle: { backgroundColor: "transparent" } },
-// };
-
-// const TabScreen = () => (
-//   <Tab.Navigator>
-//     <Tab.Screen name="Timeline" component={Timeline} />
-//     <Tab.Screen name="PostMap" component={PostMap} />
-//     <Tab.Screen name="Account" component={Account} />
-//   </Tab.Navigator>
-// );
-
-// const App = () => (
-//   <>
-//     <NavigationContainer>
-//       <Stack.Navigator {...StackNavigatorProps}>
-//         <Stack.Screen name="TabScreen" component={TabScreen} />
-//         <Stack.Screen
-//           name="newPost"
-//           component={NewPostModal}
-//           options={{
-//             title: "Modal",
-//             headerStyle: {
-//               backgroundColor: "#fff",
-//             },
-//             headerTitleStyle: {
-//               fontWeight: "bold",
-//             },
-//             cardStyle: { backgroundColor: "transparent" },
-//           }}
-//         />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//     <FlashMessage position="top" />
-//   </>
-// );
-
-// export default App;
