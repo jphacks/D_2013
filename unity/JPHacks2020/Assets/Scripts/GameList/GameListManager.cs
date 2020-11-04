@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class GameListManager : MonoBehaviour
 {
-    [SerializeField] private Button[] subGame;
+    [SerializeField] private Button[] _subGame;
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < subGame.Length; i++)
+        for(int i = 0; i < _subGame.Length; i++)
         {
             int count = i;
-            subGame[i].onClick.AddListener(() => OnClick(count));
+            _subGame[i].onClick.AddListener(() => OnClick(count));
             
         }
         
