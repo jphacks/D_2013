@@ -44,8 +44,8 @@ class HomeScreen extends React.Component {
     }
     try {
       if (this.state.password.length < 6) {
-        alert('みじけーんだよ');
-        return
+        alert("みじけーんだよ");
+        return;
       }
       firebase.auth().createUserWithEmailAndPassword(email, password).then(function (obj) {
         // success
@@ -85,7 +85,7 @@ class HomeScreen extends React.Component {
     } catch (error) {
       console.log(error.toString());
     }
-  }
+  };
 
   async loginWithFacebook() {
     await Facebook.initializeAsync(
@@ -110,7 +110,9 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <Container style={Styles.container}>
-        <Text style={{ color: '#888', fontSize: 18 }}>タコ天にちょっと勝ちたい</Text>
+        <Text style={{ color: "#888", fontSize: 18 }}>
+          タコ天にちょっと勝ちたい
+        </Text>
         <Form>
           <Item>
             <Label>名前</Label>
@@ -140,33 +142,35 @@ class HomeScreen extends React.Component {
             />
           </Item>
 
-          <Button style={{ marginTop: 10 }}
+          <Button
+            style={{ marginTop: 10 }}
             full
             rounded
             success
             onPress={() => this.loginUser(this.state.name, this.state.email, this.state.password)}
           >
-            <Text style={{ color: 'white' }}>ログイン</Text>
+            <Text style={{ color: "white" }}>ログイン</Text>
           </Button>
 
-          <Button style={{ marginTop: 10 }}
+          <Button
+            style={{ marginTop: 10 }}
             full
             rounded
             primary
             onPress={() => this.signUpUser(this.state.name, this.state.email, this.state.password)}
           >
-            <Text style={{ color: 'white' }}>サインアップ</Text>
+            <Text style={{ color: "white" }}>サインアップ</Text>
           </Button>
 
-          <Button style={{ marginTop: 10 }}
+          <Button
+            style={{ marginTop: 10 }}
             full
             rounded
             primary
             onPress={() => this.loginWithFacebook()}
           >
-            <Text style={{ color: 'white' }}>Facebookログイン</Text>
+            <Text style={{ color: "white" }}>Facebookログイン</Text>
           </Button>
-
         </Form>
       </Container>
     );
@@ -181,36 +185,37 @@ class SettingScreen extends React.Component {
   render() {
     return (
       <View style={Styles.container}>
-        <Text style={{ color: '#888', fontSize: 18 }}>セッティング</Text>
+        <Text style={{ color: "#888", fontSize: 18 }}>セッティング</Text>
         {/* 睡眠時間 */}
-        <Button style={{ marginTop: 10 }}
+        <Button
+          style={{ marginTop: 10 }}
           full
           rounded
           success
-
-          onPress={() => this.props.navigation.navigate('SleepTimeSetting')}
+          onPress={() => this.props.navigation.navigate("SleepTimeSetting")}
         >
-          <Text style={{ color: 'white' }}>睡眠時間設定</Text>
+          <Text style={{ color: "white" }}>睡眠時間設定</Text>
         </Button>
         {/* 起床時間 */}
-        <Button style={{ marginTop: 10 }}
+        <Button
+          style={{ marginTop: 10 }}
           full
           rounded
           success
-          onPress={() => this.props.navigation.navigate('GetUpTimeSetting')}
+          onPress={() => this.props.navigation.navigate("GetUpTimeSetting")}
         >
-          <Text style={{ color: 'white' }}>起床時間設定</Text>
+          <Text style={{ color: "white" }}>起床時間設定</Text>
         </Button>
         {/* 派閥設定 */}
-        <Button style={{ marginTop: 10 }}
+        <Button
+          style={{ marginTop: 10 }}
           full
           rounded
           success
-          onPress={() => this.props.navigation.navigate('PartySetting')}
+          onPress={() => this.props.navigation.navigate("PartySetting")}
         >
-          <Text style={{ color: 'white' }}>派閥設定</Text>
+          <Text style={{ color: "white" }}>派閥設定</Text>
         </Button>
-
       </View>
     );
   }
@@ -221,7 +226,7 @@ class SleepTimeSettingScreen extends React.Component {
   render() {
     return (
       <View style={Styles.container}>
-        <Text style={{ color: '#888', fontSize: 18 }}>睡眠時間設定 Screen</Text>
+        <Text style={{ color: "#888", fontSize: 18 }}>睡眠時間設定 Screen</Text>
       </View>
     );
   }
@@ -271,7 +276,7 @@ class PartySettingScreen extends React.Component {
   render() {
     return (
       <View style={Styles.container}>
-        <Text style={{ color: '#888', fontSize: 18 }}>派閥設定 Screen</Text>
+        <Text style={{ color: "#888", fontSize: 18 }}>派閥設定 Screen</Text>
       </View>
     );
   }
@@ -280,9 +285,9 @@ class PartySettingScreen extends React.Component {
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
 });
@@ -296,7 +301,7 @@ const RootStack = createStackNavigator(
     PartySetting: PartySettingScreen,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: "Home",
   }
 );
 
@@ -307,7 +312,6 @@ export default class App extends React.Component {
     return <AppContainer />;
   }
 }
-
 
 // 参考までに昔に書いたことあるもの
 // process.cwd = function () {
