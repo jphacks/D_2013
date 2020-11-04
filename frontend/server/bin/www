@@ -8,8 +8,18 @@
 const app = require('../server');
 const http = require('http');
 
+let ws = require('ws');
+var server = new ws.Server({ port: 4040 });
+
+server.on('connection', ws => {
+    ws.on('message', message => {
+        console.log(message);
+    });
+    ws.send('This is server');
+});
+
 // ポートの設定を行う
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 4040;
 app.set('port', port);
 
 // サーバオブジェクトを生成する
