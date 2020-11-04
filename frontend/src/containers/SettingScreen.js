@@ -20,38 +20,38 @@ const SettingBody = ({ navigation }) => {
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <View style={Styles.container}>
         <ImageBackground source={BgImage} style={Styles.image}>
-        <Text style={{ color: "#888", fontSize: 18 }}>セッティング</Text>
-        {/* 睡眠時間 */}
-        <Button
-          style={{ marginTop: 10 }}
-          full
-          rounded
-          success
-          onPress={() => navigation.navigate("SleepTime")}
-        >
-          <Text style={{ color: "white" }}>睡眠時間設定</Text>
-        </Button>
-        {/* 起床時間 */}
-        <Button
-          style={{ marginTop: 10 }}
-          full
-          rounded
-          success
-          onPress={() => navigation.navigate("GetUpTime")}
-        >
-          <Text style={{ color: "white" }}>起床時間設定</Text>
-        </Button>
-        {/* 派閥設定 */}
-        <Button
-          style={{ marginTop: 10 }}
-          full
-          rounded
-          success
-          onPress={() => navigation.navigate("PartySetting")}
-        >
-          <Text style={{ color: "white" }}>派閥設定</Text>
+          <Text style={{ color: "#888", fontSize: 18 }}>セッティング</Text>
+          {/* 睡眠時間 */}
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            success
+            onPress={() => navigation.navigate("SleepTime")}
+          >
+            <Text style={{ color: "white" }}>睡眠時間設定</Text>
           </Button>
-          </ImageBackground>
+          {/* 起床時間 */}
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            success
+            onPress={() => navigation.navigate("GetUpTime")}
+          >
+            <Text style={{ color: "white" }}>起床時間設定</Text>
+          </Button>
+          {/* 派閥設定 */}
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            success
+            onPress={() => navigation.navigate("PartySetting")}
+          >
+            <Text style={{ color: "white" }}>派閥設定</Text>
+          </Button>
+        </ImageBackground>
       </View>
     </>
   );
@@ -81,7 +81,7 @@ const SettingScreen = () => {
         <Stack.Screen name="SleepTime" component={SleepTime} />
         <Stack.Screen name="GetUpTime" component={GetUpTime} />
         <Stack.Screen name="PartySetting" component={PartySetting} />
-        </Stack.Navigator>
+      </Stack.Navigator>
     </>
   );
 };

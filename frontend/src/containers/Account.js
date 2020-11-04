@@ -110,68 +110,68 @@ const Account = () => {
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Container style={Styles.container}>
         <ImageBackground source={BgImage} style={Styles.image}>
-        <Text style={{ color: "#888", fontSize: 18 }}>
-          タコ天にちょっと勝ちたい
-        </Text>
-        <Form>
-          <Item>
-            <Label>名前</Label>
-            <Input
-              autoCorrect={false}
-              autoCapitalize="none"
-              onChangeText={setName}
-            />
-          </Item>
+          <Text style={{ color: "#888", fontSize: 18 }}>
+            タコ天にちょっと勝ちたい
+          </Text>
+          <Form>
+            <Item>
+              <Label>名前</Label>
+              <Input
+                autoCorrect={false}
+                autoCapitalize="none"
+                onChangeText={setName}
+              />
+            </Item>
 
-          <Item>
-            <Label>Eメール</Label>
-            <Input
-              autoCorrect={false}
-              autoCapitalize="none"
-              onChangeText={setEmail}
-            />
-          </Item>
+            <Item>
+              <Label>Eメール</Label>
+              <Input
+                autoCorrect={false}
+                autoCapitalize="none"
+                onChangeText={setEmail}
+              />
+            </Item>
 
-          <Item>
-            <Label>パスワード</Label>
-            <Input
-              secureTextEntry={true}
-              autoCorrect={false}
-              autoCapitalize="none"
-              onChangeText={setPassword}
-            />
-          </Item>
+            <Item>
+              <Label>パスワード</Label>
+              <Input
+                secureTextEntry={true}
+                autoCorrect={false}
+                autoCapitalize="none"
+                onChangeText={setPassword}
+              />
+            </Item>
 
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={loginUser}
-          >
-            <Text style={{ color: "white" }}>ログイン</Text>
-          </Button>
+            <Button
+              style={{ marginTop: 10 }}
+              full
+              rounded
+              success
+              onPress={loginUser}
+            >
+              <Text style={{ color: "white" }}>ログイン</Text>
+            </Button>
 
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            primary
-            onPress={signUpUser}
-          >
-            <Text style={{ color: "white" }}>サインアップ</Text>
-          </Button>
+            <Button
+              style={{ marginTop: 10 }}
+              full
+              rounded
+              primary
+              onPress={signUpUser}
+            >
+              <Text style={{ color: "white" }}>サインアップ</Text>
+            </Button>
 
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            primary
-            onPress={loginWithFacebook}
-          >
-            <Text style={{ color: "white" }}>Facebookログイン</Text>
-          </Button>
-        </Form>
+            <Button
+              style={{ marginTop: 10 }}
+              full
+              rounded
+              primary
+              onPress={loginWithFacebook}
+            >
+              <Text style={{ color: "white" }}>Facebookログイン</Text>
+            </Button>
+          </Form>
         </ImageBackground>
       </Container>
     </>

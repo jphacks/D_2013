@@ -21,7 +21,7 @@ const TabScreen = () => (
   <Tab.Navigator>
     <Tab.Screen name="Unity" component={UnityScreen} />
     <Tab.Screen name="Setting" component={SettingScreen} />
-      <Tab.Screen name="Account" component={Account} />
+    <Tab.Screen name="Account" component={Account} />
   </Tab.Navigator>
 );
 
