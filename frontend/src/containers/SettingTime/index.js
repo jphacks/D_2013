@@ -73,14 +73,3 @@ const Styles = StyleSheet.create({
   },
 });
 
-// export default () => (
-//   <Stack.Navigator
-//     screenOptions={{
-//       headerShown: false,
-//     }}
-//   >
-//     <Stack.Screen name="SleepTime" component={SleepTime} />
-//     <Stack.Screen name="GetUpTime" component={GetUpTime} />
-//     <Stack.Screen name="PartySetting" component={PartySetting} />
-//   </Stack.Navigator>
-// );
