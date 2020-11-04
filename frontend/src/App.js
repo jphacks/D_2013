@@ -79,6 +79,7 @@ export default function App() {
       <Text>Hello JPHacks2020!</Text>
       <WebView
         originWhitelist={["*"]}
+        // ここに使用URLを流す
         source={require("./ios/external/index.html")}
         style={{ marginTop: 50, marginBottom: 50 }}
       />
