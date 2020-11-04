@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Container, Form,
+import {
+  Container,
+  Form,
   Input,
   Item,
-  Label, Header, Button } from "native-base";
+  Label,
+  Header,
+  Button,
+} from "native-base";
 
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
