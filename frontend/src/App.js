@@ -8,8 +8,6 @@ import UnityScreen from "src/containers/UnityScreen";
 import SettingScreen from "src/containers/SettingScreen";
 import Account from "src/containers/Account";
 
-// firebase.initializeApp(config);
-
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
