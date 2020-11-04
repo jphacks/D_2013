@@ -15,31 +15,44 @@ public class LightClickManager : MonoBehaviour
     private float _timer;
 
     [SerializeField]private Button[] buttons;
+    [SerializeField] private GameObject[] images;
+
+    private float _startTime = 4;
+    [SerializeField] private GameObject startView;
+    [SerializeField] private GameObject startMessage;
+    [SerializeField] private GameObject scooreView;
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button endButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetNum();
-
-        /*for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < buttons.Length; i++)
         {
-            buttons[i].onClick.AddListener(() => OnClick(i));
-        }*/
-        buttons[0].onClick.AddListener(() => OnClick(0));
-        buttons[1].onClick.AddListener(() => OnClick(1));
-        buttons[2].onClick.AddListener(() => OnClick(2));
-        buttons[3].onClick.AddListener(() => OnClick(3));
-        buttons[4].onClick.AddListener(() => OnClick(4));
-        buttons[5].onClick.AddListener(() => OnClick(5));
-        buttons[6].onClick.AddListener(() => OnClick(6));
-        buttons[7].onClick.AddListener(() => OnClick(7));
-        buttons[8].onClick.AddListener(() => OnClick(8));
-
+            int count = i;
+            buttons[i].onClick.AddListener(() => OnClick(count));
+        }
+        startButton.onClick.AddListener(UiFalse);
+        endButton.onClick.AddListener(ScoreUi);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_timer >= _startTime - 1)
+        {
+            startView.SetActive(false);
+            if (_timer >= _startTime)
+            {
+                SetNum();
+                startMessage.SetActive(false);
+                _isPlay = true;
+                Debug.Log("START");
+                //_isTimerCount = false;
+                _timer = 0;
+            }
+        }
+
         if (_isPreview)
         {
             if(_timer > 0.5f)
@@ -55,18 +68,23 @@ public class LightClickManager : MonoBehaviour
 
             for(int i = 0; i < buttons.Length; i++)
             {
-                buttons[i].GetComponent<Image>().color = new Color(255, 255, 255);
+                //buttons[i].GetComponent<Image>().color = new Color(255, 255, 255);
+                images[i].SetActive(false);
             }
 
-            if (_previewCount > _pos.Length - 1)
+            if (_previewCount > _pos.Length)
             {
                 _isPreview = false;
                 _isPlay = true;
-                _previewCount = 0;
+                _previewCount = 1;
             }
             else
             {
-                if(_isRed) buttons[_pos[_previewCount]].GetComponent<Image>().color = new Color(255, 0, 0);
+                if (_isRed)
+                {
+                    //buttons[_pos[_previewCount -1]].GetComponent<Image>().color = new Color(255, 0, 0);
+                    images[_pos[_previewCount -1]].SetActive(true);
+                }
             }
         }
         _timer += Time.deltaTime;
@@ -86,6 +104,8 @@ public class LightClickManager : MonoBehaviour
 
     void OnClick(int num)
     {
+        Invoke("GetUpButton", 0.2f);
+        images[num].SetActive(true);
         if (_isPlay)
         {
             if (num == _nextPos)
@@ -97,7 +117,8 @@ public class LightClickManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("CLEAR");
+                    _isPlay = false;
+                    scooreView.SetActive(true);
                 }
             }
             else
@@ -108,5 +129,22 @@ public class LightClickManager : MonoBehaviour
                 SetNum();
             }
         }
+    }
+
+    void GetUpButton()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            //buttons[i].GetComponent<Image>().color = new Color(255, 255, 255);
+            images[i].SetActive(false);
+        }
+    }
+    void UiFalse()
+    {
+        startView.SetActive(false);
+    }
+    void ScoreUi()
+    {
+        Debug.Log("HOGEHOGE");
     }
 }
