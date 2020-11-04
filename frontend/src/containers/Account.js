@@ -50,10 +50,10 @@ const Account = () => {
         })
         .catch((error) => {
           // error
-          console.log(error);
+          setErrorMsg(error);
         });
     } catch (error) {
-      console.log(error.toString());
+      setErrorMsg(error.toString());
     }
   };
 
@@ -74,10 +74,10 @@ const Account = () => {
         })
         .catch((error) => {
           // error
-          console.log(error);
+          setErrorMsg(error);
         });
     } catch (error) {
-      console.log(error.toString());
+      setErrorMsg(error.toString());
     }
   };
 
@@ -98,10 +98,10 @@ const Account = () => {
             console.log(obj.user.uid);
           })
           .catch((error) => {
-            console.log(error);
+            setErrorMsg(error);
           }),
         rootSetting())
-      : console.log(error);
+      : setErrorMsg(error);
   };
 
   return (
