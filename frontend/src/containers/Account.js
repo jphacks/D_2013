@@ -19,7 +19,9 @@ const Account = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const rootSetting = () => { navigation.navigate("Setting") };
+  const rootSetting = () => {
+    navigation.navigate("Setting");
+  };
   const signUpUser = () => {
     try {
       if (password.length < 6) {
@@ -92,7 +94,7 @@ const Account = () => {
           }),
         rootSetting())
       : console.log(error);
-  }
+  };
 
   return (
     <>
