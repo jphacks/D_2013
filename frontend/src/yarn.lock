@@ -2326,6 +2326,11 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
+escape-string-regexp@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
+
 escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
@@ -2427,20 +2432,6 @@ expo-font@~8.3.0:
   dependencies:
     fbjs "1.0.0"
     fontfaceobserver "^2.1.0"
-
-expo-gl-cpp@^9.1.2, expo-gl-cpp@~9.1.2:
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/expo-gl-cpp/-/expo-gl-cpp-9.1.2.tgz#6556265fcc5ffa36a08135f1243da8e316f2217e"
-  integrity sha512-vNDaei3PdMWY9vTq+nnkfL/sWMJRuFOhTYHkCCbHBBmkdsYGF497mezsb26cqdTVfgyMe1ft0wvEZvrXm867LA==
-
-expo-gl@^9.1.1:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/expo-gl/-/expo-gl-9.1.1.tgz#2402a8d661c169e91f9cb634ad1e98079ff7e3fe"
-  integrity sha512-zB55tmSDrrpM0Fs45qx9uUkRBJeQX7+mxfpzaeH7N3p/HASaYA2H5XHumLI4TK7mGpV2ufnjbvimiPl5YxuNEw==
-  dependencies:
-    expo-gl-cpp "~9.1.2"
-    fbjs "1.0.0"
-    invariant "^2.2.4"
 
 expo-keep-awake@~8.3.0:
   version "8.3.0"
@@ -3002,7 +2993,7 @@ inquirer@^3.0.6:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-invariant@^2.2.2, invariant@^2.2.4:
+invariant@2.2.4, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -4516,11 +4507,6 @@ react-native-safe-area-context@3.1.4:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.4.tgz#9b7f883a5ae8da6218d17467a350434005893602"
   integrity sha512-bXx3hqz4LovFoMnJIRGIWL2oJ/PHadXviBKvgZV9yNErtURQLJSn0yfQytVtiqslhaBMZOJwH4R6HiClyofvBg==
 
-react-native-unity-view@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/react-native-unity-view/-/react-native-unity-view-1.3.3.tgz#20ad94affe5455db54e26f4227e72687dc833faa"
-  integrity sha512-HisQxbkf9jcLeaUtD0uiBn65TjkiNtUoJ3rTEf2XgC7rDV7eD3G0HfolFgC+wp3qPZ+Do6G3wn5kEKrc0q+qPA==
-
 react-native-web@~0.13.12:
   version "0.13.18"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.13.18.tgz#964f058a16521a3b9a31b091415edfef5b6ef305"
@@ -4535,6 +4521,14 @@ react-native-web@~0.13.12:
     normalize-css-color "^1.0.2"
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.4"
+
+react-native-webview@10.7.0:
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-10.7.0.tgz#b96e152ffdae4eeffaa74f43671a35733885b52d"
+  integrity sha512-4TSYwJqMBUTKB9+xqGbPwx+eLXbp6RRD7lQ2BumT8eSTfuuqr2rXNqcrlKU1VRla7QGGYowmYmxl2aXIx5k9wA==
+  dependencies:
+    escape-string-regexp "2.0.0"
+    invariant "2.2.4"
 
 "react-native@https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz":
   version "0.63.2"
@@ -4577,6 +4571,11 @@ react-timer-mixin@^0.13.4:
   version "0.13.4"
   resolved "https://registry.yarnpkg.com/react-timer-mixin/-/react-timer-mixin-0.13.4.tgz#75a00c3c94c13abe29b43d63b4c65a88fc8264d3"
   integrity sha512-4+ow23tp/Tv7hBM5Az5/Be/eKKF7DIvJ09voz5LyHGQaqqz9WV8YMs31eFvcYQs7d451LSg7kDJV70XYN/Ug/Q==
+
+react-unity-webgl@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-8.0.2.tgz#413bbeb57f99441bc4d1b20140a95c1b1a3ac90f"
+  integrity sha512-E6lZGuVD7xZjsYgEozdJmeYPkuEhSFLt6/U+o6T4AiyWbIlJjieFbIZStjJjjM9gvMgwz6GcLmi4Pu46MgiwSQ==
 
 react@16.13.1:
   version "16.13.1"

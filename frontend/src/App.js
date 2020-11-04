@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import UnityView from "@asmadsen/react-native-unity-view";
+
+import { WebView } from 'react-native-webview';
 /*
 import config from "./utils/config";
 import * as Facebook from "expo-facebook";
@@ -76,9 +77,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Hello JPHacks2020!</Text>
-      <UnityView
-        style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: 0 }}
+      <WebView
+        originWhitelist={['*']}
+        source={require('./ios/external/index.html')}
+        style={{ marginTop: 50, marginBottom: 50}}
       />
+      <Text>Hello JPHacks2020</Text>
     </View>
     /*
     <Container style={styles.container}>
