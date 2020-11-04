@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:JPHacks2020/UnityView.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:UnityExport/Unity-iPhone.xcodeproj">
    </FileRef>
    <FileRef

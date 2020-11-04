@@ -1,6 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "iosr": "react-native run-ios --port 8090",
+    "startr": "react-native start",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -15,6 +17,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+    "react-native-unity-view": "^1.3.3",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {

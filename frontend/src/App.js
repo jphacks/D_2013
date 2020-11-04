@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import UnityView from "@asmadsen/react-native-unity-view";
+/*
 import config from "./utils/config";
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
@@ -19,9 +20,10 @@ import {
 import { render } from "react-dom";
 
 firebase.initializeApp(config);
-import UnityView from "@asmadsen/react-native-unity-view";
+*/
 
 export default function App() {
+  /*
   this.state = {
     email: "",
     password: "",
@@ -69,6 +71,7 @@ export default function App() {
           }))
       : console.log(error);
   };
+  */
 
   return (
     <View style={styles.container}>
@@ -77,58 +80,60 @@ export default function App() {
         style={{ position: "absolute", left: 0, right: 0, top: 0, bottom: 0 }}
       />
     </View>
-    // <Container style={styles.container}>
-    //   <Form>
-    //     <Item>
-    //       <Label>Email</Label>
-    //       <Input
-    //         autoCorrect={false}
-    //         autoCapitalize="none"
-    //         onChangeText={(email) => this.setState({ email })}
-    //       />
-    //     </Item>
+    /*
+    <Container style={styles.container}>
+      <Form>
+        <Item>
+          <Label>Email</Label>
+          <Input
+            autoCorrect={false}
+            autoCapitalize="none"
+            onChangeText={(email) => this.setState({ email })}
+          />
+        </Item>
 
-    //     <Item>
-    //       <Label>Password</Label>
-    //       <Input
-    //         secureTextEntry={true}
-    //         autoCorrect={false}
-    //         autoCapitalize="none"
-    //         onChangeText={(password) => this.setState({ password })}
-    //       />
-    //     </Item>
+        <Item>
+          <Label>Password</Label>
+          <Input
+            secureTextEntry={true}
+            autoCorrect={false}
+            autoCapitalize="none"
+            onChangeText={(password) => this.setState({ password })}
+          />
+        </Item>
 
-    //     <Button
-    //       style={{ marginTop: 10 }}
-    //       full
-    //       rounded
-    //       success
-    //       onPress={() => this.loginUser(this.state.email, this.state.password)}
-    //     >
-    //       <Text style={{ color: "white" }}>Login</Text>
-    //     </Button>
+        <Button
+          style={{ marginTop: 10 }}
+          full
+          rounded
+          success
+          onPress={() => this.loginUser(this.state.email, this.state.password)}
+        >
+          <Text style={{ color: "white" }}>Login</Text>
+        </Button>
 
-    //     <Button
-    //       style={{ marginTop: 10 }}
-    //       full
-    //       rounded
-    //       primary
-    //       onPress={() => this.signUpUser(this.state.email, this.state.password)}
-    //     >
-    //       <Text style={{ color: "white" }}>Sign Up</Text>
-    //     </Button>
+        <Button
+          style={{ marginTop: 10 }}
+          full
+          rounded
+          primary
+          onPress={() => this.signUpUser(this.state.email, this.state.password)}
+        >
+          <Text style={{ color: "white" }}>Sign Up</Text>
+        </Button>
 
-    //     <Button
-    //       style={{ marginTop: 10 }}
-    //       full
-    //       rounded
-    //       primary
-    //       onPress={() => this.loginWithFacebook()}
-    //     >
-    //       <Text style={{ color: "white" }}>Login with Facebook</Text>
-    //     </Button>
-    //   </Form>
-    // </Container>
+        <Button
+          style={{ marginTop: 10 }}
+          full
+          rounded
+          primary
+          onPress={() => this.loginWithFacebook()}
+        >
+          <Text style={{ color: "white" }}>Login with Facebook</Text>
+        </Button>
+      </Form>
+    </Container>
+    */
   );
 }
 
