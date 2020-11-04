@@ -104,6 +104,4 @@ dist
 .tern-port
 .expo/*
 
-app.json
-
 utils/config.js
