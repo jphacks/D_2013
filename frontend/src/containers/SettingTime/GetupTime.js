@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import DateTimePicker from "react-native-modal-datetime-picker"
+import DateTimePicker from "react-native-modal-datetime-picker";
 
 const GetUpTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);

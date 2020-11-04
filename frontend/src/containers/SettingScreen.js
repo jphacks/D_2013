@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import {
-  Container,
-  Content,
-  Header,
-  Button,
-} from "native-base";
+import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "react-navigation-stack";
 
@@ -62,30 +57,30 @@ const SettingScreen = () => {
   return (
     <>
       <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
+        screenOptions={{
+          headerShown: false,
+        }}
       >
         <Stack.Screen
-            name="Setting"
-            component={SettingBody}
-            options={{
-              headerStyle: {
-                backgroundColor: MAIN_COLOR,
-              },
-              headerTintColor: "#fff",
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
-            }}
-          />
+          name="Setting"
+          component={SettingBody}
+          options={{
+            headerStyle: {
+              backgroundColor: MAIN_COLOR,
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+          }}
+        />
         <Stack.Screen name="SleepTime" component={SleepTime} />
         <Stack.Screen name="GetUpTime" component={GetUpTime} />
         <Stack.Screen name="PartySetting" component={PartySetting} />
       </Stack.Navigator>
     </>
   );
-}
+};
 
 const Styles = StyleSheet.create({
   container: {
