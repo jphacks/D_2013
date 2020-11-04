@@ -33,7 +33,7 @@ const Account = ({ navigation }) => {
   const signUpUser = () => {
     try {
       if (password.length < 6) {
-        setErrorMsg("6文字以上で入力してください。")
+        setErrorMsg("6文字以上で入力してください。");
         return;
       }
       firebase
@@ -45,7 +45,7 @@ const Account = ({ navigation }) => {
           db.collection("users").doc(id).set({
             name: name,
             email: email,
-            password: password
+            password: password,
           });
           rootSetting();
         })
