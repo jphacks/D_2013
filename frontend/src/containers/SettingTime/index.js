@@ -64,7 +64,6 @@ export const PartySetting = () => {
   );
 };
 
-
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
