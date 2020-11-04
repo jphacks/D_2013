@@ -8,6 +8,8 @@ import SleepTime from "src/containers/SettingTime/SleepTime";
 import GetUpTime from "src/containers/SettingTime/GetUpTime";
 import PartySetting from "src/containers/SettingTime/PartySetting";
 
+import WithHeader from "src/components/WithHeader";
+
 const Stack = createStackNavigator();
 
 const SettingBody = () => {
@@ -91,4 +93,4 @@ const Styles = StyleSheet.create({
   },
 });
 
-export default SettingScreen;
+export default WithHeader(SettingScreen, "設定");

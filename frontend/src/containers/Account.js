@@ -1,11 +1,177 @@
 import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Container, Content, Header, Button } from "native-base";
 
+import * as Facebook from "expo-facebook";
+import * as firebase from "firebase";
+
+import { config } from "./utils/config.js";
 import WithHeader from "src/components/WithHeader";
 
-const UnityScreen = () => {
-  const [errorMsg, setErrorMsg] = useState(null);
+import "firebase/firestore";
 
-  return <>{errorMsg !== null && <Text>{errorMsg}</Text>}</>;
+firebase.initializeApp(config);
+const db = firebase.firestore();
+
+const Account = () => {
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const rootSetting = () => { navigation.navigate("Setting") };
+  const signUpUser = () => {
+    try {
+      if (password.length < 6) {
+        alert("みじけーんだよ");
+        return;
+      }
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(function (obj) {
+          // success
+          const id = obj.user.uid;
+          db.collection("users").doc(id).set({
+            name: name,
+            email: email,
+          });
+          rootSetting();
+        })
+        .catch((error) => {
+          // error
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error.toString());
+    }
+  };
+
+  const loginUser = () => {
+    try {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(function (obj) {
+          // success
+          const id = obj.user.uid;
+
+          db.collection("users").doc(id).set({
+            name: name,
+            email: email,
+          });
+          rootSetting();
+        })
+        .catch((error) => {
+          // error
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error.toString());
+    }
+  };
+
+  const loginWithFacebook = async () => {
+    await Facebook.initializeAsync("374656767218522");
+
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ["email", "public_profile"],
+    });
+
+    type == "success"
+      ? ((credential = firebase.auth.FacebookAuthProvider.credential(token)),
+        firebase
+          .auth()
+          .signInWithCredential(credential)
+          .then(function (obj) {
+            // success
+            console.log(obj.user.uid);
+          })
+          .catch((error) => {
+            console.log(error);
+          }),
+        rootSetting())
+      : console.log(error);
+  }
+
+  return (
+    <>
+      {errorMsg !== null && <Text>{errorMsg}</Text>}
+      <Container style={Styles.container}>
+        <Text style={{ color: "#888", fontSize: 18 }}>
+          タコ天にちょっと勝ちたい
+        </Text>
+        <Form>
+          <Item>
+            <Label>名前</Label>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={setName}
+            />
+          </Item>
+
+          <Item>
+            <Label>Eメール</Label>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={setEmail}
+            />
+          </Item>
+
+          <Item>
+            <Label>パスワード</Label>
+            <Input
+              secureTextEntry={true}
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={setPassword}
+            />
+          </Item>
+
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            success
+            onPress={loginUser}
+          >
+            <Text style={{ color: "white" }}>ログイン</Text>
+          </Button>
+
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            primary
+            onPress={signUpUser}
+          >
+            <Text style={{ color: "white" }}>サインアップ</Text>
+          </Button>
+
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            primary
+            onPress={loginWithFacebook}
+          >
+            <Text style={{ color: "white" }}>Facebookログイン</Text>
+          </Button>
+        </Form>
+      </Container>
+    </>
+  );
 };
 
-export default WithHeader(UnityScreen, "Unity");
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    padding: 10,
+    justifyContent: "center",
+  },
+});
+
+export default WithHeader(Account, "アカウント");
