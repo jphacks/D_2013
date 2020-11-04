@@ -5,7 +5,7 @@ import { Container, Content, Header, Button } from "native-base";
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
-import { config } from "./utils/config.js";
+import { config } from "src/utils/config.js";
 import WithHeader from "src/components/WithHeader";
 
 import "firebase/firestore";

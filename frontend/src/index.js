@@ -7,7 +7,7 @@ import App from "src/App";
 import firebase from "firebase";
 import { FireclientProvider } from "react-fireclient";
 import { AuthProvider } from "src/utils/auth";
-import { config } from "src/utils/config.js";
+import { config } from "src/utils/config";
 
 firebase.initializeApp(config);
 const db = firebase.firestore();

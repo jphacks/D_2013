@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
-import { createStackNavigator } from "react-navigation-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import SleepTime from "src/containers/SettingTime/SleepTime";
-import GetUpTime from "src/containers/SettingTime/GetUpTime";
-import PartySetting from "src/containers/SettingTime/PartySetting";
+import { SleepTime, GetUpTime, PartySetting } from "src/containers/SettingTime";
 
 import WithHeader from "src/components/WithHeader";
 

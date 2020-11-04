@@ -1,4 +1,4 @@
-import { createStackNavigator } from "react-navigation-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { MAIN_COLOR } from "src/utils/color";
 

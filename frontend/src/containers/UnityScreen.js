@@ -15,7 +15,7 @@ const UnityScreen = () => {
         <WebView
           originWhitelist={["*"]}
           // ここに使用URLを流す
-          source={require("http://google.com")}
+          source={{ uri: "https://google.com" }}
           style={{ marginTop: 50, marginBottom: 50 }}
         />
         <Text>Hello JPHacks2020</Text>
