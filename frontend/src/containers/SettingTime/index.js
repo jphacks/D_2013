@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
-import { format } from 'date-fns'
-import { format as formatTZ } from 'date-fns-tz'
+import { format } from "date-fns";
+import { format as formatTZ } from "date-fns-tz";
 
 import * as firebase from "firebase";
 import "firebase/firestore";
@@ -34,23 +34,30 @@ export const GetUpTime = () => {
   };
 
   const handleDatePicked = (date) => {
-    console.log("A date has been picked: ", formatTZ(date, 'yyyy-MM-dd HH:mm:ss xxx', { timeZone: 'Asia/Tokyo' }));
+    console.log(
+      "A date has been picked: ",
+      formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", { timeZone: "Asia/Tokyo" })
+    );
     firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(function (obj) {
-          // success
-          const id = obj.user.uid;
-          db.collection("events").doc(id).set({
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(function (obj) {
+        // success
+        const id = obj.user.uid;
+        db.collection("events")
+          .doc(id)
+          .set({
             uid: id,
-            getup_hope_time: formatTZ(date, 'yyyy-MM-dd HH:mm:ss xxx', { timeZone: 'Asia/Tokyo' }),
+            getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
+              timeZone: "Asia/Tokyo",
+            }),
           });
-          rootSetting();
-        })
-        .catch((error) => {
-          // error
-          setErrorMsg(error);
-        });
+        rootSetting();
+      })
+      .catch((error) => {
+        // error
+        setErrorMsg(error);
+      });
     hideDateTimePicker();
   };
 
@@ -58,8 +65,7 @@ export const GetUpTime = () => {
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <View style={Styles.container}>
-        <Button title="時間設定" onPress={showDateTimePicker}>
-        </Button>
+        <Button title="時間設定" onPress={showDateTimePicker}></Button>
         <DateTimePicker
           isVisible={isDateTimePickerVisible}
           onConfirm={handleDatePicked}
