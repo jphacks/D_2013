@@ -9,7 +9,7 @@ import { FireclientProvider } from "react-fireclient";
 import { AuthProvider } from "src/utils/auth";
 import { config } from "src/utils/config";
 
-firebase.initializeApp(config);
+// firebase.initializeApp(config);
 const db = firebase.firestore();
 const auth = firebase.auth();
 

@@ -2,6 +2,11 @@ import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
+import { format } from 'date-fns'
+import { format as formatTZ } from 'date-fns-tz'
+
+import * as firebase from "firebase";
+import "firebase/firestore";
 
 export const SleepTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -21,15 +26,31 @@ export const GetUpTime = () => {
   const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
   const showDateTimePicker = () => {
-    setIsDateTimePickerVisible({ isDateTimePickerVisible: true });
+    setIsDateTimePickerVisible(true);
   };
 
   const hideDateTimePicker = () => {
-    setIsDateTimePickerVisible({ isDateTimePickerVisible: false });
+    setIsDateTimePickerVisible(false);
   };
 
   const handleDatePicked = (date) => {
-    console.log("A date has been picked: ", date);
+    console.log("A date has been picked: ", formatTZ(date, 'yyyy-MM-dd HH:mm:ss xxx', { timeZone: 'Asia/Tokyo' }));
+    firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(function (obj) {
+          // success
+          const id = obj.user.uid;
+          db.collection("events").doc(id).set({
+            uid: id,
+            getup_hope_time: formatTZ(date, 'yyyy-MM-dd HH:mm:ss xxx', { timeZone: 'Asia/Tokyo' }),
+          });
+          rootSetting();
+        })
+        .catch((error) => {
+          // error
+          setErrorMsg(error);
+        });
     hideDateTimePicker();
   };
 
@@ -37,8 +58,7 @@ export const GetUpTime = () => {
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <View style={Styles.container}>
-        <Button title="Show DatePicker" onPress={showDateTimePicker}>
-          <Text style={{ color: "white" }}>時間設定</Text>
+        <Button title="時間設定" onPress={showDateTimePicker}>
         </Button>
         <DateTimePicker
           isVisible={isDateTimePickerVisible}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import {
   Container,
@@ -13,28 +13,27 @@ import {
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
-import { config } from "src/utils/config.js";
 import WithHeader from "src/components/WithHeader";
 import BgImage from "src/assets/bg.png";
+import { config } from "src/utils/config";
 
 import "firebase/firestore";
 
 firebase.initializeApp(config);
 const db = firebase.firestore();
 
-const Account = () => {
+const Account = ({ navigation }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const rootSetting = ({ navigation }) => {
-    navigation.navigate("Setting");
-  };
+  const rootSetting = useCallback(() => navigation.navigate("Setting"), []);
+
   const signUpUser = () => {
     try {
       if (password.length < 6) {
-        alert("みじけーんだよ");
+        setErrorMsg("6文字以上で入力してください。")
         return;
       }
       firebase
@@ -46,6 +45,7 @@ const Account = () => {
           db.collection("users").doc(id).set({
             name: name,
             email: email,
+            password: password
           });
           rootSetting();
         })
@@ -63,19 +63,12 @@ const Account = () => {
       firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(function (obj) {
-          // success
-          const id = obj.user.uid;
-
-          db.collection("users").doc(id).set({
-            name: name,
-            email: email,
-          });
+        .then((obj) => {
           rootSetting();
         })
-        .catch((error) => {
+        .catch(() => {
           // error
-          setErrorMsg(error);
+          setErrorMsg("パスワードが間違えています。");
         });
     } catch (error) {
       setErrorMsg(error.toString());
@@ -119,7 +112,7 @@ const Account = () => {
               <Input
                 autoCorrect={false}
                 autoCapitalize="none"
-                onChangeText={setName}
+                onChangeText={(name) => setName(name)}
               />
             </Item>
 
@@ -128,7 +121,7 @@ const Account = () => {
               <Input
                 autoCorrect={false}
                 autoCapitalize="none"
-                onChangeText={setEmail}
+                onChangeText={(email) => setEmail(email)}
               />
             </Item>
 
@@ -138,7 +131,7 @@ const Account = () => {
                 secureTextEntry={true}
                 autoCorrect={false}
                 autoCapitalize="none"
-                onChangeText={setPassword}
+                onChangeText={(password) => setPassword(password)}
               />
             </Item>
 
