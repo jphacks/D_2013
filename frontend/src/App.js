@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { WebView } from 'react-native-webview';
+import { WebView } from "react-native-webview";
 /*
 import config from "./utils/config";
 import * as Facebook from "expo-facebook";
@@ -78,9 +78,9 @@ export default function App() {
     <View style={styles.container}>
       <Text>Hello JPHacks2020!</Text>
       <WebView
-        originWhitelist={['*']}
-        source={require('./ios/external/index.html')}
-        style={{ marginTop: 50, marginBottom: 50}}
+        originWhitelist={["*"]}
+        source={require("./ios/external/index.html")}
+        style={{ marginTop: 50, marginBottom: 50 }}
       />
       <Text>Hello JPHacks2020</Text>
     </View>
