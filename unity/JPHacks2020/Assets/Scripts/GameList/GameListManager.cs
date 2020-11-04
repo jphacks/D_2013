@@ -49,7 +49,7 @@ public class GameListManager : MonoBehaviour
         for (int i = 0; i < _subGame.Length; i++)
         {
             int count = i;
-            _subGame[i].onClick.AddListener(() => OnClickLoadSceene(count));
+            _subGame[i].onClick.AddListener(() => OnClickLoadScene(count));
         }
 
 
@@ -99,7 +99,7 @@ public class GameListManager : MonoBehaviour
         _MainView.SetActive(false);
     }
 
-    void OnClickLoadSceene(int id)
+    void OnClickLoadScene(int id)
     {
         switch (id)
         {
