@@ -5,11 +5,7 @@ import WithHeader from "src/components/WithHeader";
 const UnityScreen = () => {
   const [errorMsg, setErrorMsg] = useState(null);
 
-  return (
-    <>
-
-    </>
-  )
+  return <></>;
 };
 
 export default WithHeader(UnityScreen, "Unity");
