@@ -9,14 +9,18 @@ namespace Mole
     {
         [SerializeField] Button[] moleButton;
         [SerializeField] Text scoretext;
+        [SerializeField] GameObject clearText;
+        [SerializeField] MoleAppearScript moleappearscript;
 
-        private int _score=0;
+        public int score=0;
         private int _clearScore = 15;
         // Start is called before the first frame update
         void Start()
         {
-            scoretext.text = _score.ToString();
-            
+            scoretext.text = score.ToString();
+
+            clearText.SetActive(false);
+
             moleButton[0].onClick.AddListener(() => AddPoint(0));
             moleButton[1].onClick.AddListener(() => AddPoint(1));
             moleButton[2].onClick.AddListener(() => AddPoint(2));
@@ -35,9 +39,10 @@ namespace Mole
         // Update is called once per frame
         void Update()
         {
-            scoretext.text = "スコア : " +  _score.ToString();
-            if (_score >= _clearScore) {
-                Debug.Log("CLEAR");
+            scoretext.text = score.ToString("00");
+            if (score >= _clearScore) {
+                clearText.SetActive(true);
+                moleappearscript.enabled = false;
             }
         }
 
@@ -47,11 +52,18 @@ namespace Mole
 
             
                 Debug.Log(num);
-            if (moleButton[num].transform.GetChild(0).gameObject.activeSelf || moleButton[num].transform.GetChild(1).gameObject.activeSelf) {
+            if (moleButton[num].transform.GetChild(0).gameObject.activeSelf)
+            {
                 moleButton[num].transform.GetChild(0).gameObject.SetActive(false);
-                moleButton[num].transform.GetChild(1).gameObject.SetActive(false);
-                _score++;
+                score++;
+
             }
+            else if (moleButton[num].transform.GetChild(1).gameObject.activeSelf)
+            {
+                moleButton[num].transform.GetChild(1).gameObject.SetActive(false);
+                score--;
+            }
+        
 
            
         }

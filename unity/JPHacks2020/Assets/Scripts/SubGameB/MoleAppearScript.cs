@@ -9,14 +9,14 @@ namespace Mole
     {
         [SerializeField] GameObject[] moles;
         [SerializeField] GameObject[] dummy;
-        
+        [SerializeField] ScoreScript scorescript;
 
         private int _apperPos;
         private float _interval;
         private float _timer = 0;
 
         private float _dummyrate;
-        private bool[] _appcheck = new bool[9];
+        
         
         // Start is called before the first frame update
         void Start()
@@ -30,6 +30,11 @@ namespace Mole
         {
             _timer += Time.deltaTime;
 
+            if (scorescript.score >= 7) {
+
+                _interval = 1f;
+
+            }
           
 
             if (_timer >= _interval) {
@@ -41,12 +46,14 @@ namespace Mole
                 
                     if (_dummyrate % 5 == 0)
                     {
-                        dummy[_apperPos].SetActive(true);
+                    moles[_apperPos].SetActive(false);
+                    dummy[_apperPos].SetActive(true);
 
                     }
                     else
                     {
-                        moles[_apperPos].SetActive(true);
+                    dummy[_apperPos].SetActive(false);
+                    moles[_apperPos].SetActive(true);
                     }
 
                     StartCoroutine(Disapp(_apperPos));
@@ -58,7 +65,7 @@ namespace Mole
         }
         
         private IEnumerator Disapp(int disPos) {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
             moles[disPos].SetActive(false);
             dummy[disPos].SetActive(false);
             
