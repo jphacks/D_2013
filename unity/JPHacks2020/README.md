@@ -16,3 +16,7 @@ Assets/<br>
   　　┣ Common/ （プロジェクト全体で使用するスクリプトのフォルダ）<br>
   　　┣ ThirdParty/ (Unityのシーン内に登場しないスクリプト(基本的に福田しかいじらなくて大丈夫っす))<br>
   　　┣ ...
+
+  # Build先
+  D_2013 > frontend > src > iosにて
+  `external`という名前で書き出してください。
