@@ -1,10 +1,7 @@
-// import { createStackNavigator } from "@react-navigation/stack";
 import React, { useContext, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
-
-// const Stack = createStackNavigator();
 
 export const SleepTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);

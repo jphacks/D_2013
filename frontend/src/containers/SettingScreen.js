@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { SleepTime, GetUpTime, PartySetting } from "src/containers/SettingTime";
 
 import WithHeader from "src/components/WithHeader";
+import { MAIN_COLOR } from "src/utils/color";
 
 const Stack = createStackNavigator();
 
