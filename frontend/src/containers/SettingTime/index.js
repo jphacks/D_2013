@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
 
@@ -18,19 +18,19 @@ export const SleepTime = () => {
 
 export const GetUpTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);
-  const [isDateTimePickerVisible] = useState(false);
+  const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
   const showDateTimePicker = () => {
-    this.setState({ isDateTimePickerVisible: true });
+    setIsDateTimePickerVisible({ isDateTimePickerVisible: true });
   };
 
   const hideDateTimePicker = () => {
-    this.setState({ isDateTimePickerVisible: false });
+    setIsDateTimePickerVisible({ isDateTimePickerVisible: false });
   };
 
   const handleDatePicked = (date) => {
     console.log("A date has been picked: ", date);
-    this.hideDateTimePicker();
+    hideDateTimePicker();
   };
 
   return (

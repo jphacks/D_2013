@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import {
   Container,
   Form,
@@ -15,6 +15,7 @@ import * as firebase from "firebase";
 
 import { config } from "src/utils/config.js";
 import WithHeader from "src/components/WithHeader";
+import BgImage from "src/assets/bg.png";
 
 import "firebase/firestore";
 
@@ -27,7 +28,7 @@ const Account = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const rootSetting = () => {
+  const rootSetting = ({ navigation }) => {
     navigation.navigate("Setting");
   };
   const signUpUser = () => {
@@ -108,6 +109,7 @@ const Account = () => {
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Container style={Styles.container}>
+        <ImageBackground source={BgImage} style={Styles.image}>
         <Text style={{ color: "#888", fontSize: 18 }}>
           タコ天にちょっと勝ちたい
         </Text>
@@ -170,6 +172,7 @@ const Account = () => {
             <Text style={{ color: "white" }}>Facebookログイン</Text>
           </Button>
         </Form>
+        </ImageBackground>
       </Container>
     </>
   );
@@ -178,8 +181,13 @@ const Account = () => {
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    padding: 10,
+    backgroundColor: "#FCDDAD",
+    // padding: 10,
+    justifyContent: "center",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
     justifyContent: "center",
   },
 });

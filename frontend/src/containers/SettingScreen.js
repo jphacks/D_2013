@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -8,16 +8,18 @@ import { SleepTime, GetUpTime, PartySetting } from "src/containers/SettingTime";
 
 import WithHeader from "src/components/WithHeader";
 import { MAIN_COLOR } from "src/utils/color";
+import BgImage from "src/assets/bg.png";
 
 const Stack = createStackNavigator();
 
-const SettingBody = () => {
+const SettingBody = ({ navigation }) => {
   const [errorMsg, setErrorMsg] = useState(null);
 
   return (
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <View style={Styles.container}>
+        <ImageBackground source={BgImage} style={Styles.image}>
         <Text style={{ color: "#888", fontSize: 18 }}>セッティング</Text>
         {/* 睡眠時間 */}
         <Button
@@ -48,7 +50,8 @@ const SettingBody = () => {
           onPress={() => navigation.navigate("PartySetting")}
         >
           <Text style={{ color: "white" }}>派閥設定</Text>
-        </Button>
+          </Button>
+          </ImageBackground>
       </View>
     </>
   );
@@ -78,7 +81,7 @@ const SettingScreen = () => {
         <Stack.Screen name="SleepTime" component={SleepTime} />
         <Stack.Screen name="GetUpTime" component={GetUpTime} />
         <Stack.Screen name="PartySetting" component={PartySetting} />
-      </Stack.Navigator>
+        </Stack.Navigator>
     </>
   );
 };
@@ -86,8 +89,13 @@ const SettingScreen = () => {
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    padding: 10,
+    backgroundColor: "#FCDDAD",
+    // padding: 10,
+    justifyContent: "center",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
     justifyContent: "center",
   },
 });

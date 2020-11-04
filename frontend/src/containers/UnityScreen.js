@@ -5,8 +5,6 @@ import BgImage from "src/assets/bg.png";
 
 import WithHeader from "src/components/WithHeader";
 
-const backgroundImage = BgImage;
-
 const UnityScreen = () => {
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -14,7 +12,7 @@ const UnityScreen = () => {
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <View style={Styles.container}>
-        <ImageBackground source={backgroundImage} style={Styles.image}>
+        <ImageBackground source={BgImage} style={Styles.image}>
           <Text>Hello JPHacks2020!</Text>
           <WebView
             originWhitelist={["*"]}
