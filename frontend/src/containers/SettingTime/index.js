@@ -72,4 +72,3 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
