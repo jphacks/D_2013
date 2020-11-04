@@ -16,7 +16,9 @@ namespace Common
             GAME_A,
             GAME_B,
             GAME_C,
-            GAME_D
+            GAME_D,
+            GAME_E,
+            GAME_F
         };
 
         /// <summary>
@@ -36,9 +38,11 @@ namespace Common
             { SCENE_NAME.GAMELIST, "GameList"},
             { SCENE_NAME.RESULT, "Result"},
             { SCENE_NAME.GAME_A, "SubGameA"},
-            { SCENE_NAME.GAME_B, "SubGameA"},
-            { SCENE_NAME.GAME_C, "SubGameA"},
-            { SCENE_NAME.GAME_D, "SubGameA"},
+            { SCENE_NAME.GAME_B, "SubGameB"},
+            { SCENE_NAME.GAME_C, "SubGameC"},
+            { SCENE_NAME.GAME_D, "SubGameD"},
+            { SCENE_NAME.GAME_E, "SubGameE"},
+            { SCENE_NAME.GAME_F, "SubGameF"},
         };
 
 
