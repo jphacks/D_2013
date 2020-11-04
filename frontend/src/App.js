@@ -3,11 +3,11 @@ import React from "react";
 import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { config } from "./utils/config.js";
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
-import 'firebase/firestore';
+import "firebase/firestore";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
 
@@ -27,84 +27,94 @@ firebase.initializeApp(config);
 const db = firebase.firestore();
 
 class HomeScreen extends React.Component {
-
   constructor(props) {
-    super(props)
-    this.state = ({
-      name: '',
-      email: '',
-      password: '',
-      user: null
-    })
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+      password: "",
+      user: null,
+    };
   }
 
   signUpUser = (name, email, password) => {
     const nav = () => {
       this.props.navigation.navigate("Setting");
-    }
+    };
     try {
       if (this.state.password.length < 6) {
         alert("みじけーんだよ");
         return;
       }
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(function (obj) {
-        // success
-        let id = obj.user.uid;
-        db.collection("users").doc(id).set({
-          name: name,
-          email: email
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(function (obj) {
+          // success
+          let id = obj.user.uid;
+          db.collection("users").doc(id).set({
+            name: name,
+            email: email,
+          });
+          nav();
+        })
+        .catch((error) => {
+          // error
+          console.log(error);
         });
-        nav();
-      }).catch(error => {
-        // error
-        console.log(error);
-      })
     } catch (error) {
       console.log(error.toString());
     }
-  }
+  };
 
   loginUser = (name, email, password) => {
     const nav = () => {
       this.props.navigation.navigate("Setting");
-    }
+    };
     try {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function (obj) {
-        // success
-        let id = obj.user.uid;
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(function (obj) {
+          // success
+          let id = obj.user.uid;
 
-        db.collection("users").doc(id).set({
-          name: name,
-          email: email
+          db.collection("users").doc(id).set({
+            name: name,
+            email: email,
+          });
+          nav();
+        })
+        .catch((error) => {
+          // error
+          console.log(error);
         });
-        nav();
-      }).catch(error => {
-        // error
-        console.log(error);
-      });
     } catch (error) {
       console.log(error.toString());
     }
   };
 
   async loginWithFacebook() {
-    await Facebook.initializeAsync(
-      '374656767218522'
-    );
+    await Facebook.initializeAsync("374656767218522");
 
-    const { type, token } = await Facebook.logInWithReadPermissionsAsync({ permissions: ['email', 'public_profile'] }
-    );
+    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ["email", "public_profile"],
+    });
 
-    type == "success" ? (
-      credential = firebase.auth.FacebookAuthProvider.credential(token),
-      firebase.auth().signInWithCredential(credential).then(function (obj) {
-        // success
-        console.log(obj.user.uid);
-      }).catch((error) => {
-        console.log(error);
-      }),
-      this.props.navigation.navigate('Setting')
-    ) : (console.log(error));
+    type == "success"
+      ? ((credential = firebase.auth.FacebookAuthProvider.credential(token)),
+        firebase
+          .auth()
+          .signInWithCredential(credential)
+          .then(function (obj) {
+            // success
+            console.log(obj.user.uid);
+          })
+          .catch((error) => {
+            console.log(error);
+          }),
+        this.props.navigation.navigate("Setting"))
+      : console.log(error);
   }
 
   render() {
@@ -147,7 +157,13 @@ class HomeScreen extends React.Component {
             full
             rounded
             success
-            onPress={() => this.loginUser(this.state.name, this.state.email, this.state.password)}
+            onPress={() =>
+              this.loginUser(
+                this.state.name,
+                this.state.email,
+                this.state.password
+              )
+            }
           >
             <Text style={{ color: "white" }}>ログイン</Text>
           </Button>
@@ -157,7 +173,13 @@ class HomeScreen extends React.Component {
             full
             rounded
             primary
-            onPress={() => this.signUpUser(this.state.name, this.state.email, this.state.password)}
+            onPress={() =>
+              this.signUpUser(
+                this.state.name,
+                this.state.email,
+                this.state.password
+              )
+            }
           >
             <Text style={{ color: "white" }}>サインアップ</Text>
           </Button>
@@ -237,7 +259,7 @@ class GetUpTimeSettingScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDateTimePickerVisible: false
+      isDateTimePickerVisible: false,
     };
   }
 
@@ -249,7 +271,7 @@ class GetUpTimeSettingScreen extends React.Component {
     this.setState({ isDateTimePickerVisible: false });
   };
 
-  handleDatePicked = date => {
+  handleDatePicked = (date) => {
     console.log("A date has been picked: ", date);
     this.hideDateTimePicker();
   };
@@ -258,7 +280,7 @@ class GetUpTimeSettingScreen extends React.Component {
     return (
       <View>
         <Button title="Show DatePicker" onPress={this.showDateTimePicker}>
-          <Text style={{ color: 'white' }}>時間設定</Text>
+          <Text style={{ color: "white" }}>時間設定</Text>
         </Button>
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
@@ -289,7 +311,6 @@ const Styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
   },
-
 });
 
 const RootStack = createStackNavigator(
