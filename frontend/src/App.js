@@ -31,7 +31,7 @@ class UnityScreen extends React.Component {
   render() {
     return (
       <View style={Styles.container}>
-      <Text>Hello JPHacks2020!</Text>
+        <Text>Hello JPHacks2020!</Text>
         <WebView
           originWhitelist={["*"]}
           // ここに使用URLを流す
@@ -39,7 +39,7 @@ class UnityScreen extends React.Component {
           style={{ marginTop: 50, marginBottom: 50 }}
         />
         <Text>Hello JPHacks2020</Text>
-        </View>
+      </View>
     );
   }
 }
@@ -56,7 +56,7 @@ class HomeScreen extends React.Component {
   }
   onPressUnity = () => {
     this.props.navigation.navigate("Unity");
-  }
+  };
 
   signUpUser = (name, email, password) => {
     const nav = () => {
@@ -136,11 +136,11 @@ class HomeScreen extends React.Component {
           }),
         this.props.navigation.navigate("Setting"))
       : console.log(error);
-  };
+  }
 
   render() {
-  return(
-      <Container style = { Styles.container } >
+    return (
+      <Container style={Styles.container}>
         <Text style={{ color: "#888", fontSize: 18 }}>
           タコ天にちょっと勝ちたい
         </Text>
@@ -213,8 +213,8 @@ class HomeScreen extends React.Component {
             onPress={() => this.loginWithFacebook()}
           >
             <Text style={{ color: "white" }}>Facebookログイン</Text>
-        </Button>
-        <Button
+          </Button>
+          <Button
             style={{ marginTop: 10 }}
             full
             rounded
