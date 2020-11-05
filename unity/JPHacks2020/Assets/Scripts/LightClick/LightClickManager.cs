@@ -23,6 +23,7 @@ public class LightClickManager : MonoBehaviour
     [SerializeField] private GameObject scooreView;
     [SerializeField] private Button startButton;
     [SerializeField] private Button endButton;
+    [SerializeField] private GameObject restartView;
 
     // Start is called before the first frame update
     void Start()
@@ -92,6 +93,7 @@ public class LightClickManager : MonoBehaviour
 
     void SetNum()
     {
+        restartView.SetActive(false);
         for (int i = 0; i < _pos.Length; i++)
         {
             _pos[i] = Random.RandomRange(0, 9);
@@ -124,9 +126,10 @@ public class LightClickManager : MonoBehaviour
             else
             {
                 _count = 1;
+                restartView.SetActive(true);
                 Debug.Log("ALERT");
                 _isPlay = false;
-                SetNum();
+                Invoke("SetNum", 1.5f);
             }
         }
     }

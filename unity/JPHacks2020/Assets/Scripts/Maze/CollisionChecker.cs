@@ -10,8 +10,8 @@ namespace Maze
         [SerializeField] private int _collisionNum;
         [SerializeField] private MazePlayer mazePlayer;
 
-   
-        private void OnCollisionEnter(Collision collision)
+
+        private void OnCollisionStay(Collision collision)
         {
             if(collision.gameObject.tag == "Wall")
             {

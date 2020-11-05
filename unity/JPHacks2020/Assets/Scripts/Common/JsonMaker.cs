@@ -1,23 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Common
 {
     public static class JsonMaker
     {
-        public static void OverWriteJson(string userName, bool isClear, DefineData.SCENE_NAME sceneName)
+        public static string SendJsonData(string id, Vector3 pos)
         {
             UserData userData = new UserData();
-            userData.userName = userName;
-            userData.isClear = isClear;
-            string jsonString = JsonUtility.ToJson(userData);
+            userData.id = id;
+            userData.x = pos.x.ToString();
+            userData.y = pos.y.ToString();
+            userData.z = pos.z.ToString();
 
-            StreamWriter streamWriter = new StreamWriter(Application.streamingAssetsPath + "/ResultData.json", true);
-            streamWriter.Write(jsonString);
-            streamWriter.Flush();
-            streamWriter.Close();
+            string jsonString = JsonUtility.ToJson(userData);
+            return jsonString;
         }
     }
+
+    public static class JsonParser
+    {
+        public static UserData ParseJson(string jsonString)
+        {
+            UserData userData = JsonUtility.FromJson<UserData>(jsonString);
+            return userData;
+        }
+    }
+
 }

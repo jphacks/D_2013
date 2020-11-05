@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityConnection;
 
 namespace Maze
 {
@@ -9,8 +10,10 @@ namespace Maze
     {
         //trueならP1が操作
         [SerializeField] private int _playerId;
-        [SerializeField] private GameObject[] _Camera;
-
+        [SerializeField] private GameObject[] _camera;
+        // 要素数0:Player1, 要素数1:Player2
+        [SerializeField] private GameObject[] _playerObject;
+        private int _playerNum = 2;
         private float _startTime = 4;
         private float _timer = 0;
         [SerializeField] private GameObject startView;
@@ -22,21 +25,15 @@ namespace Maze
         private bool _isTimerCount = true;
         public bool isClear = false;
 
-        void OnEnable()
-        {
-            
-        }
 
         // Start is called before the first frame update
         void Start()
         {
-            for(int i = 0;i < _Camera.Length; i++)
-            {
-                _Camera[i].SetActive(false);
-            }
-            _Camera[_playerId - 1].SetActive(true);
+            _playerNum = _playerObject.Length;
+            PlayerSetUp();
             startButton.onClick.AddListener(UiFalse);
             endButton.onClick.AddListener(ScoreUi);
+            PositionSync.Instance.StartReciever();
         }
 
         // Update is called once per frame
@@ -71,6 +68,38 @@ namespace Maze
         void ScoreUi()
         {
             Debug.Log("HOGEHOGE");
+        }
+
+        // 通信から送られてきたid割り振りを行うための関数
+        public void SetPlayerId(int id)
+        {
+            _playerId = id;
+        }
+
+        private void PlayerSetUp()
+        {
+            for (int i = 0; i < _camera.Length; i++)
+            {
+                _camera[i].SetActive(false);
+                _playerObject[i].GetComponent<OwnMazePlayer>().enabled = false;
+                _playerObject[i].GetComponent<OpponentMazePlayer>().enabled = false;
+            }
+            _camera[ElementNumLogic(_playerId, _playerNum)].SetActive(true);
+            PositionSync.Instance._syncObjTransform = _playerObject[ElementNumLogic(_playerId, _playerNum)].transform;
+            PositionSync.Instance._id = _playerId.ToString();
+            _playerObject[ElementNumLogic(_playerId, _playerNum)].GetComponent<OwnMazePlayer>().enabled = true;
+            _playerObject[ElementNumLogic(_playerId, _playerNum)].GetComponent<OpponentMazePlayer>().enabled = false;
+            for (int i = 0; i < _playerNum; i++)
+            {
+                if ((i + 1) == _playerId) continue;
+                _playerObject[ElementNumLogic(i + 1, _playerNum)].GetComponent<OwnMazePlayer>().enabled = false;
+                _playerObject[ElementNumLogic(i + 1, _playerNum)].GetComponent<OpponentMazePlayer>().enabled = true;
+            }
+        }
+
+        private int ElementNumLogic(int id, int num)
+        {
+            return ((id % num) + (num - 1)) % num;
         }
     }
 }
