@@ -25,10 +25,10 @@ const App = () => (
   <>
     <NavigationContainer>
       <AuthProvider auth={auth}>
-      <Stack.Navigator {...StackNavigatorProps}>
-        <Stack.Screen name="Title" component={Title} />
+        <Stack.Navigator {...StackNavigatorProps}>
+          <Stack.Screen name="Title" component={Title} />
         </Stack.Navigator>
-        </AuthProvider>
+      </AuthProvider>
     </NavigationContainer>
   </>
 );

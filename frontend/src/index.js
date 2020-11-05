@@ -8,9 +8,9 @@ import { FireclientProvider } from "react-fireclient";
 
 const Root = () => (
   <FireclientProvider firestoreDB={db}>
-      <ApplicationProvider {...eva} theme={eva.light}>
-        <App />
-      </ApplicationProvider>
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <App />
+    </ApplicationProvider>
   </FireclientProvider>
 );
 
