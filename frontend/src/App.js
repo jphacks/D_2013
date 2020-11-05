@@ -1,70 +1,40 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello JPHacks2020!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+import UnityScreen from "src/containers/UnityScreen";
+import SettingScreen from "src/containers/SettingScreen";
+import Account from "src/containers/Account";
 
-// 参考までに昔に書いたことあるもの
-// process.cwd = function () {
-//   return "/";
-// };
+// firebase.initializeApp(config);
 
-// const Stack = createStackNavigator();
-// const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-// const StackNavigatorProps = {
-//   mode: "modal",
-//   headerMode: "none",
-//   options: { cardStyle: { backgroundColor: "transparent" } },
-// };
+const StackNavigatorProps = {
+  mode: "modal",
+  headerMode: "none",
+  options: { cardStyle: { backgroundColor: "transparent" } },
+};
 
-// const TabScreen = () => (
-//   <Tab.Navigator>
-//     <Tab.Screen name="Timeline" component={Timeline} />
-//     <Tab.Screen name="PostMap" component={PostMap} />
-//     <Tab.Screen name="Account" component={Account} />
-//   </Tab.Navigator>
-// );
+const TabScreen = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="Unity" component={UnityScreen} />
+    <Tab.Screen name="Setting" component={SettingScreen} />
+    <Tab.Screen name="Account" component={Account} />
+  </Tab.Navigator>
+);
 
-// const App = () => (
-//   <>
-//     <NavigationContainer>
-//       <Stack.Navigator {...StackNavigatorProps}>
-//         <Stack.Screen name="TabScreen" component={TabScreen} />
-//         <Stack.Screen
-//           name="newPost"
-//           component={NewPostModal}
-//           options={{
-//             title: "Modal",
-//             headerStyle: {
-//               backgroundColor: "#fff",
-//             },
-//             headerTitleStyle: {
-//               fontWeight: "bold",
-//             },
-//             cardStyle: { backgroundColor: "transparent" },
-//           }}
-//         />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//     <FlashMessage position="top" />
-//   </>
-// );
+const App = () => (
+  <>
+    <NavigationContainer>
+      <Stack.Navigator {...StackNavigatorProps}>
+        <Stack.Screen name="TabScreen" component={TabScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </>
+);
 
-// export default App;
+export default App;
