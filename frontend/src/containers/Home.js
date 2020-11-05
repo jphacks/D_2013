@@ -32,9 +32,14 @@ const HomeScreen = ({ navigation }) => {
     db.collection("events")
       .add({
         uid: currentUser.uid,
-        getup_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
-          timeZone: "Asia/Tokyo",
-        },{ merge: true }),
+        getup_time: formatTZ(
+          date,
+          "yyyy-MM-dd HH:mm:ss xxx",
+          {
+            timeZone: "Asia/Tokyo",
+          },
+          { merge: true }
+        ),
       })
       .catch((error) => {
         // error
