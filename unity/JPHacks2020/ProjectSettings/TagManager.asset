@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - obstacle
+  - Wall
+  - Goal
   layers:
   - Default
   - TransparentFX
