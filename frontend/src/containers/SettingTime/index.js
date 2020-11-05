@@ -11,7 +11,7 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 
 export const SleepTime = () => {
-const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
