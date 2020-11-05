@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace run
+namespace Run
 {
     public class PlayerControlScript : MonoBehaviour
     {

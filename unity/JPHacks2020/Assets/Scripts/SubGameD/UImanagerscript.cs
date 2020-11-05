@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace run
+namespace Run
 {
     public class UImanagerscript : MonoBehaviour
 {
    
     [SerializeField] PlayerControlScript playerscript;
-        [SerializeField] Text lifeText;
+    [SerializeField] Text lifeText;
+     
     // Start is called before the first frame update
     void Start()
     {

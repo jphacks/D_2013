@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace run
+namespace Run
 {
     public class obstacleGeneratorScript : MonoBehaviour
     {
