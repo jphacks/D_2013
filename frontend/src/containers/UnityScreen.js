@@ -40,4 +40,4 @@ const Styles = StyleSheet.create({
   },
 });
 
-export default WithHeader(UnityScreen, "Unity");
+export default WithHeader(UnityScreen,"いなすりー");

@@ -90,7 +90,6 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FCDDAD",
-    // padding: 10,
     justifyContent: "center",
   },
   image: {

@@ -20,6 +20,13 @@ export const AuthProvider = ({ auth, children }) => {
       .catch(onError);
   };
 
+  const signinWithCredential = async (credential, onSuccess = null, onError = null) => {
+    auth
+      signInWithCredential(credential)
+      .then(onSuccess)
+      .catch(onError);
+  };
+
   const signout = async () => {
     await auth.signOut();
   };
@@ -28,7 +35,7 @@ export const AuthProvider = ({ auth, children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ currentUser, signup, signin, signout, userInfo, setUserInfo }}
+      value={{ currentUser, signup, signin, signout, signinWithCredential, userInfo, setUserInfo }}
     >
       {children}
     </AuthContext.Provider>
