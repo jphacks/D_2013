@@ -12,9 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/SubGameA.unity
     guid: bb7dbb0b48dec4020b16b2ba3d7134f9
   - enabled: 1
+    path: Assets/Scenes/SubGameB.unity
+    guid: cd48a3101aa3f435ba632555e26f35b3
+  - enabled: 1
     path: Assets/Scenes/SubGameC.unity
     guid: d0dfb57c335104a3ba26d54321a19b27
   - enabled: 1
+    path: Assets/Scenes/SubGameD.unity
+    guid: c224191553a6d4748b33ac4952025328
+  - enabled: 1
     path: Assets/Scenes/SubGameE.unity
     guid: f337b698fced04c0cb13dfd578e734d0
+  - enabled: 1
+    path: Assets/Scenes/SubGameF.unity
+    guid: 3ebf15adae8404305808c4899ba32d06
   m_configObjects: {}
