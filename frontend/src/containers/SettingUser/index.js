@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground, StyleSheet, Text, View, } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -17,7 +17,9 @@ const StackNavigatorProps = {
 };
 
 const SettingUserScreen = ({ navigation }) => {
-  const onHomePress = () => { navigation.navigate("Home") }
+  const onHomePress = () => {
+    navigation.navigate("Home");
+  };
   return (
     <>
       <View style={Styles.container}>
@@ -35,7 +37,7 @@ const SettingUserScreen = ({ navigation }) => {
       </View>
     </>
   );
-}
+};
 
 const SettingUser = () => {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -43,10 +45,10 @@ const SettingUser = () => {
   return (
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
-        <Stack.Navigator {...StackNavigatorProps}>
-          <Stack.Screen name="SettingUserScreen" component={SettingUserScreen} />
-          <Stack.Screen name="Home" component={Home} />
-        </Stack.Navigator>
+      <Stack.Navigator {...StackNavigatorProps}>
+        <Stack.Screen name="SettingUserScreen" component={SettingUserScreen} />
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
     </>
   );
 };

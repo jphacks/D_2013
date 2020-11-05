@@ -40,7 +40,7 @@ const SigninScreen = ({ navigation }) => {
   const rootSetting = useCallback(() => navigation.navigate("SettingUser"), []);
 
   const signUpUser = () => {
-    console.log("test")
+    console.log("test");
     try {
       if (password.length < 6) {
         setErrorMsg("6文字以上で入力してください。");
@@ -177,10 +177,10 @@ const Signin = () => {
   return (
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
-        <Stack.Navigator {...StackNavigatorProps}>
-          <Stack.Screen name="SigninScreen" component={SigninScreen} />
-          <Stack.Screen name="SettingUser" component={SettingUser} />
-        </Stack.Navigator>
+      <Stack.Navigator {...StackNavigatorProps}>
+        <Stack.Screen name="SigninScreen" component={SigninScreen} />
+        <Stack.Screen name="SettingUser" component={SettingUser} />
+      </Stack.Navigator>
     </>
   );
 };

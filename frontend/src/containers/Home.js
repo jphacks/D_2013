@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground, StyleSheet, Text, View, } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -18,8 +18,12 @@ const StackNavigatorProps = {
 };
 
 const HomeScreen = ({ navigation }) => {
-  const onUnityPress = () => { navigation.navigate("UnityScreen") }
-  const onSettingTimePress = () => { navigation.navigate("SettingScreen") }
+  const onUnityPress = () => {
+    navigation.navigate("UnityScreen");
+  };
+  const onSettingTimePress = () => {
+    navigation.navigate("SettingScreen");
+  };
   return (
     <>
       <View style={Styles.container}>
@@ -46,7 +50,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
     </>
   );
-}
+};
 
 const Home = () => {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -54,11 +58,11 @@ const Home = () => {
   return (
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
-        <Stack.Navigator {...StackNavigatorProps}>
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
-          <Stack.Screen name="UnityScreen" component={UnityScreen} />
-          <Stack.Screen name="SettingScreen" component={SettingScreen} />
-        </Stack.Navigator>
+      <Stack.Navigator {...StackNavigatorProps}>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="UnityScreen" component={UnityScreen} />
+        <Stack.Screen name="SettingScreen" component={SettingScreen} />
+      </Stack.Navigator>
     </>
   );
 };
