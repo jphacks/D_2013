@@ -45,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
   const onSettingTimePress = () => {
     navigation.navigate("SettingScreen");
   };
-  
+
   return (
     <>
       <View style={Styles.container}>
