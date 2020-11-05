@@ -44,14 +44,15 @@ router.get('/setting_game', (req, res) => {
 
       let t_hope = time_manegement(new Date(doc.data().getup_hope_time));
 
-      let diff = compare_time(t, t_hope);
+      let diff = compare_time(t, t_hope) / 60.0;
 
       if (diff < 10.0) {
         // unityRendering
         // 3. unityWebGLページを返す
-
+        console.log(diff);
       } else {
         // form
+        console.log(diff);
       }
     })
 
