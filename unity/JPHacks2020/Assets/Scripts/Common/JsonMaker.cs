@@ -7,10 +7,9 @@ namespace Common
         public static string SendJsonData(string id, Vector3 pos)
         {
             UserData userData = new UserData();
-            userData.id = id;
-            userData.x = pos.x.ToString();
-            userData.y = pos.y.ToString();
-            userData.z = pos.z.ToString();
+            userData.x = pos.x.ToString("f2");
+            userData.y = pos.y.ToString("f2");
+            userData.z = pos.z.ToString("f2");
 
             string jsonString = JsonUtility.ToJson(userData);
             return jsonString;

@@ -39,6 +39,8 @@ namespace UnityConnection
             var cTransformValue = gameObject.ObserveEveryValueChanged(_ => _syncObjTransform.position);
             cTransformValue.Subscribe(pos => OnChangedTargetTransformValue(pos));
 
+            OnSyncStartButtonDown();
+
             //_startButton.onClick.AddListener(OnSyncStartButtonDown);
             //_stopButton.onClick.AddListener(OnSyncStopButtonDown);
         }
@@ -84,7 +86,7 @@ namespace UnityConnection
             {
                 //Debug.Log(pos);
                 string data = JsonMaker.SendJsonData(_id, pos);
-                Debug.Log(data);
+                //Debug.Log(data);
                 _ws.Send(data);
                 //ws.Send(pos.ToString());
             }
