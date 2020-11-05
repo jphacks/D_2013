@@ -7,16 +7,7 @@
 // モジュールのロード
 const app = require('../server');
 const http = require('http');
-
-let ws = require('ws');
-var server = new ws.Server({ port: 4040 });
-
-server.on('connection', ws => {
-    ws.on('message', message => {
-        console.log(message);
-    });
-    ws.send('This is server');
-});
+const WebSocket = require('ws');
 
 // ポートの設定を行う
 const port = process.env.PORT || 4040;
@@ -25,8 +16,11 @@ app.set('port', port);
 // サーバオブジェクトを生成する
 const server = http.createServer(app);
 
-// Socket.IOの処理
-require('../sockets')(server);
+// webSocketオブジェクト
+const wss = new WebSocket.Server({ server });
+
+// webSocketの処理
+require('../webSockets')(wss);
 
 // 接続を待ち受ける
 server.listen(port);
