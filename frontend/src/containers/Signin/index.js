@@ -15,16 +15,12 @@ import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
 import BgImage from "src/assets/bg.png";
-import { config } from "src/utils/config";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
 
 import "firebase/firestore";
 
 const Stack = createStackNavigator();
-
-// firebase.initializeApp(config);
-// const db = firebase.firestore();
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -46,18 +42,6 @@ const SigninScreen = ({ navigation }) => {
         setErrorMsg("6文字以上で入力してください。");
         return;
       }
-      // firebase
-      //   .auth()
-      //   .createUserWithEmailAndPassword(email, password)
-      //   .then(function (obj) {
-      //     // success
-      //     const id = obj.user.uid;
-      //     db.collection("users").doc(id).set({
-      //       email: email,
-      //       password: password,
-      //     });
-      //     rootSetting();
-      //   })
       signup(
         email,
         password,
@@ -69,12 +53,8 @@ const SigninScreen = ({ navigation }) => {
           setErrorMsg(error);
         }
       );
-      // .catch((error) => {
-      //   // error
-      //   setErrorMsg(error);
-      // });
     } catch (error) {
-      setErrorMsg(error.toString());
+      console.log(error.toString());
     }
   };
 
@@ -114,7 +94,8 @@ const SigninScreen = ({ navigation }) => {
             // error
             setErrorMsg(error);
           }
-        ))
+        )
+      )
       : setErrorMsg(error);
   };
 

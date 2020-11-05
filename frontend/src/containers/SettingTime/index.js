@@ -28,6 +28,8 @@ export const GetUpTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
+  const { currentUser } = useContext(AuthContext);
+
   const db = firebase.firestore();
 
   const showDateTimePicker = () => {
@@ -39,29 +41,10 @@ export const GetUpTime = () => {
   };
 
   const handleDatePicked = (date) => {
-    console.log(
-      "A date has been picked: ",
-      formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", { timeZone: "Asia/Tokyo" })
-    );
-    // firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then(function (obj) {
-    //     // success
-    //     const id = obj.user.uid;
-    //     db.collection("events")
-    //       .doc(id)
-    //       .set({
-    //         uid: id,
-    //         getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
-    //           timeZone: "Asia/Tokyo",
-    //         }),
-    //       });
-    //     rootSetting();
-    //   })
     db.collection("events")
       .doc("test")
       .set({
+        uid: currentUser.uid,
         getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
           timeZone: "Asia/Tokyo",
         }),
