@@ -62,16 +62,17 @@ const SigninScreen = ({ navigation }) => {
         email,
         password,
         () => {
-        rootSetting();
+          rootSetting();
         },
         (error) => {
           // error
           setErrorMsg(error);
-        })
-        // .catch((error) => {
-        //   // error
-        //   setErrorMsg(error);
-        // });
+        }
+      );
+      // .catch((error) => {
+      //   // error
+      //   setErrorMsg(error);
+      // });
     } catch (error) {
       setErrorMsg(error.toString());
     }
@@ -83,12 +84,13 @@ const SigninScreen = ({ navigation }) => {
         email,
         password,
         () => {
-        rootSetting();
+          rootSetting();
         },
         (error) => {
           // error
           setErrorMsg("パスワードが間違えています。");
-        })
+        }
+      );
     } catch (error) {
       setErrorMsg(error.toString());
     }
@@ -104,14 +106,15 @@ const SigninScreen = ({ navigation }) => {
     type == "success"
       ? ((credential = firebase.auth.FacebookAuthProvider.credential(token)),
         signinWithCredential(
-        credential,
-        () => {
-        rootSetting();
-        },
-        (error) => {
-          // error
-          setErrorMsg(error);
-        }))
+          credential,
+          () => {
+            rootSetting();
+          },
+          (error) => {
+            // error
+            setErrorMsg(error);
+          }
+        ))
       : setErrorMsg(error);
   };
 

@@ -21,24 +21,22 @@ const TitleScreen = ({ navigation }) => {
   const onSigninPress = () => {
     navigation.navigate("Signin");
   };
-  return(
-      <>
-          <View style={Styles.container}>
-            <ImageBackground source={TitleBGImage} style={Styles.image}>
-              <Button
-                style={{ marginTop: 10 }}
-                full
-                rounded
-                success
-                onPress={onSigninPress}
-              >
-                <Text style={{ color: "white" }}>Tap to This Button</Text>
-              </Button>
-            </ImageBackground>
-          </View>
-
+  return (
+    <>
+      <View style={Styles.container}>
+        <ImageBackground source={TitleBGImage} style={Styles.image}>
+          <Button
+            style={{ marginTop: 10 }}
+            full
+            rounded
+            success
+            onPress={onSigninPress}
+          >
+            <Text style={{ color: "white" }}>Tap to This Button</Text>
+          </Button>
+        </ImageBackground>
+      </View>
     </>
-
   );
 };
 
