@@ -30,9 +30,14 @@ export const SleepTime = () => {
     db.collection("events")
       .add({
         uid: currentUser.uid,
-        sleep_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
-          timeZone: "Asia/Tokyo",
-        },{ merge: true }),
+        sleep_time: formatTZ(
+          date,
+          "yyyy-MM-dd HH:mm:ss xxx",
+          {
+            timeZone: "Asia/Tokyo",
+          },
+          { merge: true }
+        ),
       })
       .catch((error) => {
         // error
@@ -77,9 +82,14 @@ export const GetUpHopeTime = () => {
     db.collection("events")
       .add({
         uid: currentUser.uid,
-        getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
-          timeZone: "Asia/Tokyo",
-        },{ merge: true }),
+        getup_hope_time: formatTZ(
+          date,
+          "yyyy-MM-dd HH:mm:ss xxx",
+          {
+            timeZone: "Asia/Tokyo",
+          },
+          { merge: true }
+        ),
       })
       .catch((error) => {
         // error
