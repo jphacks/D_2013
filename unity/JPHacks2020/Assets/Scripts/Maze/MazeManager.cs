@@ -9,7 +9,7 @@ namespace Maze
     {
         //trueならP1が操作
         [SerializeField] private int _playerId;
-        [SerializeField] private GameObject[] _Camera;
+        [SerializeField] private GameObject[] _camera;
 
         private float _startTime = 4;
         private float _timer = 0;
@@ -22,19 +22,15 @@ namespace Maze
         private bool _isTimerCount = true;
         public bool isClear = false;
 
-        void OnEnable()
-        {
-            
-        }
 
         // Start is called before the first frame update
         void Start()
         {
-            for(int i = 0;i < _Camera.Length; i++)
+            for(int i = 0;i < _camera.Length; i++)
             {
-                _Camera[i].SetActive(false);
+                _camera[i].SetActive(false);
             }
-            _Camera[_playerId - 1].SetActive(true);
+            _camera[_playerId - 1].SetActive(true);
             startButton.onClick.AddListener(UiFalse);
             endButton.onClick.AddListener(ScoreUi);
         }

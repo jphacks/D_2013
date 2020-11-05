@@ -10,8 +10,8 @@ namespace Maze
         [SerializeField] private int _collisionNum;
         [SerializeField] private MazePlayer mazePlayer;
 
-   
-        private void OnCollisionEnter(Collision collision)
+
+        private void OnCollisionStay(Collision collision)
         {
             if(collision.gameObject.tag == "Wall")
             {
@@ -41,6 +41,7 @@ namespace Maze
             switch (_collisionNum)
             {
                 case 1:
+                    Debug.Log("unTouch");
                     mazePlayer.collisionFront[PlayerId - 1] = false;
                     break;
                 case 2:

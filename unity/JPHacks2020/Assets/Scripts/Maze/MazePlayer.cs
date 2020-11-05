@@ -55,18 +55,22 @@ namespace Maze
                 if (collisionFront[PlayerId - 1] && _directionY > 0)
                 {
                     _directionY = 0;
+                    //Debug.Log("Front");
                 }
                 if (collisionBack[PlayerId - 1] && _directionY < 0)
                 {
                     _directionY = 0;
+                    //Debug.Log("Back");
                 }
                 if (collisionRight[PlayerId - 1] && _directionX > 0)
                 {
                     _directionX = 0;
+                    //Debug.Log("Right");
                 }
                 if (collisionLeft[PlayerId - 1] && _directionX < 0)
                 {
                     _directionX = 0;
+                    //Debug.Log("Left");
                 }
                 this.transform.position += new Vector3(_adjustX * _speed * _directionX, 0, _adjustY * _speed * _directionY);
             }
