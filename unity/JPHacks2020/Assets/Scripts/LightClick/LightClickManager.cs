@@ -25,6 +25,9 @@ public class LightClickManager : MonoBehaviour
     [SerializeField] private Button endButton;
     [SerializeField] private GameObject restartView;
 
+    [SerializeField] private AudioSource _clearSource;
+    [SerializeField] private AudioSource _clickSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -106,6 +109,7 @@ public class LightClickManager : MonoBehaviour
 
     void OnClick(int num)
     {
+        _clickSource.Play();
         Invoke("GetUpButton", 0.2f);
         images[num].SetActive(true);
         if (_isPlay)
@@ -121,6 +125,7 @@ public class LightClickManager : MonoBehaviour
                 {
                     _isPlay = false;
                     scooreView.SetActive(true);
+                    _clearSource.Play();
                 }
             }
             else
@@ -144,10 +149,12 @@ public class LightClickManager : MonoBehaviour
     }
     void UiFalse()
     {
+        _clickSource.Play();
         startView.SetActive(false);
     }
     void ScoreUi()
     {
+        _clickSource.Play();
         Debug.Log("HOGEHOGE");
     }
 }
