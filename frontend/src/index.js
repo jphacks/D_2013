@@ -5,9 +5,9 @@ import React from "react";
 import App from "src/App";
 
 const Root = () => (
-      <ApplicationProvider {...eva} theme={eva.light}>
-        <App />
-      </ApplicationProvider>
+  <ApplicationProvider {...eva} theme={eva.light}>
+    <App />
+  </ApplicationProvider>
 );
 
 registerRootComponent(Root);

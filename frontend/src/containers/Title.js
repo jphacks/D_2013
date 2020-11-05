@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground, StyleSheet, Text, View, } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -18,7 +18,9 @@ const StackNavigatorProps = {
 };
 
 const TitleScreen = ({ navigation }) => {
-  const onSigninPress = () => { navigation.navigate("Signin") }
+  const onSigninPress = () => {
+    navigation.navigate("Signin");
+  };
   return (
     <>
       <View style={Styles.container}>
@@ -36,7 +38,7 @@ const TitleScreen = ({ navigation }) => {
       </View>
     </>
   );
-}
+};
 
 const Title = () => {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -44,11 +46,11 @@ const Title = () => {
   return (
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
-        <Stack.Navigator {...StackNavigatorProps}>
-          <Stack.Screen name="TitleScreen" component={TitleScreen} />
+      <Stack.Navigator {...StackNavigatorProps}>
+        <Stack.Screen name="TitleScreen" component={TitleScreen} />
         <Stack.Screen name="Signin" component={Signin} />
         <Stack.Screen name="Home" component={Home} />
-        </Stack.Navigator>
+      </Stack.Navigator>
     </>
   );
 };
