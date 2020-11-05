@@ -21,10 +21,18 @@ namespace AnnoyedStick
         private bool _isTimerCount = true;
         public bool isClear = false;
         public bool isRestart = false;
+        [SerializeField] private AudioSource _mainSource;
+        [SerializeField] private AudioSource _seSource;
+        [SerializeField] private AudioClip _bgmClip;
+        [SerializeField] private AudioClip _clearClip;
+        [SerializeField] private AudioSource _clickSource;
 
         // Start is called before the first frame update
         void Start()
         {
+            _mainSource.clip = _bgmClip;
+            _mainSource.Play();
+
             _startButton.onClick.AddListener(UiFalse);
             _endButton.onClick.AddListener(ScoreUi);
             _restartButton.onClick.AddListener(Restart);
@@ -47,10 +55,12 @@ namespace AnnoyedStick
             }
 
             if (_isTimerCount) _timer += Time.deltaTime;
-
             if (isRestart) _restartView.SetActive(true);
             if (isClear)
             {
+                _seSource.clip = _clearClip;
+                _seSource.Play();
+
                 Debug.Log("CLEAR");
                 _scooreView.SetActive(true);
                 isPlay = false;
@@ -60,14 +70,17 @@ namespace AnnoyedStick
         }
         void UiFalse()
         {
+            _clickSource.Play();
             _startView.SetActive(false);
         }
         void ScoreUi()
         {
+            _clickSource.Play();
             Debug.Log("HOGEHOGE");
         }
         void Restart()
         {
+            _clickSource.Play();
             _restartView.SetActive(false);
             isRestart = false;
             isPlay = true;
