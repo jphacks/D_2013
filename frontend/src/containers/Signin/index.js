@@ -94,8 +94,7 @@ const SigninScreen = ({ navigation }) => {
             // error
             setErrorMsg(error);
           }
-        )
-      )
+        ))
       : setErrorMsg(error);
   };
 
