@@ -5,11 +5,14 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
 import { format as formatTZ } from "date-fns-tz";
 
+import { AuthContext } from "src/utils/auth";
+
 import * as firebase from "firebase";
 import "firebase/firestore";
 
 export const SleepTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <>
@@ -25,6 +28,8 @@ export const GetUpTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
+  const db = firebase.firestore();
+
   const showDateTimePicker = () => {
     setIsDateTimePickerVisible(true);
   };
@@ -38,22 +43,27 @@ export const GetUpTime = () => {
       "A date has been picked: ",
       formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", { timeZone: "Asia/Tokyo" })
     );
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(function (obj) {
-        // success
-        const id = obj.user.uid;
-        db.collection("events")
-          .doc(id)
-          .set({
-            uid: id,
-            getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
-              timeZone: "Asia/Tokyo",
-            }),
-          });
-        rootSetting();
+    // firebase
+    //   .auth()
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then(function (obj) {
+    //     // success
+    //     const id = obj.user.uid;
+    //     db.collection("events")
+    //       .doc(id)
+    //       .set({
+    //         uid: id,
+    //         getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
+    //           timeZone: "Asia/Tokyo",
+    //         }),
+    //       });
+    //     rootSetting();
+    //   })
+    db.collection("events").doc("test").set({
+      getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
+        timeZone: "Asia/Tokyo",
       })
+    })
       .catch((error) => {
         // error
         setErrorMsg(error);
