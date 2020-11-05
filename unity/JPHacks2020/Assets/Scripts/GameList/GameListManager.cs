@@ -10,7 +10,6 @@ public class GameListManager : MonoBehaviour
     [SerializeField] private Button[] _toAnnoyedButton;
     [SerializeField] private Button[] _toClickButton;
     [SerializeField] private Button[] _toMainButton;
-    [SerializeField] private Button _toSettingsButton;
 
     [SerializeField] private Button[] _subGame;
 
@@ -18,7 +17,6 @@ public class GameListManager : MonoBehaviour
     [SerializeField] private GameObject _MazeView;
     [SerializeField] private GameObject _AnnoyedView;
     [SerializeField] private GameObject _ClickView;
-    [SerializeField] private GameObject _MainView;
 
 
     // Start is called before the first frame update
@@ -53,39 +51,32 @@ public class GameListManager : MonoBehaviour
         }
 
 
-        _toSettingsButton.onClick.AddListener(SettingView);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void SettingView()
-    {
-        Debug.Log("HOGEHOGE");
-    }
 
     void ChangeView(int id)
     {
-        ViewFalse();
+        //ViewFalse();
         switch (id)
         {
             case 0:
+                ViewFalse();
                 _GhostView.SetActive(true);
                 break;
             case 1:
+                ViewFalse();
                 _MazeView.SetActive(true);
                 break;
             case 2:
+                ViewFalse();
                 _AnnoyedView.SetActive(true);
                 break;
             case 3:
+                ViewFalse();
                 _ClickView.SetActive(true);
                 break;
             case 4:
-                _MainView.SetActive(true);
+                Debug.Log("HOGE!HOGE!HOGE!!!!!");
                 break;
         }
     }
@@ -96,7 +87,6 @@ public class GameListManager : MonoBehaviour
         _MazeView.SetActive(false);
         _AnnoyedView.SetActive(false);
         _ClickView.SetActive(false);
-        _MainView.SetActive(false);
     }
 
     void OnClickLoadScene(int id)
