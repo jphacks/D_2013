@@ -8,8 +8,9 @@ namespace Common
     [Serializable]
     public class UserData
     {
-        public string userName;
-        public bool isClear;
-        public DefineData.SCENE_NAME sceneName;
+        public string id;
+        public string x;
+        public string y;
+        public string z;
     }
 }
