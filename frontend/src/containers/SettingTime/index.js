@@ -59,11 +59,13 @@ export const GetUpTime = () => {
     //       });
     //     rootSetting();
     //   })
-    db.collection("events").doc("test").set({
-      getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
-        timeZone: "Asia/Tokyo",
+    db.collection("events")
+      .doc("test")
+      .set({
+        getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
+          timeZone: "Asia/Tokyo",
+        }),
       })
-    })
       .catch((error) => {
         // error
         setErrorMsg(error);
