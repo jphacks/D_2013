@@ -1,56 +1,52 @@
-import React from "react";
-import * as Facebook from "expo-facebook";
-import * as firebase from "firebase";
+import React, { createContext, useState, useEffect } from "react";
 
-export class Auth extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
-  }
-  signUpUser = (email, password) => {
-    try {
-      if (this.state.password.length < 6) {
-        alert("みじけーんだよ");
-        return;
-      }
-      firebase.auth().createUserWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.log(error.toString());
-    }
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ auth, children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
+
+  const signup = async (email, password, onSuccess = null, onError = null) => {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(onSuccess)
+      .catch(onError);
   };
 
-  loginUser = (email, password) => {
-    try {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(function (user) {
-          console.log(user);
-        });
-    } catch (error) {
-      console.log(error.toString());
-    }
+  const signin = async (email, password, onSuccess = null, onError = null) => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(onSuccess)
+      .catch(onError);
   };
 
-  async loginWithFacebook() {
-    await Facebook.initializeAsync("374656767218522");
+  const signinWithCredential = async (
+    credential,
+    onSuccess = null,
+    onError = null
+  ) => {
+    auth.signInWithCredential(credential).then(onSuccess).catch(onError);
+  };
 
-    const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-      permissions: ["email", "public_profile"],
-    });
+  const signout = async () => {
+    await auth.signOut();
+  };
 
-    if (type == "success") {
-      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+  useEffect(() => auth.onAuthStateChanged(setCurrentUser), []);
 
-      firebase
-        .auth()
-        .signInWithCredential(credential)
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }
-}
+  return (
+    <AuthContext.Provider
+      value={{
+        currentUser,
+        signup,
+        signin,
+        signout,
+        signinWithCredential,
+        userInfo,
+        setUserInfo,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};

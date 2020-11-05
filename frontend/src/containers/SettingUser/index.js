@@ -1,12 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
 import WithHeader from "src/components/WithHeader";
-import TitleBGImage from "src/assets/titleBg.png";
-import Signin from "src/containers/Signin";
+import BgImage from "src/assets/bg.png";
 import Home from "src/containers/Home";
 
 const Stack = createStackNavigator();
@@ -17,20 +16,20 @@ const StackNavigatorProps = {
   options: { cardStyle: { backgroundColor: "transparent" } },
 };
 
-const TitleScreen = ({ navigation }) => {
-  const onSigninPress = () => {
-    navigation.navigate("Signin");
+const SettingUserScreen = ({ navigation }) => {
+  const onHomePress = () => {
+    navigation.navigate("Home");
   };
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={TitleBGImage} style={Styles.image}>
+        <ImageBackground source={BgImage} style={Styles.image}>
           <Button
             style={{ marginTop: 10 }}
             full
             rounded
             success
-            onPress={onSigninPress}
+            onPress={onHomePress}
           >
             <Text style={{ color: "white" }}>Tap to This Button</Text>
           </Button>
@@ -40,15 +39,14 @@ const TitleScreen = ({ navigation }) => {
   );
 };
 
-const Title = () => {
+const SettingUser = () => {
   const [errorMsg, setErrorMsg] = useState(null);
 
   return (
     <>
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Stack.Navigator {...StackNavigatorProps}>
-        <Stack.Screen name="TitleScreen" component={TitleScreen} />
-        <Stack.Screen name="Signin" component={Signin} />
+        <Stack.Screen name="SettingUserScreen" component={SettingUserScreen} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </>
@@ -68,4 +66,4 @@ const Styles = StyleSheet.create({
   },
 });
 
-export default Title;
+export default SettingUser;
