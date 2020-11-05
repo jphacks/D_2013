@@ -4,7 +4,7 @@ import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { SleepTime, GetUpTime, PartySetting } from "src/containers/SettingTime";
+import { SleepTime, GetUpTime } from "src/containers/SettingTime";
 
 import WithHeader from "src/components/WithHeader";
 import { MAIN_COLOR } from "src/utils/color";
@@ -41,16 +41,6 @@ const SettingBody = ({ navigation }) => {
           >
             <Text style={{ color: "white" }}>起床時間設定</Text>
           </Button>
-          {/* 派閥設定 */}
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={() => navigation.navigate("PartySetting")}
-          >
-            <Text style={{ color: "white" }}>派閥設定</Text>
-          </Button>
         </ImageBackground>
       </View>
     </>
@@ -80,7 +70,6 @@ const SettingScreen = () => {
         />
         <Stack.Screen name="SleepTime" component={SleepTime} />
         <Stack.Screen name="GetUpTime" component={GetUpTime} />
-        <Stack.Screen name="PartySetting" component={PartySetting} />
       </Stack.Navigator>
     </>
   );
