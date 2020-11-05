@@ -14,7 +14,7 @@ namespace Mole
         private int _apperPos;
         private float _interval;
         private float _timer = 0;
-
+        private float[] _objecty; 
         private float _dummyrate;
         
         
@@ -22,7 +22,9 @@ namespace Mole
         void Start()
         {
             _interval = 2f;
-           
+            for (int i = 0;i<9;i++) {
+                _objecty[i] = moles[i].transform.position.y;
+            }
         }
 
         // Update is called once per frame
