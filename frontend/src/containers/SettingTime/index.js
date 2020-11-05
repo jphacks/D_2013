@@ -28,12 +28,11 @@ export const SleepTime = () => {
 
   const handleDatePicked = (date) => {
     db.collection("events")
-      .doc("test")
-      .set({
+      .add({
         uid: currentUser.uid,
         sleep_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
           timeZone: "Asia/Tokyo",
-        }),
+        },{ merge: true }),
       })
       .catch((error) => {
         // error
@@ -58,7 +57,7 @@ export const SleepTime = () => {
   );
 };
 
-export const GetUpTime = () => {
+export const GetUpHopeTime = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
@@ -76,12 +75,11 @@ export const GetUpTime = () => {
 
   const handleDatePicked = (date) => {
     db.collection("events")
-      .doc("test")
-      .set({
+      .add({
         uid: currentUser.uid,
         getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
           timeZone: "Asia/Tokyo",
-        }),
+        },{ merge: true }),
       })
       .catch((error) => {
         // error

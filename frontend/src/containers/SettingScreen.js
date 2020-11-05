@@ -4,7 +4,7 @@ import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { SleepTime, GetUpTime } from "src/containers/SettingTime";
+import { SleepTime, GetUpHopeTime } from "src/containers/SettingTime";
 
 import WithHeader from "src/components/WithHeader";
 import { MAIN_COLOR } from "src/utils/color";
@@ -37,7 +37,7 @@ const SettingBody = ({ navigation }) => {
             full
             rounded
             success
-            onPress={() => navigation.navigate("GetUpTime")}
+            onPress={() => navigation.navigate("GetUpHopeTime")}
           >
             <Text style={{ color: "white" }}>起床時間設定</Text>
           </Button>
@@ -69,7 +69,7 @@ const SettingScreen = () => {
           }}
         />
         <Stack.Screen name="SleepTime" component={SleepTime} />
-        <Stack.Screen name="GetUpTime" component={GetUpTime} />
+        <Stack.Screen name="GetUpHopeTime" component={GetUpHopeTime} />
       </Stack.Navigator>
     </>
   );

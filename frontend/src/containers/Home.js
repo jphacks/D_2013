@@ -20,6 +20,38 @@ const StackNavigatorProps = {
 const HomeScreen = ({ navigation }) => {
   const onUnityPress = () => {
     navigation.navigate("UnityScreen");
+    const GetUpTime = () => {
+      const [errorMsg, setErrorMsg] = useState(null);
+      const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
+
+      const { currentUser } = useContext(AuthContext);
+
+      const db = firebase.firestore();
+
+      const showDateTimePicker = () => {
+        setIsDateTimePickerVisible(true);
+      };
+
+      const hideDateTimePicker = () => {
+        setIsDateTimePickerVisible(false);
+      };
+
+      const handleDatePicked = (date) => {
+        db.collection("events")
+          .add
+          .set({
+            uid: currentUser.uid,
+            getup_hope_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
+              timeZone: "Asia/Tokyo",
+            }, { merge: true }),
+          })
+          .catch((error) => {
+            // error
+            setErrorMsg(error);
+          });
+        hideDateTimePicker();
+      };
+    }
   };
   const onSettingTimePress = () => {
     navigation.navigate("SettingScreen");
