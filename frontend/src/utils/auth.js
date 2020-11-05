@@ -25,8 +25,7 @@ export const AuthProvider = ({ auth, children }) => {
     onSuccess = null,
     onError = null
   ) => {
-    auth;
-    signInWithCredential(credential).then(onSuccess).catch(onError);
+    auth.signInWithCredential(credential).then(onSuccess).catch(onError);
   };
 
   const signout = async () => {

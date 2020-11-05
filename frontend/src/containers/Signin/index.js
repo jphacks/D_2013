@@ -23,8 +23,8 @@ import "firebase/firestore";
 
 const Stack = createStackNavigator();
 
-firebase.initializeApp(config);
-const db = firebase.firestore();
+// firebase.initializeApp(config);
+// const db = firebase.firestore();
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -36,32 +36,42 @@ const SigninScreen = ({ navigation }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const { signup, signin } = useContext(AuthContext);
 
   const rootSetting = useCallback(() => navigation.navigate("SettingUser"), []);
 
   const signUpUser = () => {
-    console.log("test");
     try {
       if (password.length < 6) {
         setErrorMsg("6文字以上で入力してください。");
         return;
       }
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(function (obj) {
-          // success
-          const id = obj.user.uid;
-          db.collection("users").doc(id).set({
-            email: email,
-            password: password,
-          });
-          rootSetting();
-        })
-        .catch((error) => {
+      // firebase
+      //   .auth()
+      //   .createUserWithEmailAndPassword(email, password)
+      //   .then(function (obj) {
+      //     // success
+      //     const id = obj.user.uid;
+      //     db.collection("users").doc(id).set({
+      //       email: email,
+      //       password: password,
+      //     });
+      //     rootSetting();
+      //   })
+      signup(
+        email,
+        password,
+        () => {
+        rootSetting();
+        },
+        (error) => {
           // error
           setErrorMsg(error);
-        });
+        })
+        // .catch((error) => {
+        //   // error
+        //   setErrorMsg(error);
+        // });
     } catch (error) {
       setErrorMsg(error.toString());
     }
@@ -69,16 +79,16 @@ const SigninScreen = ({ navigation }) => {
 
   const loginUser = () => {
     try {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then((obj) => {
-          rootSetting();
-        })
-        .catch(() => {
+      signin(
+        email,
+        password,
+        () => {
+        rootSetting();
+        },
+        (error) => {
           // error
           setErrorMsg("パスワードが間違えています。");
-        });
+        })
     } catch (error) {
       setErrorMsg(error.toString());
     }
@@ -93,17 +103,15 @@ const SigninScreen = ({ navigation }) => {
 
     type == "success"
       ? ((credential = firebase.auth.FacebookAuthProvider.credential(token)),
-        firebase
-          .auth()
-          .signInWithCredential(credential)
-          .then(function (obj) {
-            // success
-            console.log(obj.user.uid);
-          })
-          .catch((error) => {
-            setErrorMsg(error);
-          }),
-        rootSetting())
+        signinWithCredential(
+        credential,
+        () => {
+        rootSetting();
+        },
+        (error) => {
+          // error
+          setErrorMsg(error);
+        }))
       : setErrorMsg(error);
   };
 
