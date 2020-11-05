@@ -37,7 +37,7 @@ namespace UnityConnection
             _nowPhase = SYNC_PHASE.Idling;
 
             var cTransformValue = gameObject.ObserveEveryValueChanged(_ => _syncObjTransform.position);
-            cTransformValue.Subscribe(pos => OnChangedTargetTransformValue(pos));
+            cTransformValue.ThrottleFirstFrame(10).Subscribe(pos => OnChangedTargetTransformValue(pos));
 
             OnSyncStartButtonDown();
 
@@ -53,9 +53,8 @@ namespace UnityConnection
 
             _ws.OnMessage += (object sender, MessageEventArgs e) => {
                 print(e.Data);
-                string data = e.Data;
-                UserData userData = JsonParser.ParseJson(data);
-                Vector3 pos = new Vector3(float.Parse(userData.x), float.Parse(userData.y), float.Parse(userData.z));
+                string[] userPos = JsonParser.ReturnString(e.Data);
+                Vector3 pos = new Vector3(float.Parse(userPos[0]), float.Parse(userPos[1]), float.Parse(userPos[2]));
                 PosQueue.Enqueue(pos);
             };
 
@@ -85,7 +84,7 @@ namespace UnityConnection
             if (_nowPhase == SYNC_PHASE.Syncing)
             {
                 //Debug.Log(pos);
-                string data = JsonMaker.SendJsonData(_id, pos);
+                string data = JsonMaker.SendStringData(pos);
                 //Debug.Log(data);
                 _ws.Send(data);
                 //ws.Send(pos.ToString());

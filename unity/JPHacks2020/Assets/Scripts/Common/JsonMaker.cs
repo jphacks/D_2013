@@ -14,6 +14,11 @@ namespace Common
             string jsonString = JsonUtility.ToJson(userData);
             return jsonString;
         }
+
+        public static string SendStringData(Vector3 pos)
+        {
+            return $"{pos.x},{pos.y},{pos.z}";
+        }
     }
 
     public static class JsonParser
@@ -22,6 +27,11 @@ namespace Common
         {
             UserData userData = JsonUtility.FromJson<UserData>(jsonString);
             return userData;
+        }
+
+        public static string[] ReturnString(string data)
+        {
+            return data.Split(',');
         }
     }
 
