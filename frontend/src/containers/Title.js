@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   ImageBackground,
   StyleSheet,
@@ -6,18 +6,17 @@ import {
   View,
   Dimensions,
 } from "react-native";
-import { Container, Content, Header, Button } from "native-base";
+import { Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
-import WithHeader from "src/components/WithHeader";
 import TitleBGImage from "src/assets/titleBg.png";
 import Signin from "src/containers/Signin";
 import Home from "src/containers/Home";
 
 const Stack = createStackNavigator();
 
-const { width, height, scale } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -49,11 +48,9 @@ const TitleScreen = ({ navigation }) => {
 };
 
 const Title = () => {
-  const [errorMsg, setErrorMsg] = useState(null);
 
   return (
     <>
-      {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Stack.Navigator {...StackNavigatorProps}>
         <Stack.Screen name="TitleScreen" component={TitleScreen} />
         <Stack.Screen name="Signin" component={Signin} />
