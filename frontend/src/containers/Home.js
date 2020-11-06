@@ -73,20 +73,22 @@ const HomeScreen = ({ navigation }) => {
           source={BgImage}
           style={{ width: width, height: height }}
         >
-          <Header style={{
-    backgroundColor: '#2D4369',
-    justifyContent: 'space-around',
-          }}>
+          <Header
+            style={{
+              backgroundColor: "#2D4369",
+              justifyContent: "space-around",
+            }}
+          >
             <View style={Styles.profile}>
-            <Avatar
-              style={Styles.profileAvatar}
-              size="large"
-              source={avatar}
-            />
+              <Avatar
+                style={Styles.profileAvatar}
+                size="large"
+                source={avatar}
+              />
               <Text style={Styles.profileText}>{userInfo?.name}hogehoge</Text>
             </View>
             <Image style={Styles.maskStyle} source={mask} />
-            </Header>
+          </Header>
           <View style={Styles.image}>
             <TouchableOpacity style={{ marginTop: 370 }} onPress={onUnityPress}>
               <Image style={Styles.image} source={btnUnity} />
@@ -129,11 +131,11 @@ const Styles = StyleSheet.create({
     margin: 10,
   },
   profile: {
-    position: 'absolute',
+    position: "absolute",
     left: 10,
     top: 5,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   profileAvatar: {
     marginHorizontal: 8,
@@ -146,7 +148,7 @@ const Styles = StyleSheet.create({
   },
   maskStyle: {
     justifyContent: "flex-end",
-    position: 'absolute',
+    position: "absolute",
     top: -90,
     right: -10,
   },
