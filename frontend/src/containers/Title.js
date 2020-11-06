@@ -1,5 +1,11 @@
 import React, { useState, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+} from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -11,7 +17,7 @@ import Home from "src/containers/Home";
 
 const Stack = createStackNavigator();
 
-const { width, height, scale } = Dimensions.get('window');
+const { width, height, scale } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -26,13 +32,16 @@ const TitleScreen = ({ navigation }) => {
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={TitleBGImage} style={{width: width, height: height}}>
+        <ImageBackground
+          source={TitleBGImage}
+          style={{ width: width, height: height }}
+        >
           <Button
-            bordered light
-            style={{width: width, height: height}}
+            bordered
+            light
+            style={{ width: width, height: height }}
             onPress={onSigninPress}
-          >
-          </Button>
+          ></Button>
         </ImageBackground>
       </View>
     </>

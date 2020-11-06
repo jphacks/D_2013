@@ -1,5 +1,12 @@
 import React, { useState, useCallback, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import {
   Container,
   Form,
@@ -126,32 +133,19 @@ const SigninScreen = ({ navigation }) => {
                 onChangeText={(password) => setPassword(password)}
               />
             </Item>
-            <TouchableOpacity
-                    onPress={loginUser}>
-                    <Image
-                        style={Styles.image}
-                        source={btnLogin2}
-                    />
+            <TouchableOpacity onPress={loginUser}>
+              <Image style={Styles.image} source={btnLogin2} />
             </TouchableOpacity>
 
-            <TouchableOpacity
-                    onPress={signUpUser}>
-                    <Image
-                        style={Styles.image}
-                        source={btnLogin3}
-                    />
+            <TouchableOpacity onPress={signUpUser}>
+              <Image style={Styles.image} source={btnLogin3} />
             </TouchableOpacity>
 
-            <TouchableOpacity
-                    onPress={loginWithFacebook}>
-                    <Image
-                        style={Styles.image}
-                        source={btnLogin}
-                    />
+            <TouchableOpacity onPress={loginWithFacebook}>
+              <Image style={Styles.image} source={btnLogin} />
             </TouchableOpacity>
-
-            </Form>
-            </ImageBackground>
+          </Form>
+        </ImageBackground>
       </Container>
     </>
   );
