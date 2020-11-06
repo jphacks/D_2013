@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
+  Dimensions,
 } from "react-native";
 import {
   Container,
@@ -22,7 +23,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
-import BgImage from "src/assets/bg.png";
+import BgImage from "src/assets/corr2_settingAccount.png";
 import btnLogin from "src/assets/titleScene/createUser_btnNewCreateAccount.png";
 import btnLogin2 from "src/assets/titleScene/createUser_btnLogin2.png";
 import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
@@ -34,6 +35,8 @@ import SettingUser from "src/containers/SettingUser";
 import "firebase/firestore";
 
 const Stack = createStackNavigator();
+
+const { width, height, scale } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -114,9 +117,11 @@ const SigninScreen = ({ navigation }) => {
   return (
     <>
       <Container style={Styles.container}>
-        <ImageBackground source={BgImage} style={Styles.image}>
+        <ImageBackground source={BgImage} style={{ width: width, height: height }}>
+        <View style={Styles.image}>
           <Form>
-            {errorMsg !== null && <Text>{errorMsg}</Text>}
+              <View style={{ marginTop: 170 }}></View>
+              {errorMsg !== null && <Text>{errorMsg}</Text>}
             <Text style={Styles.textStyle}>Eメール</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
@@ -150,8 +155,9 @@ const SigninScreen = ({ navigation }) => {
             <TouchableOpacity onPress={loginWithFacebook}>
               <Image style={Styles.image} source={btnLogin} />
             </TouchableOpacity>
-          </Form>
-        </ImageBackground>
+        </Form>
+          </View>
+          </ImageBackground>
       </Container>
     </>
   );

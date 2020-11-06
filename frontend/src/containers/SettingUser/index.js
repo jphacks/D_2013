@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
+  Dimensions,
 } from "react-native";
 import {
   Container,
@@ -23,7 +24,7 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
 import { format as formatTZ } from "date-fns-tz";
 
-import BgImage from "src/assets/bg.png";
+import BgImage from "src/assets/corr2_createAccount.png";
 import btnClick from "src/assets/titleScene/btnClick.png";
 import btnOk from "src/assets/titleScene/btnOk.png";
 import btnKinoko from "src/assets/titleScene/btnKinoko.png";
@@ -37,6 +38,8 @@ import "firebase/firestore";
 import Home from "src/containers/Home";
 
 const Stack = createStackNavigator();
+
+const { width, height, scale } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -84,7 +87,7 @@ const SettingUserScreen = ({ navigation }) => {
     setViewSleepDate(date);
     db.collection("events")
       .add({
-        uid: currentUser.uid,
+        user_id: currentUser.uid,
         sleep_time: formatTZ(
           date,
           "yyyy-MM-dd HH:mm:ss xxx",
@@ -105,7 +108,7 @@ const SettingUserScreen = ({ navigation }) => {
     setViewDate(date);
     db.collection("events")
       .add({
-        uid: currentUser.uid,
+        user_id: currentUser.uid,
         getup_hope_time: formatTZ(
           date,
           "yyyy-MM-dd HH:mm:ss xxx",
@@ -142,9 +145,11 @@ const SettingUserScreen = ({ navigation }) => {
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={BgImage} style={Styles.image}>
+        <ImageBackground source={BgImage} style={{ width: width, height: height }}>
+        <View style={Styles.image}>
           <Form>
-            {errorMsg !== null && <Text>{errorMsg}</Text>}
+              <View style={{ marginTop: 180 }}></View>
+              {errorMsg !== null && <Text>{errorMsg}</Text>}
             <Text style={Styles.textStyle}>プレイヤー名</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
@@ -203,7 +208,8 @@ const SettingUserScreen = ({ navigation }) => {
             <TouchableOpacity onPress={onSettingOkPress}>
               <Image style={Styles.image} source={btnOk} />
             </TouchableOpacity>
-          </Form>
+            </Form>
+            </View>
         </ImageBackground>
       </View>
     </>

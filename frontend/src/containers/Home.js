@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Dimensions, } from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { format as formatTZ } from "date-fns-tz";
 
 import WithHeader from "src/components/WithHeader";
-import BgImage from "src/assets/bg.png";
+import BgImage from "src/assets/corr_homebg.png";
 import UnityScreen from "src/containers/UnityScreen";
 import SettingScreen from "src/containers/SettingScreen";
 import { AuthContext } from "src/utils/auth";
@@ -15,6 +15,8 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 
 const Stack = createStackNavigator();
+
+const { width, height, scale } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -31,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
     var date = new Date();
     db.collection("events")
       .add({
-        uid: currentUser.uid,
+        user_id: currentUser.uid,
         getup_time: formatTZ(
           date,
           "yyyy-MM-dd HH:mm:ss xxx",
@@ -54,7 +56,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={BgImage} style={Styles.image}>
+        <ImageBackground source={BgImage} style={{ width: width, height: height }}>
+        <View style={Styles.image}>
           <Button
             style={{ marginTop: 10 }}
             full
@@ -72,7 +75,8 @@ const HomeScreen = ({ navigation }) => {
             onPress={onSettingTimePress}
           >
             <Text style={{ color: "white" }}>生活習慣を設定</Text>
-          </Button>
+            </Button>
+            </View>
         </ImageBackground>
       </View>
     </>
