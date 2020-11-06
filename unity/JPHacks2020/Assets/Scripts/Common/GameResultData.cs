@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Common
 {
-    public class GameResultData : MonoBehaviour
+    public class GameResultData
     {
         public bool isClear { get; private set; }
-        public DefineData.SCENE_NAME sceneName { get; private set; }
+        public DefineData.SCENE_NAME sceneName;
 
-        public GameResultData(bool _isClear, DefineData.SCENE_NAME _name)
+        public GameResultData(bool _isClear, DefineData.SCENE_NAME _sceneName)
         {
             isClear = _isClear;
-            sceneName = _name;
+            sceneName = _sceneName;
         }
     }
 
