@@ -113,10 +113,10 @@ const SigninScreen = ({ navigation }) => {
 
   return (
     <>
-      {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Container style={Styles.container}>
         <ImageBackground source={BgImage} style={Styles.image}>
           <Form>
+            {errorMsg !== null && <Text>{errorMsg}</Text>}
             <Text style={Styles.textStyle}>Eメール</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
@@ -133,6 +133,7 @@ const SigninScreen = ({ navigation }) => {
               <View style={Styles.sectionStyle}>
                 <TextInput
                   style={{ flex: 1 }}
+                  secureTextEntry={true}
                   placeholder="Enter Your Password"
                   onChangeText={(password) => setPassword(password)}
                 />
