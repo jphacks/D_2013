@@ -3,10 +3,12 @@ import {
   ImageBackground,
   StyleSheet,
   Text,
+  TouchableOpacity,
+  Image,
   View,
   Dimensions,
 } from "react-native";
-import { Container, Content, Header, Button } from "native-base";
+import { Form } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { format as formatTZ } from "date-fns-tz";
@@ -15,6 +17,8 @@ import WithHeader from "src/components/WithHeader";
 import BgImage from "src/assets/corr_homebg.png";
 import UnityScreen from "src/containers/UnityScreen";
 import SettingScreen from "src/containers/SettingUser";
+import btnUnity from "src/assets/titleScene/home_btnChoiceGame.png";
+import btnSetting from "src/assets/titleScene/home_btnQOL.png";
 import { AuthContext } from "src/utils/auth";
 
 import * as firebase from "firebase";
@@ -67,24 +71,13 @@ const HomeScreen = ({ navigation }) => {
           style={{ width: width, height: height }}
         >
           <View style={Styles.image}>
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              success
-              onPress={onUnityPress}
-            >
-              <Text style={{ color: "white" }}>ゲームを選択</Text>
-            </Button>
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              success
-              onPress={onSettingTimePress}
-            >
-              <Text style={{ color: "white" }}>生活習慣を設定</Text>
-            </Button>
+            <TouchableOpacity style={{marginTop: 450}} onPress={onUnityPress}>
+                <Image style={Styles.image} source={btnUnity} />
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={onSettingTimePress}>
+                <Image style={Styles.image} source={btnSetting} />
+              </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>
@@ -114,9 +107,9 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    flex: 1,
-    resizeMode: "cover",
     justifyContent: "center",
+    alignItems: "center",
+    margin: 10,
   },
 });
 
