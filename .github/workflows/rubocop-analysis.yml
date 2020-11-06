@@ -4,8 +4,6 @@ name: "Rubocop"
 on: push
   only:
       - master
-    paths:
-      - 'backend/**'
 
 jobs:
   rubocop:
