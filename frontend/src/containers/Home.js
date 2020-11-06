@@ -8,8 +8,9 @@ import {
   View,
   Dimensions,
 } from "react-native";
-import { Form } from "native-base";
+import { Form, Header } from "native-base";
 
+import { Avatar } from "@ui-kitten/components";
 import { createStackNavigator } from "@react-navigation/stack";
 import { format as formatTZ } from "date-fns-tz";
 
@@ -19,6 +20,7 @@ import UnityScreen from "src/containers/UnityScreen";
 import SettingScreen from "src/containers/SettingUser";
 import btnUnity from "src/assets/titleScene/home_btnChoiceGame.png";
 import btnSetting from "src/assets/titleScene/home_btnQOL.png";
+import avatar from "src/assets/titleScene/home_icon.png";
 import { AuthContext } from "src/utils/auth";
 
 import * as firebase from "firebase";
@@ -35,7 +37,7 @@ const StackNavigatorProps = {
 };
 
 const HomeScreen = ({ navigation }) => {
-  const { currentUser } = useContext(AuthContext);
+  const { userInfo, currentUser } = useContext(AuthContext);
 
   const onUnityPress = () => {
     navigation.navigate("UnityScreen");
@@ -70,8 +72,21 @@ const HomeScreen = ({ navigation }) => {
           source={BgImage}
           style={{ width: width, height: height }}
         >
+          <Header style={{
+    backgroundColor: '#2D4369',
+    justifyContent: 'space-around',
+          }}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Avatar
+              style={Styles.profileAvatar}
+              size="large"
+              source={avatar}
+            />
+              <Text style={Styles.profileText}>{userInfo?.name}hogehoge</Text>
+              </View>
+            </Header>
           <View style={Styles.image}>
-            <TouchableOpacity style={{ marginTop: 450 }} onPress={onUnityPress}>
+            <TouchableOpacity style={{ marginTop: 370 }} onPress={onUnityPress}>
               <Image style={Styles.image} source={btnUnity} />
             </TouchableOpacity>
 
@@ -110,6 +125,14 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     margin: 10,
+  },
+  profileAvatar: {
+    marginHorizontal: 8,
+  },
+  profileText: {
+    flexDirection: "row",
+    fontSize: 36,
+    fontWeight: "bold",
   },
 });
 
