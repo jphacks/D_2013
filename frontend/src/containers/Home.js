@@ -21,6 +21,7 @@ import SettingScreen from "src/containers/SettingUser";
 import btnUnity from "src/assets/titleScene/home_btnChoiceGame.png";
 import btnSetting from "src/assets/titleScene/home_btnQOL.png";
 import avatar from "src/assets/titleScene/home_icon.png";
+import mask from "src/assets/maskA10_2.png";
 import { AuthContext } from "src/utils/auth";
 
 import * as firebase from "firebase";
@@ -76,14 +77,15 @@ const HomeScreen = ({ navigation }) => {
     backgroundColor: '#2D4369',
     justifyContent: 'space-around',
           }}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={Styles.profile}>
             <Avatar
               style={Styles.profileAvatar}
               size="large"
               source={avatar}
             />
               <Text style={Styles.profileText}>{userInfo?.name}hogehoge</Text>
-              </View>
+            </View>
+            <Image style={Styles.maskStyle} source={mask} />
             </Header>
           <View style={Styles.image}>
             <TouchableOpacity style={{ marginTop: 370 }} onPress={onUnityPress}>
@@ -126,6 +128,13 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     margin: 10,
   },
+  profile: {
+    position: 'absolute',
+    left: 10,
+    top: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   profileAvatar: {
     marginHorizontal: 8,
   },
@@ -133,6 +142,12 @@ const Styles = StyleSheet.create({
     flexDirection: "row",
     fontSize: 36,
     fontWeight: "bold",
+  },
+  maskStyle: {
+    justifyContent: "flex-end",
+    position: 'absolute',
+    top: -90,
+    right: -10,
   },
 });
 
