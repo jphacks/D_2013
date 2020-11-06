@@ -52,7 +52,10 @@ const SettingUserScreen = ({ navigation }) => {
   const [name, setName] = useState(null);
   const [viewSleepDate, setViewSleepDate] = useState(null);
   const [viewDate, setViewDate] = useState(null);
-  const [isDateTimePickerVisible_Sleep, setIsDateTimePickerVisible_Sleep] = useState(false);
+  const [
+    isDateTimePickerVisible_Sleep,
+    setIsDateTimePickerVisible_Sleep,
+  ] = useState(false);
   const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
@@ -127,14 +130,19 @@ const SettingUserScreen = ({ navigation }) => {
 
   const onSettingOkPress = () => {
     if (String(name) === "null") {
-        setErrorMsg("名前を入力してください");
-        return;
-      }
-    db.collection("users").doc(currentUser.uid).set({
-      name: name,
-      score: 0,
-      on_Game: false,
-      },{ merge: true })
+      setErrorMsg("名前を入力してください");
+      return;
+    }
+    db.collection("users")
+      .doc(currentUser.uid)
+      .set(
+        {
+          name: name,
+          score: 0,
+          on_Game: false,
+        },
+        { merge: true }
+      )
       .catch((error) => {
         // error
         setErrorMsg(error);
@@ -164,24 +172,38 @@ const SettingUserScreen = ({ navigation }) => {
             <Text style={Styles.textStyle}>寝る時間</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
-                {String(viewSleepDate) != "null" ? <Text style={{ flex: 1 }}>{String(viewSleepDate)}</Text> : <Text style={{ flex: 1 }}/>}
-                <TouchableOpacity title="Sleep_time" onPress={showDateTimePicker_Sleep}>
+                {String(viewSleepDate) != "null" ? (
+                  <Text style={{ flex: 1 }}>{String(viewSleepDate)}</Text>
+                ) : (
+                  <Text style={{ flex: 1 }} />
+                )}
+                <TouchableOpacity
+                  title="Sleep_time"
+                  onPress={showDateTimePicker_Sleep}
+                >
                   <Image style={Styles.okImage} source={btnClick} />
-                <DateTimePicker
+                  <DateTimePicker
                     isVisible={isDateTimePickerVisible_Sleep}
                     onConfirm={SleepTimePress}
                     mode="time"
                     onCancel={hideDateTimePicker_Sleep}
                   />
-              </TouchableOpacity>
+                </TouchableOpacity>
               </View>
             </ImageBackground>
 
             <Text style={Styles.textStyle}>起きる時間</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
-                {String(viewDate) != "null" ? <Text style={{ flex: 1 }}>{String(viewDate)}</Text> : <Text style={{ flex: 1 }}/>}
-                <TouchableOpacity title="Getup_hope_time" onPress={showDateTimePicker}>
+                {String(viewDate) != "null" ? (
+                  <Text style={{ flex: 1 }}>{String(viewDate)}</Text>
+                ) : (
+                  <Text style={{ flex: 1 }} />
+                )}
+                <TouchableOpacity
+                  title="Getup_hope_time"
+                  onPress={showDateTimePicker}
+                >
                   <Image style={Styles.okImage} source={btnClick} />
                   <DateTimePicker
                     isVisible={isDateTimePickerVisible}
@@ -189,19 +211,19 @@ const SettingUserScreen = ({ navigation }) => {
                     mode="time"
                     onCancel={hideDateTimePicker}
                   />
-              </TouchableOpacity>
+                </TouchableOpacity>
               </View>
             </ImageBackground>
 
             <Text style={Styles.textStyle}>たけのこ派？きのこ派？</Text>
             <ImageBackground source={form} style={Styles.selectFormImage}>
               <View style={Styles.selectBoxStyle}>
-              <TouchableOpacity onPress={onTakePress}>
-                <Image style={Styles.selectImageTake} source={btnTake} />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={onKinokoPress}>
-                <Image style={Styles.selectImageKinoko} source={btnKinoko} />
-              </TouchableOpacity>
+                <TouchableOpacity onPress={onTakePress}>
+                  <Image style={Styles.selectImageTake} source={btnTake} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onKinokoPress}>
+                  <Image style={Styles.selectImageKinoko} source={btnKinoko} />
+                </TouchableOpacity>
               </View>
             </ImageBackground>
 
@@ -274,7 +296,7 @@ const Styles = StyleSheet.create({
   },
   selectBoxStyle: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
     margin: 5,
