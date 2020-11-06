@@ -37,7 +37,7 @@ namespace UnityConnection
             _nowPhase = SYNC_PHASE.Idling;
 
             var cTransformValue = gameObject.ObserveEveryValueChanged(_ => _syncObjTransform.position);
-            cTransformValue.ThrottleFirstFrame(10).Subscribe(pos => OnChangedTargetTransformValue(pos));
+            cTransformValue.ThrottleFirstFrame(5).Subscribe(pos => OnChangedTargetTransformValue(pos));
 
             OnSyncStartButtonDown();
 

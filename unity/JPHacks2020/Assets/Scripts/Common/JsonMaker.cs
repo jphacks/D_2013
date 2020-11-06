@@ -17,7 +17,10 @@ namespace Common
 
         public static string SendStringData(Vector3 pos)
         {
-            return $"{pos.x},{pos.y},{pos.z}";
+            var x = pos.x.ToString("f2");
+            var y = pos.y.ToString("f2");
+            var z = pos.z.ToString("f2");
+            return $"{x},{y},{z}";
         }
     }
 
