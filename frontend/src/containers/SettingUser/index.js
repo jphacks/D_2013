@@ -153,85 +153,91 @@ const SettingUserScreen = ({ navigation }) => {
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={BgImage} style={{ width: width, height: height }}>
-        <View style={Styles.image}>
-          <Form>
+        <ImageBackground
+          source={BgImage}
+          style={{ width: width, height: height }}
+        >
+          <View style={Styles.image}>
+            <Form>
               <View style={{ marginTop: 180 }}></View>
               {errorMsg !== null && <Text>{errorMsg}</Text>}
-            <Text style={Styles.textStyle}>プレイヤー名</Text>
-            <ImageBackground source={form} style={Styles.image}>
-              <View style={Styles.sectionStyle}>
-                <TextInput
-                  style={{ flex: 1 }}
-                  placeholder="Enter Your Name"
-                  onChangeText={(name) => setName(name)}
-                />
-              </View>
-            </ImageBackground>
-
-            <Text style={Styles.textStyle}>寝る時間</Text>
-            <ImageBackground source={form} style={Styles.image}>
-              <View style={Styles.sectionStyle}>
-                {String(viewSleepDate) != "null" ? (
-                  <Text style={{ flex: 1 }}>{String(viewSleepDate)}</Text>
-                ) : (
-                  <Text style={{ flex: 1 }} />
-                )}
-                <TouchableOpacity
-                  title="Sleep_time"
-                  onPress={showDateTimePicker_Sleep}
-                >
-                  <Image style={Styles.okImage} source={btnClick} />
-                  <DateTimePicker
-                    isVisible={isDateTimePickerVisible_Sleep}
-                    onConfirm={SleepTimePress}
-                    mode="time"
-                    onCancel={hideDateTimePicker_Sleep}
+              <Text style={Styles.textStyle}>プレイヤー名</Text>
+              <ImageBackground source={form} style={Styles.image}>
+                <View style={Styles.sectionStyle}>
+                  <TextInput
+                    style={{ flex: 1 }}
+                    placeholder="Enter Your Name"
+                    onChangeText={(name) => setName(name)}
                   />
-                </TouchableOpacity>
-              </View>
-            </ImageBackground>
+                </View>
+              </ImageBackground>
 
-            <Text style={Styles.textStyle}>起きる時間</Text>
-            <ImageBackground source={form} style={Styles.image}>
-              <View style={Styles.sectionStyle}>
-                {String(viewDate) != "null" ? (
-                  <Text style={{ flex: 1 }}>{String(viewDate)}</Text>
-                ) : (
-                  <Text style={{ flex: 1 }} />
-                )}
-                <TouchableOpacity
-                  title="Getup_hope_time"
-                  onPress={showDateTimePicker}
-                >
-                  <Image style={Styles.okImage} source={btnClick} />
-                  <DateTimePicker
-                    isVisible={isDateTimePickerVisible}
-                    onConfirm={GetUpHopeTimePress}
-                    mode="time"
-                    onCancel={hideDateTimePicker}
-                  />
-                </TouchableOpacity>
-              </View>
-            </ImageBackground>
+              <Text style={Styles.textStyle}>寝る時間</Text>
+              <ImageBackground source={form} style={Styles.image}>
+                <View style={Styles.sectionStyle}>
+                  {String(viewSleepDate) != "null" ? (
+                    <Text style={{ flex: 1 }}>{String(viewSleepDate)}</Text>
+                  ) : (
+                    <Text style={{ flex: 1 }} />
+                  )}
+                  <TouchableOpacity
+                    title="Sleep_time"
+                    onPress={showDateTimePicker_Sleep}
+                  >
+                    <Image style={Styles.okImage} source={btnClick} />
+                    <DateTimePicker
+                      isVisible={isDateTimePickerVisible_Sleep}
+                      onConfirm={SleepTimePress}
+                      mode="time"
+                      onCancel={hideDateTimePicker_Sleep}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </ImageBackground>
 
-            <Text style={Styles.textStyle}>たけのこ派？きのこ派？</Text>
-            <ImageBackground source={form} style={Styles.selectFormImage}>
-              <View style={Styles.selectBoxStyle}>
-                <TouchableOpacity onPress={onTakePress}>
-                  <Image style={Styles.selectImageTake} source={btnTake} />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={onKinokoPress}>
-                  <Image style={Styles.selectImageKinoko} source={btnKinoko} />
-                </TouchableOpacity>
-              </View>
-            </ImageBackground>
+              <Text style={Styles.textStyle}>起きる時間</Text>
+              <ImageBackground source={form} style={Styles.image}>
+                <View style={Styles.sectionStyle}>
+                  {String(viewDate) != "null" ? (
+                    <Text style={{ flex: 1 }}>{String(viewDate)}</Text>
+                  ) : (
+                    <Text style={{ flex: 1 }} />
+                  )}
+                  <TouchableOpacity
+                    title="Getup_hope_time"
+                    onPress={showDateTimePicker}
+                  >
+                    <Image style={Styles.okImage} source={btnClick} />
+                    <DateTimePicker
+                      isVisible={isDateTimePickerVisible}
+                      onConfirm={GetUpHopeTimePress}
+                      mode="time"
+                      onCancel={hideDateTimePicker}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </ImageBackground>
 
-            <TouchableOpacity onPress={onSettingOkPress}>
-              <Image style={Styles.image} source={btnOk} />
-            </TouchableOpacity>
+              <Text style={Styles.textStyle}>たけのこ派？きのこ派？</Text>
+              <ImageBackground source={form} style={Styles.selectFormImage}>
+                <View style={Styles.selectBoxStyle}>
+                  <TouchableOpacity onPress={onTakePress}>
+                    <Image style={Styles.selectImageTake} source={btnTake} />
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={onKinokoPress}>
+                    <Image
+                      style={Styles.selectImageKinoko}
+                      source={btnKinoko}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </ImageBackground>
+
+              <TouchableOpacity onPress={onSettingOkPress}>
+                <Image style={Styles.image} source={btnOk} />
+              </TouchableOpacity>
             </Form>
-            </View>
+          </View>
         </ImageBackground>
       </View>
     </>

@@ -117,47 +117,50 @@ const SigninScreen = ({ navigation }) => {
   return (
     <>
       <Container style={Styles.container}>
-        <ImageBackground source={BgImage} style={{ width: width, height: height }}>
-        <View style={Styles.image}>
-          <Form>
+        <ImageBackground
+          source={BgImage}
+          style={{ width: width, height: height }}
+        >
+          <View style={Styles.image}>
+            <Form>
               <View style={{ marginTop: 170 }}></View>
               {errorMsg !== null && <Text>{errorMsg}</Text>}
-            <Text style={Styles.textStyle}>Eメール</Text>
-            <ImageBackground source={form} style={Styles.image}>
-              <View style={Styles.sectionStyle}>
-                <TextInput
-                  style={{ flex: 1 }}
-                  placeholder="Enter Your Email"
-                  onChangeText={(email) => setEmail(email)}
-                />
-              </View>
-            </ImageBackground>
+              <Text style={Styles.textStyle}>Eメール</Text>
+              <ImageBackground source={form} style={Styles.image}>
+                <View style={Styles.sectionStyle}>
+                  <TextInput
+                    style={{ flex: 1 }}
+                    placeholder="Enter Your Email"
+                    onChangeText={(email) => setEmail(email)}
+                  />
+                </View>
+              </ImageBackground>
 
-            <Text style={Styles.textStyle}>パスワード</Text>
-            <ImageBackground source={form} style={Styles.image}>
-              <View style={Styles.sectionStyle}>
-                <TextInput
-                  style={{ flex: 1 }}
-                  secureTextEntry={true}
-                  placeholder="Enter Your Password"
-                  onChangeText={(password) => setPassword(password)}
-                />
-              </View>
-            </ImageBackground>
-            <TouchableOpacity onPress={loginUser}>
-              <Image style={Styles.image} source={btnLogin2} />
-            </TouchableOpacity>
+              <Text style={Styles.textStyle}>パスワード</Text>
+              <ImageBackground source={form} style={Styles.image}>
+                <View style={Styles.sectionStyle}>
+                  <TextInput
+                    style={{ flex: 1 }}
+                    secureTextEntry={true}
+                    placeholder="Enter Your Password"
+                    onChangeText={(password) => setPassword(password)}
+                  />
+                </View>
+              </ImageBackground>
+              <TouchableOpacity onPress={loginUser}>
+                <Image style={Styles.image} source={btnLogin2} />
+              </TouchableOpacity>
 
-            <TouchableOpacity onPress={signUpUser}>
-              <Image style={Styles.image} source={btnLogin3} />
-            </TouchableOpacity>
+              <TouchableOpacity onPress={signUpUser}>
+                <Image style={Styles.image} source={btnLogin3} />
+              </TouchableOpacity>
 
-            <TouchableOpacity onPress={loginWithFacebook}>
-              <Image style={Styles.image} source={btnLogin} />
-            </TouchableOpacity>
-        </Form>
+              <TouchableOpacity onPress={loginWithFacebook}>
+                <Image style={Styles.image} source={btnLogin} />
+              </TouchableOpacity>
+            </Form>
           </View>
-          </ImageBackground>
+        </ImageBackground>
       </Container>
     </>
   );
