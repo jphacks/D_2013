@@ -142,6 +142,7 @@ const Styles = StyleSheet.create({
     flexDirection: "row",
     fontSize: 36,
     fontWeight: "bold",
+    color: "white",
   },
   maskStyle: {
     justifyContent: "flex-end",
