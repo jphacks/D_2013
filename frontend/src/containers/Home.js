@@ -1,5 +1,11 @@
 import React, { useState, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View, Dimensions, } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+} from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -56,27 +62,30 @@ const HomeScreen = ({ navigation }) => {
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={BgImage} style={{ width: width, height: height }}>
-        <View style={Styles.image}>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={onUnityPress}
-          >
-            <Text style={{ color: "white" }}>ゲームを選択</Text>
-          </Button>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={onSettingTimePress}
-          >
-            <Text style={{ color: "white" }}>生活習慣を設定</Text>
+        <ImageBackground
+          source={BgImage}
+          style={{ width: width, height: height }}
+        >
+          <View style={Styles.image}>
+            <Button
+              style={{ marginTop: 10 }}
+              full
+              rounded
+              success
+              onPress={onUnityPress}
+            >
+              <Text style={{ color: "white" }}>ゲームを選択</Text>
             </Button>
-            </View>
+            <Button
+              style={{ marginTop: 10 }}
+              full
+              rounded
+              success
+              onPress={onSettingTimePress}
+            >
+              <Text style={{ color: "white" }}>生活習慣を設定</Text>
+            </Button>
+          </View>
         </ImageBackground>
       </View>
     </>
