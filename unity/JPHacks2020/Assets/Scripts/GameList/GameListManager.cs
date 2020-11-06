@@ -91,6 +91,7 @@ public class GameListManager : MonoBehaviour
 
     void OnClickLoadScene(int id)
     {
+        Common.DefineData.Reset();
         switch (id)
         {
             case 0:

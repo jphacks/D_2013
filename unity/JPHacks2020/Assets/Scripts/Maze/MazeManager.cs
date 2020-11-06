@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityConnection;
+using Common;
 
 namespace Maze
 {
@@ -58,6 +59,7 @@ namespace Maze
                 scooreView.SetActive(true);
                 isPlay = false;
                 isClear = false;
+                DefineData.SetData(true, DefineData.SCENE_NAME.GAME_A);
             }
         }
 
