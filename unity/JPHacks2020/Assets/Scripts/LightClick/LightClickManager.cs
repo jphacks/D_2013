@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Common;
 
 public class LightClickManager : MonoBehaviour
 {
@@ -28,6 +29,13 @@ public class LightClickManager : MonoBehaviour
     [SerializeField] private AudioSource _clearSource;
     [SerializeField] private AudioSource _clickSource;
 
+    private int _restartCount = 0;
+    private float _gameTimer = 0;
+    [SerializeField] private Text _restartNum;
+    [SerializeField] private Text _gameTime;
+    [SerializeField] private Text _restartNum2;
+    [SerializeField] private Text _gameTime2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +58,6 @@ public class LightClickManager : MonoBehaviour
             {
                 SetNum();
                 startMessage.SetActive(false);
-                _isPlay = true;
                 Debug.Log("START");
                 //_isTimerCount = false;
                 _timer = 0;
@@ -91,7 +98,12 @@ public class LightClickManager : MonoBehaviour
                 }
             }
         }
+
+        _gameTime.text = "経過時間：" + _gameTimer.ToString("f1");
+         if(_isPlay) _gameTimer += Time.deltaTime;
+
         _timer += Time.deltaTime;
+        
     }
 
     void SetNum()
@@ -126,6 +138,7 @@ public class LightClickManager : MonoBehaviour
                     _isPlay = false;
                     scooreView.SetActive(true);
                     _clearSource.Play();
+                    _restartNum.text = "リスタート回数：" + _restartCount.ToString();
                 }
             }
             else
@@ -135,6 +148,9 @@ public class LightClickManager : MonoBehaviour
                 Debug.Log("ALERT");
                 _isPlay = false;
                 Invoke("SetNum", 1.5f);
+                
+                _restartNum2.text = _restartCount.ToString() + "回";
+                _gameTime2.text =  _gameTimer.ToString("f1") + "秒";
             }
         }
     }
@@ -156,5 +172,6 @@ public class LightClickManager : MonoBehaviour
     {
         _clickSource.Play();
         Debug.Log("HOGEHOGE");
+        DefineData.SetData(true, DefineData.SCENE_NAME.GAME_C);
     }
 }

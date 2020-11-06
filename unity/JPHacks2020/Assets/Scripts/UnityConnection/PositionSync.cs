@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using WebSocketSharp;
 using UniRx;
 using Common;
 
 namespace UnityConnection
 {
-
     public class PositionSync : SingletonMonoBehaviour<PositionSync>
     {
         [SerializeField] private string _serverAddress;
@@ -17,9 +14,6 @@ namespace UnityConnection
 
         public Transform _syncObjTransform { private get; set; }
         [SerializeField] private SYNC_PHASE _nowPhase;
-
-        //[SerializeField] private Button _startButton;
-        //[SerializeField] private Button _stopButton;
 
         public Queue<Vector3> PosQueue = new Queue<Vector3>();
 
@@ -37,10 +31,9 @@ namespace UnityConnection
             _nowPhase = SYNC_PHASE.Idling;
 
             var cTransformValue = gameObject.ObserveEveryValueChanged(_ => _syncObjTransform.position);
-            cTransformValue.Subscribe(pos => OnChangedTargetTransformValue(pos));
+            cTransformValue.ThrottleFirstFrame(5).Subscribe(pos => OnChangedTargetTransformValue(pos));
 
-            //_startButton.onClick.AddListener(OnSyncStartButtonDown);
-            //_stopButton.onClick.AddListener(OnSyncStopButtonDown);
+            OnSyncStartButtonDown();
         }
 
         public void OnSyncStartButtonDown()
@@ -51,9 +44,8 @@ namespace UnityConnection
 
             _ws.OnMessage += (object sender, MessageEventArgs e) => {
                 print(e.Data);
-                string data = e.Data;
-                UserData userData = JsonParser.ParseJson(data);
-                Vector3 pos = new Vector3(float.Parse(userData.x), float.Parse(userData.y), float.Parse(userData.z));
+                string[] userPos = JsonParser.ReturnString(e.Data);
+                Vector3 pos = new Vector3(float.Parse(userPos[0]), float.Parse(userPos[1]), float.Parse(userPos[2]));
                 PosQueue.Enqueue(pos);
             };
 
@@ -82,13 +74,9 @@ namespace UnityConnection
         {
             if (_nowPhase == SYNC_PHASE.Syncing)
             {
-                //Debug.Log(pos);
-                string data = JsonMaker.SendJsonData(_id, pos);
-                Debug.Log(data);
+                string data = JsonMaker.SendStringData(pos);
                 _ws.Send(data);
-                //ws.Send(pos.ToString());
             }
         }
     }
-    
 }

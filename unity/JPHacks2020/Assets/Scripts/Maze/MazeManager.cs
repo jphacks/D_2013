@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityConnection;
+using Common;
 
 namespace Maze
 {
@@ -25,6 +24,11 @@ namespace Maze
         private bool _isTimerCount = true;
         public bool isClear = false;
 
+        [SerializeField] private AudioSource _clearSource;
+
+        private float _gameTimer = 0;
+        [SerializeField] private Text _gameTime;
+        [SerializeField] private Text _gameTime2;
 
         // Start is called before the first frame update
         void Start()
@@ -52,12 +56,17 @@ namespace Maze
                 }
             }
             if(_isTimerCount)_timer += Time.deltaTime;
+            if (isPlay) _gameTimer += Time.deltaTime;
+            _gameTime.text = "経過時間：" + _gameTimer.ToString("f1");
             if (isClear)
             {
                 Debug.Log("CLEAR");
                 scooreView.SetActive(true);
+                _clearSource.Play();
+                _gameTime2.text = _gameTimer.ToString("f1") + "秒";
                 isPlay = false;
                 isClear = false;
+                DefineData.SetData(true, DefineData.SCENE_NAME.GAME_A);
             }
         }
 
@@ -103,4 +112,3 @@ namespace Maze
         }
     }
 }
-

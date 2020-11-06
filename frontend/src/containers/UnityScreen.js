@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { WebView } from "react-native-webview";
 import BgImage from "src/assets/bg.png";
+
+import { AuthContext } from "src/utils/auth";
 
 import WithHeader from "src/components/WithHeader";
 
 const UnityScreen = () => {
   const [errorMsg, setErrorMsg] = useState(null);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <>
@@ -17,7 +20,12 @@ const UnityScreen = () => {
           <WebView
             originWhitelist={["*"]}
             // ここに使用URLを流す
-            source={{ uri: "https://google.com" }}
+            // source={{
+            //   uri: `https://desolate-ocean-79020.herokuapp.com/setting_game?uid=${currentUser.uid}`,
+            // }}
+            source={{
+              uri: `https://desolate-ocean-79020.herokuapp.com/setting_game?uid=hoge`,
+            }}
             style={{ marginTop: 50, marginBottom: 50 }}
           />
           <Text>Hello JPHacks2020</Text>

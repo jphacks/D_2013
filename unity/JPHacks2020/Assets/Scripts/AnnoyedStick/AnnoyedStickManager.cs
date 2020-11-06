@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Common;
 
 namespace AnnoyedStick
 {
@@ -26,6 +27,13 @@ namespace AnnoyedStick
         [SerializeField] private AudioClip _bgmClip;
         [SerializeField] private AudioClip _clearClip;
         [SerializeField] private AudioSource _clickSource;
+
+        private int _restartCount = 0;
+        private float _gameTimer = 0;
+        [SerializeField] private Text _restartNum;
+        [SerializeField] private Text _gameTime;
+        [SerializeField] private Text _restartNum2;
+        [SerializeField] private Text _gameTime2;
 
         // Start is called before the first frame update
         void Start()
@@ -55,7 +63,14 @@ namespace AnnoyedStick
             }
 
             if (_isTimerCount) _timer += Time.deltaTime;
-            if (isRestart) _restartView.SetActive(true);
+            if (isRestart)
+            {
+                _restartView.SetActive(true);
+                _restartCount++;
+                _restartNum.text = "リスタート回数：" + _restartCount.ToString();
+                isRestart = false;
+
+            }
             if (isClear)
             {
                 _seSource.clip = _clearClip;
@@ -65,8 +80,12 @@ namespace AnnoyedStick
                 _scooreView.SetActive(true);
                 isPlay = false;
                 isClear = false;
-
+                _restartNum2.text = _restartCount.ToString() + "回";
+                _gameTime2.text = _gameTimer.ToString("f1") + "秒";
             }
+
+            _gameTime.text = "経過時間：" + _gameTimer.ToString("f1");
+            if (isPlay) _gameTimer += Time.deltaTime;
         }
         void UiFalse()
         {
@@ -77,6 +96,7 @@ namespace AnnoyedStick
         {
             _clickSource.Play();
             Debug.Log("HOGEHOGE");
+            DefineData.SetData(true, DefineData.SCENE_NAME.GAME_E);
         }
         void Restart()
         {

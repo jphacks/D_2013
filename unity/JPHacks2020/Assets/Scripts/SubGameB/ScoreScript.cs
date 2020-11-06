@@ -9,23 +9,24 @@ namespace Mole
     {
         [SerializeField] Button[] moleButton;
         [SerializeField] Text scoretext;
-        [SerializeField] GameObject clearText;
-        [SerializeField] GameObject modalScore;
-        //[SerializeField] GameObject how2play;
-
+        [SerializeField] GameObject finalScore;
         [SerializeField] MoleAppearScript moleappearscript;
-        
 
+        [SerializeField] private AudioSource _clearSource;
+        [SerializeField] private AudioSource _clickSource;
+
+        public int missCount;
         public int score=0;
         private int _clearScore = 15;
         // Start is called before the first frame update
         void Start()
         {
+            missCount = 0;
             scoretext.text = score.ToString();
 
-            clearText.SetActive(false);
-            modalScore.SetActive(false);
-            //how2play.SetActive(true);
+            
+            finalScore.SetActive(false);
+            
 
             moleButton[0].onClick.AddListener(() => AddPoint(0));
             moleButton[1].onClick.AddListener(() => AddPoint(1));
@@ -47,8 +48,9 @@ namespace Mole
         {
             scoretext.text = score.ToString("00");
             if (score >= _clearScore) {
-                clearText.SetActive(true);
-                modalScore.SetActive(true);
+                
+                finalScore.SetActive(true);
+                _clearSource.Play();
                 moleappearscript.enabled = false;
             }
         }
@@ -57,18 +59,27 @@ namespace Mole
 
         private void AddPoint(int num) {
 
-            
-                //Debug.Log(num);
+            _clickSource.Play();
+
             if (moleButton[num].transform.GetChild(0).gameObject.activeSelf)
             {
+                moleButton[num].transform.GetChild(0).GetChild(0).localPosition = moleappearscript.posGhost[num];
                 moleButton[num].transform.GetChild(0).gameObject.SetActive(false);
                 score++;
 
             }
             else if (moleButton[num].transform.GetChild(1).gameObject.activeSelf)
             {
+
+                moleButton[num].transform.GetChild(1).GetChild(0).localPosition = moleappearscript.posDummy[num];
                 moleButton[num].transform.GetChild(1).gameObject.SetActive(false);
-                score--;
+
+                if (score >= 1)
+                {
+                    missCount++;
+                    score--;
+                }
+
             }
         
 
