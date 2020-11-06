@@ -2,6 +2,10 @@
 name: "Rubocop"
 
 on: push
+  branches:
+      - master
+    paths:
+      - 'backend/**'
 
 jobs:
   rubocop:
