@@ -46,7 +46,7 @@ namespace Common
             { SCENE_NAME.GAME_F, "SubGameF"},
         };
 
-        public static void SetData(bool isCler, DefineData.SCENE_NAME sceneName)
+        public static void SetData(bool isCler, SCENE_NAME sceneName)
         {
             GameResultData gameResultData = new GameResultData(isCler, sceneName);
             resultData.Add(gameResultData);
