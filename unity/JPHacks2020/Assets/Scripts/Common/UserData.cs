@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using System;
 
 namespace Common
 {
     [Serializable]
     public class UserData
     {
-        public string userName;
-        public bool isClear;
-        public DefineData.SCENE_NAME sceneName;
+        public string x;
+        public string y;
+        public string z;
     }
 }

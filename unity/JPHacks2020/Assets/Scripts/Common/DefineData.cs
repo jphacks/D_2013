@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 namespace Common
 {
     public static class DefineData
     {
+        public static List<GameResultData> resultData = new List<GameResultData>();
+        public static string userName;
+
         public enum SCENE_NAME {
             TITLE,
             REGISTRATION,
@@ -45,7 +46,23 @@ namespace Common
             { SCENE_NAME.GAME_F, "SubGameF"},
         };
 
+        public static void SetData(bool isCler, SCENE_NAME sceneName)
+        {
+            GameResultData gameResultData = new GameResultData(isCler, sceneName);
+            resultData.Add(gameResultData);
+            LoadScene(SCENE_NAME.RESULT);
+        }
 
+        public static void Reset()
+        {
+            resultData.Clear();
+            userName = null;
+        }
+
+        public static void SetUserName(string name)
+        {
+            userName = name;
+        }
     }
 
 }

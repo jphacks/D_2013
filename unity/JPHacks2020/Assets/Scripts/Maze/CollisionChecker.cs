@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Maze
 {
@@ -10,8 +8,7 @@ namespace Maze
         [SerializeField] private int _collisionNum;
         [SerializeField] private MazePlayer mazePlayer;
 
-   
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionStay(Collision collision)
         {
             if(collision.gameObject.tag == "Wall")
             {
@@ -33,7 +30,6 @@ namespace Maze
                         break;
                 }
             }
-            
         }
 
         private void OnCollisionExit(Collision collision)
@@ -58,4 +54,3 @@ namespace Maze
         }
     }
 }
-

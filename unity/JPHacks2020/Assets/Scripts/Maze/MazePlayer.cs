@@ -1,26 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Maze
 {
-    public class MazePlayer : MonoBehaviour
+    public abstract class MazePlayer : MonoBehaviour
     {
-        [SerializeField] private int PlayerId;
-        [SerializeField] private FixedJoystick _joystick;
-        private float _speed = 0.05f;
-        private float _directionX;
-        private float _directionY;
-        private int _adjustX = 1;
-        private int _adjustY = 1;
+        [SerializeField] protected int PlayerId;
+        protected int _adjustX = 1;
+        protected int _adjustY = 1;
         public bool[] collisionFront = new bool[2];
         public bool[] collisionBack = new bool[2];
         public bool[] collisionRight = new bool[2];
         public bool[] collisionLeft = new bool[2];
-        private bool _isPlay = false;
-        [SerializeField] MazeManager mazeManager;
+        protected bool _isPlay = false;
+        [SerializeField] protected MazeManager mazeManager;
 
-        // Start is called before the first frame update
         void Start()
         {
             for(int i = 0; i < collisionFront.Length; i++)
@@ -44,33 +37,9 @@ namespace Maze
             }
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            _directionX = _joystick.Direction.x;
-            _directionY = _joystick.Direction.y;
-            
-            if (_isPlay)
-            {
-                if (collisionFront[PlayerId - 1] && _directionY > 0)
-                {
-                    _directionY = 0;
-                }
-                if (collisionBack[PlayerId - 1] && _directionY < 0)
-                {
-                    _directionY = 0;
-                }
-                if (collisionRight[PlayerId - 1] && _directionX > 0)
-                {
-                    _directionX = 0;
-                }
-                if (collisionLeft[PlayerId - 1] && _directionX < 0)
-                {
-                    _directionX = 0;
-                }
-                this.transform.position += new Vector3(_adjustX * _speed * _directionX, 0, _adjustY * _speed * _directionY);
-            }
-            _isPlay = mazeManager.isPlay;
+            PlayerMove();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -80,6 +49,8 @@ namespace Maze
                 mazeManager.isClear = true;
             }
         }
+
+        protected abstract void PlayerMove(); 
     }    
 }
 

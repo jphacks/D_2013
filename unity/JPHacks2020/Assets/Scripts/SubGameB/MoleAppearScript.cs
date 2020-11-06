@@ -11,25 +11,34 @@ namespace Mole
         [SerializeField] GameObject[] dummy;
         [SerializeField] ScoreScript scorescript;
 
+        public Vector3[] posGhost;
+        public Vector3[] posDummy;
         private int _apperPos;
         private float _interval;
         private float _timer = 0;
-
         private float _dummyrate;
+
+        public float spenttimer;
         
         
         // Start is called before the first frame update
         void Start()
         {
             _interval = 2f;
-           
+            spenttimer = 0;
+
+            for (int i =0;i<9;i++) {
+                posGhost[i] = moles[i].transform.GetChild(0).GetComponent<Transform>().localPosition;
+                posDummy[i] = dummy[i].transform.GetChild(0).GetComponent<Transform>().localPosition;
+            }
+              
         }
 
         // Update is called once per frame
         void Update()
         {
             _timer += Time.deltaTime;
-
+            spenttimer += Time.deltaTime;
             if (scorescript.score >= 7) {
 
                 _interval = 1f;
@@ -65,10 +74,24 @@ namespace Mole
         }
         
         private IEnumerator Disapp(int disPos) {
+
             yield return new WaitForSeconds(5f);
-            moles[disPos].SetActive(false);
-            dummy[disPos].SetActive(false);
-            
+
+            if (moles[disPos].transform.GetChild(0).gameObject.activeSelf) {
+                
+                moles[disPos].transform.GetChild(0).localPosition = posGhost[disPos];
+                moles[disPos].SetActive(false);
+
+            }
+
+            if (dummy[disPos].transform.GetChild(0).gameObject.activeSelf)
+            {
+                
+                dummy[disPos].transform.GetChild(0).localPosition = posDummy[disPos];
+                dummy[disPos].SetActive(false);
+
+            }
+
         }
     }
 
