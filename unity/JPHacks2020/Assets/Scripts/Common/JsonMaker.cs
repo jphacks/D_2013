@@ -36,6 +36,12 @@ namespace Common
         {
             return data.Split(',');
         }
+
+        public static string ReturnIdName(string data)
+        {
+            var splitId = data.Split(':');
+            return splitId[1];
+        }
     }
 
 }

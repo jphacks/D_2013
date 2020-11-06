@@ -6,6 +6,7 @@ namespace Common
     public static class DefineData
     {
         public static List<GameResultData> resultData = new List<GameResultData>();
+        public static string userName;
 
         public enum SCENE_NAME {
             TITLE,
@@ -45,7 +46,7 @@ namespace Common
             { SCENE_NAME.GAME_F, "SubGameF"},
         };
 
-        public static void SetData(bool isCler, SCENE_NAME sceneName)
+        public static void SetData(bool isCler, DefineData.SCENE_NAME sceneName)
         {
             GameResultData gameResultData = new GameResultData(isCler, sceneName);
             resultData.Add(gameResultData);
@@ -55,6 +56,12 @@ namespace Common
         public static void Reset()
         {
             resultData.Clear();
+            userName = null;
+        }
+
+        public static void SetUserName(string name)
+        {
+            userName = name;
         }
     }
 
