@@ -1,11 +1,10 @@
 # pulled from repo
 name: "Rubocop"
 
-on: push
-  branches:
+on:
+  push:
+    branches:
       - master
-    paths:
-      - 'backend/**'
 
 jobs:
   rubocop:
