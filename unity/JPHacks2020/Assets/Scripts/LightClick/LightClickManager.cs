@@ -138,7 +138,9 @@ public class LightClickManager : MonoBehaviour
                     _isPlay = false;
                     scooreView.SetActive(true);
                     _clearSource.Play();
-                    _restartNum.text = "リスタート回数：" + _restartCount.ToString();
+                    _restartNum2.text = _restartCount.ToString() + "回";
+                    Debug.Log(_gameTimer);
+                    _gameTime2.text = _gameTimer.ToString("f1") + "秒";
                 }
             }
             else
@@ -149,8 +151,7 @@ public class LightClickManager : MonoBehaviour
                 _isPlay = false;
                 Invoke("SetNum", 1.5f);
                 
-                _restartNum2.text = _restartCount.ToString() + "回";
-                _gameTime2.text =  _gameTimer.ToString("f1") + "秒";
+                
             }
         }
     }
