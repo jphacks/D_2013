@@ -48,7 +48,6 @@ const TitleScreen = ({ navigation }) => {
 };
 
 const Title = () => {
-
   return (
     <>
       <Stack.Navigator {...StackNavigatorProps}>

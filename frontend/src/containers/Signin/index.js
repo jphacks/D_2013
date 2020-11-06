@@ -9,10 +9,7 @@ import {
   TextInput,
   Dimensions,
 } from "react-native";
-import {
-  Container,
-  Form,
-} from "native-base";
+import { Container, Form } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import * as Facebook from "expo-facebook";
@@ -158,7 +155,6 @@ const SigninScreen = ({ navigation }) => {
 };
 
 const Signin = () => {
-
   return (
     <>
       <Stack.Navigator {...StackNavigatorProps}>
