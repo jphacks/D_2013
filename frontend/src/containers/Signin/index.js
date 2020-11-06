@@ -118,32 +118,26 @@ const SigninScreen = ({ navigation }) => {
         <ImageBackground source={BgImage} style={Styles.image}>
           <Form>
             <Text style={Styles.textStyle}>Eメール</Text>
-            <ImageBackground
-                source={form}
-                style={Styles.image}
-              >
-            <View style={Styles.sectionStyle}>
-              <TextInput
-                style={{flex: 1}}
-                placeholder="Enter Your Email"
-                onChangeText={(email) => setEmail(email)}
-              />
+            <ImageBackground source={form} style={Styles.image}>
+              <View style={Styles.sectionStyle}>
+                <TextInput
+                  style={{ flex: 1 }}
+                  placeholder="Enter Your Email"
+                  onChangeText={(email) => setEmail(email)}
+                />
               </View>
-              </ImageBackground>
+            </ImageBackground>
 
             <Text style={Styles.textStyle}>パスワード</Text>
-            <ImageBackground
-                source={form}
-                style={Styles.image}
-              >
-            <View style={Styles.sectionStyle}>
-              <TextInput
-                style={{flex: 1}}
-                placeholder="Enter Your Password"
-                onChangeText={(password) => setPassword(password)}
-              />
+            <ImageBackground source={form} style={Styles.image}>
+              <View style={Styles.sectionStyle}>
+                <TextInput
+                  style={{ flex: 1 }}
+                  placeholder="Enter Your Password"
+                  onChangeText={(password) => setPassword(password)}
+                />
               </View>
-              </ImageBackground>
+            </ImageBackground>
             <TouchableOpacity onPress={loginUser}>
               <Image style={Styles.image} source={btnLogin2} />
             </TouchableOpacity>
@@ -187,10 +181,10 @@ const Styles = StyleSheet.create({
     alignItems: "center",
   },
   sectionStyle: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
     height: 22,
     borderRadius: 5,
     margin: 10,
@@ -200,7 +194,7 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     height: 25,
     width: 25,
-    resizeMode: 'stretch',
+    resizeMode: "stretch",
   },
   textStyle: {
     margin: 10,
