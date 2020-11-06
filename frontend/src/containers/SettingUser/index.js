@@ -161,11 +161,16 @@ const SettingUserScreen = ({ navigation }) => {
             <Text style={Styles.textStyle}>プレイヤー名</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
-                <TextInput
-                  style={{ flex: 1 }}
-                  placeholder="Enter Your Name"
-                  onChangeText={(name) => setName(name)}
-                />
+                  {user?.name ?
+                    < TextInput
+                      style={{ flex: 1 }}
+                      placeholder={user.name}
+                      onChangeText={(name) => setName(name)}
+                    /> : < TextInput
+                      style={{ flex: 1 }}
+                      placeholder="Enter Your Name"
+                      onChangeText={(name) => setName(name)}
+                    />}
               </View>
             </ImageBackground>
 

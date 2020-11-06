@@ -8,7 +8,7 @@ import { format as formatTZ } from "date-fns-tz";
 import WithHeader from "src/components/WithHeader";
 import BgImage from "src/assets/corr_homebg.png";
 import UnityScreen from "src/containers/UnityScreen";
-import SettingScreen from "src/containers/SettingScreen";
+import SettingScreen from "src/containers/SettingUser";
 import { AuthContext } from "src/utils/auth";
 
 import * as firebase from "firebase";
