@@ -1,5 +1,14 @@
 import React, { useState, useCallback, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  Dimensions,
+} from "react-native";
 import {
   Container,
   Form,
@@ -14,13 +23,20 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
-import BgImage from "src/assets/bg.png";
+import BgImage from "src/assets/corr2_settingAccount.png";
+import btnLogin from "src/assets/titleScene/createUser_btnNewCreateAccount.png";
+import btnLogin2 from "src/assets/titleScene/createUser_btnLogin2.png";
+import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
+import modal from "src/assets/titleScene/createUser_modal.png";
+import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
 
 import "firebase/firestore";
 
 const Stack = createStackNavigator();
+
+const { width, height, scale } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -100,62 +116,50 @@ const SigninScreen = ({ navigation }) => {
 
   return (
     <>
-      {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Container style={Styles.container}>
-        <ImageBackground source={BgImage} style={Styles.image}>
-          <Text style={{ color: "#888", fontSize: 18 }}>
-            タコ天にちょっと勝ちたい
-          </Text>
-          <Form>
-            <Item>
-              <Label>Eメール</Label>
-              <Input
-                autoCorrect={false}
-                autoCapitalize="none"
-                onChangeText={(email) => setEmail(email)}
-              />
-            </Item>
+        <ImageBackground
+          source={BgImage}
+          style={{ width: width, height: height }}
+        >
+          <View style={Styles.image}>
+            <Form>
+              <View style={{ marginTop: 170 }}></View>
+              {errorMsg !== null && <Text>{errorMsg}</Text>}
+              <Text style={Styles.textStyle}>Eメール</Text>
+              <ImageBackground source={form} style={Styles.image}>
+                <View style={Styles.sectionStyle}>
+                  <TextInput
+                    style={{ flex: 1 }}
+                    placeholder="Enter Your Email"
+                    onChangeText={(email) => setEmail(email)}
+                  />
+                </View>
+              </ImageBackground>
 
-            <Item>
-              <Label>パスワード</Label>
-              <Input
-                secureTextEntry={true}
-                autoCorrect={false}
-                autoCapitalize="none"
-                onChangeText={(password) => setPassword(password)}
-              />
-            </Item>
+              <Text style={Styles.textStyle}>パスワード</Text>
+              <ImageBackground source={form} style={Styles.image}>
+                <View style={Styles.sectionStyle}>
+                  <TextInput
+                    style={{ flex: 1 }}
+                    secureTextEntry={true}
+                    placeholder="Enter Your Password"
+                    onChangeText={(password) => setPassword(password)}
+                  />
+                </View>
+              </ImageBackground>
+              <TouchableOpacity onPress={loginUser}>
+                <Image style={Styles.image} source={btnLogin2} />
+              </TouchableOpacity>
 
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              success
-              onPress={loginUser}
-            >
-              <Text style={{ color: "white" }}>ログイン</Text>
-            </Button>
+              <TouchableOpacity onPress={signUpUser}>
+                <Image style={Styles.image} source={btnLogin3} />
+              </TouchableOpacity>
 
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              primary
-              onPress={signUpUser}
-            >
-              <Text style={{ color: "white" }}>サインアップ</Text>
-            </Button>
-
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              primary
-              onPress={loginWithFacebook}
-            >
-              <Text style={{ color: "white" }}>Facebookログイン</Text>
-            </Button>
-          </Form>
+              <TouchableOpacity onPress={loginWithFacebook}>
+                <Image style={Styles.image} source={btnLogin} />
+              </TouchableOpacity>
+            </Form>
+          </View>
         </ImageBackground>
       </Container>
     </>
@@ -183,9 +187,27 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    flex: 1,
-    resizeMode: "cover",
     justifyContent: "center",
+    alignItems: "center",
+  },
+  sectionStyle: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    height: 22,
+    borderRadius: 5,
+    margin: 10,
+  },
+  formImageStyle: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 25,
+    width: 25,
+    resizeMode: "stretch",
+  },
+  textStyle: {
+    margin: 10,
   },
 });
 

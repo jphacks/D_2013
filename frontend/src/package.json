@@ -1,6 +1,6 @@
 {
   "name": "src",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -33,6 +33,7 @@
     "react-native-gesture-handler": "~1.7.0",
     "react-native-modal-datetime-picker": "^9.0.0",
     "react-native-screens": "~2.10.1",
+    "react-native-svg": "^12.1.0",
     "react-native-web": "~0.13.12",
     "react-native-webview": "10.7.0",
     "react-unity-webgl": "^8.0.2"

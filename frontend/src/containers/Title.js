@@ -1,5 +1,11 @@
 import React, { useState, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+} from "react-native";
 import { Container, Content, Header, Button } from "native-base";
 
 import { createStackNavigator } from "@react-navigation/stack";
@@ -10,6 +16,8 @@ import Signin from "src/containers/Signin";
 import Home from "src/containers/Home";
 
 const Stack = createStackNavigator();
+
+const { width, height, scale } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -24,16 +32,16 @@ const TitleScreen = ({ navigation }) => {
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={TitleBGImage} style={Styles.image}>
+        <ImageBackground
+          source={TitleBGImage}
+          style={{ width: width, height: height }}
+        >
           <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
+            bordered
+            light
+            style={{ width: width, height: height }}
             onPress={onSigninPress}
-          >
-            <Text style={{ color: "white" }}>Tap to This Button</Text>
-          </Button>
+          ></Button>
         </ImageBackground>
       </View>
     </>
@@ -59,11 +67,6 @@ const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FCDDAD",
-    justifyContent: "center",
-  },
-  image: {
-    flex: 1,
-    resizeMode: "cover",
     justifyContent: "center",
   },
 });

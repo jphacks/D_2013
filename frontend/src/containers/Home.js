@@ -1,20 +1,35 @@
 import React, { useState, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import { Container, Content, Header, Button } from "native-base";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+  View,
+  Dimensions,
+} from "react-native";
+import { Form, Header } from "native-base";
 
+import { Avatar } from "@ui-kitten/components";
 import { createStackNavigator } from "@react-navigation/stack";
 import { format as formatTZ } from "date-fns-tz";
 
 import WithHeader from "src/components/WithHeader";
-import BgImage from "src/assets/bg.png";
+import BgImage from "src/assets/corr_homebg.png";
 import UnityScreen from "src/containers/UnityScreen";
-import SettingScreen from "src/containers/SettingScreen";
+import SettingScreen from "src/containers/SettingUser";
+import btnUnity from "src/assets/titleScene/home_btnChoiceGame.png";
+import btnSetting from "src/assets/titleScene/home_btnQOL.png";
+import avatar from "src/assets/titleScene/home_icon.png";
+import mask from "src/assets/maskA10_2.png";
 import { AuthContext } from "src/utils/auth";
 
 import * as firebase from "firebase";
 import "firebase/firestore";
 
 const Stack = createStackNavigator();
+
+const { width, height, scale } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -23,7 +38,7 @@ const StackNavigatorProps = {
 };
 
 const HomeScreen = ({ navigation }) => {
-  const { currentUser } = useContext(AuthContext);
+  const { userInfo, currentUser } = useContext(AuthContext);
 
   const onUnityPress = () => {
     navigation.navigate("UnityScreen");
@@ -31,7 +46,7 @@ const HomeScreen = ({ navigation }) => {
     var date = new Date();
     db.collection("events")
       .add({
-        uid: currentUser.uid,
+        user_id: currentUser.uid,
         getup_time: formatTZ(
           date,
           "yyyy-MM-dd HH:mm:ss xxx",
@@ -54,25 +69,35 @@ const HomeScreen = ({ navigation }) => {
   return (
     <>
       <View style={Styles.container}>
-        <ImageBackground source={BgImage} style={Styles.image}>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={onUnityPress}
+        <ImageBackground
+          source={BgImage}
+          style={{ width: width, height: height }}
+        >
+          <Header
+            style={{
+              backgroundColor: "#2D4369",
+              justifyContent: "space-around",
+            }}
           >
-            <Text style={{ color: "white" }}>ゲームを選択</Text>
-          </Button>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={onSettingTimePress}
-          >
-            <Text style={{ color: "white" }}>生活習慣を設定</Text>
-          </Button>
+            <View style={Styles.profile}>
+              <Avatar
+                style={Styles.profileAvatar}
+                size="large"
+                source={avatar}
+              />
+              <Text style={Styles.profileText}>{userInfo?.name}hogehoge</Text>
+            </View>
+            <Image style={Styles.maskStyle} source={mask} />
+          </Header>
+          <View style={Styles.image}>
+            <TouchableOpacity style={{ marginTop: 370 }} onPress={onUnityPress}>
+              <Image style={Styles.image} source={btnUnity} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={onSettingTimePress}>
+              <Image style={Styles.image} source={btnSetting} />
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </View>
     </>
@@ -101,9 +126,31 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    flex: 1,
-    resizeMode: "cover",
     justifyContent: "center",
+    alignItems: "center",
+    margin: 10,
+  },
+  profile: {
+    position: "absolute",
+    left: 10,
+    top: 5,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  profileAvatar: {
+    marginHorizontal: 8,
+  },
+  profileText: {
+    flexDirection: "row",
+    fontSize: 36,
+    fontWeight: "bold",
+    color: "white",
+  },
+  maskStyle: {
+    justifyContent: "flex-end",
+    position: "absolute",
+    top: -90,
+    right: -10,
   },
 });
 
