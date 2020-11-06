@@ -2,7 +2,8 @@
 name: "Rubocop"
 
 on: push
-  only:
+  branches:
+    only:
       - master
 
 jobs:
