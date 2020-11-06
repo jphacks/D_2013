@@ -1,4 +1,15 @@
-# いなすりー (enoslee)
+# <div style="text-align: center;">いなすりー (Enoslee)</div>
+<div style="text-align: center;">
+生活習慣乱れた大学生が、<br>
+
+決まった時間に寝て、起きるようになれることで<br>
+
+生活習慣が改善される。<br>
+
+そのきっかけを<br>
+
+作るサービス、アプリ。<br>
+</div>
 
 [![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://www.youtube.com/watch?v=G5rULR53uMk)
 
