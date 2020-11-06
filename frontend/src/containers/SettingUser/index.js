@@ -9,9 +9,7 @@ import {
   TextInput,
   Dimensions,
 } from "react-native";
-import {
-  Form,
-} from "native-base";
+import { Form } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import DateTimePicker from "react-native-modal-datetime-picker";

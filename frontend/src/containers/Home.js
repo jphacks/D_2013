@@ -103,7 +103,6 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const Home = () => {
-
   return (
     <>
       <Stack.Navigator {...StackNavigatorProps}>
