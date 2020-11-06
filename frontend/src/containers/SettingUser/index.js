@@ -19,9 +19,12 @@ import {
 } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import * as firebase from "firebase";
+import DateTimePicker from "react-native-modal-datetime-picker";
+import { format } from "date-fns";
+import { format as formatTZ } from "date-fns-tz";
 
 import BgImage from "src/assets/bg.png";
+import btnClick from "src/assets/titleScene/btnClick.png";
 import btnOk from "src/assets/titleScene/btnOk.png";
 import btnKinoko from "src/assets/titleScene/btnKinoko.png";
 import btnTake from "src/assets/titleScene/btnTake.png";
@@ -29,6 +32,7 @@ import modal from "src/assets/titleScene/createUser_modal.png";
 import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 
+import * as firebase from "firebase";
 import "firebase/firestore";
 import Home from "src/containers/Home";
 
@@ -43,12 +47,14 @@ const StackNavigatorProps = {
 const SettingUserScreen = ({ navigation }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [name, setName] = useState(null);
-  const [password, setPassword] = useState(null);
-  const { signup, signin } = useContext(AuthContext);
+  const [viewSleepDate, setViewSleepDate] = useState(null);
+  const [viewDate, setViewDate] = useState(null);
+  const [isDateTimePickerVisible_Sleep, setIsDateTimePickerVisible_Sleep] = useState(false);
+  const [isDateTimePickerVisible, setIsDateTimePickerVisible] = useState(false);
 
-  const onHomePress = () => {
-    navigation.navigate("Home");
-  };
+  const { currentUser } = useContext(AuthContext);
+
+  const db = firebase.firestore();
 
   const onTakePress = () => {
     navigation.navigate("Home");
@@ -58,8 +64,79 @@ const SettingUserScreen = ({ navigation }) => {
     navigation.navigate("Home");
   };
 
-  const onSettingOkPress = () => {
+  const showDateTimePicker_Sleep = () => {
+    setIsDateTimePickerVisible_Sleep(true);
+  };
 
+  const hideDateTimePicker_Sleep = () => {
+    setIsDateTimePickerVisible_Sleep(false);
+  };
+
+  const showDateTimePicker = () => {
+    setIsDateTimePickerVisible(true);
+  };
+
+  const hideDateTimePicker = () => {
+    setIsDateTimePickerVisible(false);
+  };
+
+  const SleepTimePress = (date) => {
+    setViewSleepDate(date);
+    db.collection("events")
+      .add({
+        uid: currentUser.uid,
+        sleep_time: formatTZ(
+          date,
+          "yyyy-MM-dd HH:mm:ss xxx",
+          {
+            timeZone: "Asia/Tokyo",
+          },
+          { merge: true }
+        ),
+      })
+      .catch((error) => {
+        // error
+        setErrorMsg(error);
+      });
+    hideDateTimePicker_Sleep();
+  };
+
+  const GetUpHopeTimePress = (date) => {
+    setViewDate(date);
+    db.collection("events")
+      .add({
+        uid: currentUser.uid,
+        getup_hope_time: formatTZ(
+          date,
+          "yyyy-MM-dd HH:mm:ss xxx",
+          {
+            timeZone: "Asia/Tokyo",
+          },
+          { merge: true }
+        ),
+      })
+      .catch((error) => {
+        // error
+        setErrorMsg(error);
+      });
+    hideDateTimePicker();
+  };
+
+  const onSettingOkPress = () => {
+    if (String(name) === "null") {
+        setErrorMsg("名前を入力してください");
+        return;
+      }
+    db.collection("users").doc(currentUser.uid).set({
+      name: name,
+      score: 0,
+      on_Game: false,
+      },{ merge: true })
+      .catch((error) => {
+        // error
+        setErrorMsg(error);
+      });
+    navigation.navigate("Home");
   };
 
   return (
@@ -74,7 +151,7 @@ const SettingUserScreen = ({ navigation }) => {
                 <TextInput
                   style={{ flex: 1 }}
                   placeholder="Enter Your Name"
-                  onChangeText={(name) => setEmail(name)}
+                  onChangeText={(name) => setName(name)}
                 />
               </View>
             </ImageBackground>
@@ -82,24 +159,32 @@ const SettingUserScreen = ({ navigation }) => {
             <Text style={Styles.textStyle}>寝る時間</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
-                <TextInput
-                  style={{ flex: 1 }}
-                  secureTextEntry={true}
-                  placeholder="Enter Your Password"
-                  onChangeText={(password) => setPassword(password)}
-                />
+                {String(viewSleepDate) != "null" ? <Text style={{ flex: 1 }}>{String(viewSleepDate)}</Text> : <Text style={{ flex: 1 }}/>}
+                <TouchableOpacity title="Sleep_time" onPress={showDateTimePicker_Sleep}>
+                  <Image style={Styles.okImage} source={btnClick} />
+                <DateTimePicker
+                    isVisible={isDateTimePickerVisible_Sleep}
+                    onConfirm={SleepTimePress}
+                    mode="time"
+                    onCancel={hideDateTimePicker_Sleep}
+                  />
+              </TouchableOpacity>
               </View>
             </ImageBackground>
 
             <Text style={Styles.textStyle}>起きる時間</Text>
             <ImageBackground source={form} style={Styles.image}>
               <View style={Styles.sectionStyle}>
-                <TextInput
-                  style={{ flex: 1 }}
-                  secureTextEntry={true}
-                  placeholder="Enter Your Password"
-                  onChangeText={(password) => setPassword(password)}
-                />
+                {String(viewDate) != "null" ? <Text style={{ flex: 1 }}>{String(viewDate)}</Text> : <Text style={{ flex: 1 }}/>}
+                <TouchableOpacity title="Getup_hope_time" onPress={showDateTimePicker}>
+                  <Image style={Styles.okImage} source={btnClick} />
+                  <DateTimePicker
+                    isVisible={isDateTimePickerVisible}
+                    onConfirm={GetUpHopeTimePress}
+                    mode="time"
+                    onCancel={hideDateTimePicker}
+                  />
+              </TouchableOpacity>
               </View>
             </ImageBackground>
 
@@ -148,6 +233,13 @@ const Styles = StyleSheet.create({
   image: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  okImage: {
+    justifyContent: "center",
+    alignItems: "center",
+    resizeMode: "stretch",
+    width: 25,
+    height: 25,
   },
   sectionStyle: {
     flexDirection: "row",
