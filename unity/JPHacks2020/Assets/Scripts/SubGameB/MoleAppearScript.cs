@@ -16,8 +16,6 @@ namespace Mole
         private int _apperPos;
         private float _interval;
         private float _timer = 0;
-        public Vector3 initialPosGhost;
-        public Vector3 initialPosDummy;
         private float _dummyrate;
         
         
@@ -73,13 +71,22 @@ namespace Mole
         }
         
         private IEnumerator Disapp(int disPos) {
+
             yield return new WaitForSeconds(5f);
+
             if (moles[disPos].transform.GetChild(0).gameObject.activeSelf) {
+                
                 moles[disPos].transform.GetChild(0).localPosition = posGhost[disPos];
                 moles[disPos].SetActive(false);
-            } else if (moles[disPos].transform.GetChild(1).gameObject.activeSelf) {
-                dummy[disPos].transform.GetChild(1).localPosition = posDummy[disPos];
+
+            }
+
+            if (dummy[disPos].transform.GetChild(0).gameObject.activeSelf)
+            {
+                
+                dummy[disPos].transform.GetChild(0).localPosition = posDummy[disPos];
                 dummy[disPos].SetActive(false);
+
             }
 
         }
