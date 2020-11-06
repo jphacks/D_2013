@@ -22,6 +22,7 @@ import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
 import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
+import { useFonts } from 'expo-font';
 
 import "firebase/firestore";
 
@@ -101,6 +102,14 @@ const SigninScreen = ({ navigation }) => {
         ))
       : setErrorMsg(error);
   };
+
+  const [loaded] = useFonts({
+    checkpointFont: require('./assets/fonts/checkpointfont.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <>
@@ -193,6 +202,7 @@ const Styles = StyleSheet.create({
   },
   textStyle: {
     margin: 10,
+    fontFamily: "checkpointFont",
   },
 });
 
