@@ -27,11 +27,9 @@ const TitleScreen = ({ navigation }) => {
     <>
       <View style={Styles.container}>
         <ImageBackground source={TitleBGImage} style={{width: width, height: height}}>
-          <Button bordered light
+          <Button
+            bordered light
             style={{width: width, height: height}}
-            // full
-            // rounded
-            // success
             onPress={onSigninPress}
           >
           </Button>
