@@ -8,13 +8,12 @@ import {
   View,
   Dimensions,
 } from "react-native";
-import { Form, Header } from "native-base";
+import { Header } from "native-base";
 
 import { Avatar } from "@ui-kitten/components";
 import { createStackNavigator } from "@react-navigation/stack";
 import { format as formatTZ } from "date-fns-tz";
 
-import WithHeader from "src/components/WithHeader";
 import BgImage from "src/assets/corr_homebg.png";
 import UnityScreen from "src/containers/UnityScreen";
 import SettingScreen from "src/containers/SettingUser";
@@ -57,7 +56,6 @@ const HomeScreen = ({ navigation }) => {
         ),
       })
       .catch((error) => {
-        // error
         setErrorMsg(error);
       });
   };
@@ -105,11 +103,8 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const Home = () => {
-  const [errorMsg, setErrorMsg] = useState(null);
-
   return (
     <>
-      {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Stack.Navigator {...StackNavigatorProps}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="UnityScreen" component={UnityScreen} />

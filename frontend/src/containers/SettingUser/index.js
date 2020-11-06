@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   ImageBackground,
   StyleSheet,
@@ -9,19 +9,10 @@ import {
   TextInput,
   Dimensions,
 } from "react-native";
-import {
-  Container,
-  Form,
-  Input,
-  Item,
-  Label,
-  Header,
-  Button,
-} from "native-base";
+import { Form } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
-import { format } from "date-fns";
 import { format as formatTZ } from "date-fns-tz";
 
 import BgImage from "src/assets/corr2_createAccount.png";
@@ -29,7 +20,6 @@ import btnClick from "src/assets/titleScene/btnClick.png";
 import btnOk from "src/assets/titleScene/btnOk.png";
 import btnKinoko from "src/assets/titleScene/btnKinoko.png";
 import btnTake from "src/assets/titleScene/btnTake.png";
-import modal from "src/assets/titleScene/createUser_modal.png";
 import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 
@@ -101,7 +91,6 @@ const SettingUserScreen = ({ navigation }) => {
         ),
       })
       .catch((error) => {
-        // error
         setErrorMsg(error);
       });
     hideDateTimePicker_Sleep();
@@ -122,7 +111,6 @@ const SettingUserScreen = ({ navigation }) => {
         ),
       })
       .catch((error) => {
-        // error
         setErrorMsg(error);
       });
     hideDateTimePicker();
@@ -144,7 +132,6 @@ const SettingUserScreen = ({ navigation }) => {
         { merge: true }
       )
       .catch((error) => {
-        // error
         setErrorMsg(error);
       });
     navigation.navigate("Home");
