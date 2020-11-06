@@ -9,8 +9,9 @@ namespace Mole
     {
         [SerializeField] Button[] moleButton;
         [SerializeField] Text scoretext;
-        [SerializeField] GameObject clearText;
-        [SerializeField] GameObject modalScore;
+        
+        [SerializeField] GameObject finalScore;
+
         //[SerializeField] GameObject how2play;
 
         [SerializeField] MoleAppearScript moleappearscript;
@@ -23,8 +24,8 @@ namespace Mole
         {
             scoretext.text = score.ToString();
 
-            clearText.SetActive(false);
-            modalScore.SetActive(false);
+            
+            finalScore.SetActive(false);
             //how2play.SetActive(true);
 
             moleButton[0].onClick.AddListener(() => AddPoint(0));
@@ -47,8 +48,8 @@ namespace Mole
         {
             scoretext.text = score.ToString("00");
             if (score >= _clearScore) {
-                clearText.SetActive(true);
-                modalScore.SetActive(true);
+                
+                finalScore.SetActive(true);
                 moleappearscript.enabled = false;
             }
         }
@@ -61,14 +62,19 @@ namespace Mole
                 //Debug.Log(num);
             if (moleButton[num].transform.GetChild(0).gameObject.activeSelf)
             {
+                moleButton[num].transform.GetChild(0).GetChild(0).localPosition = moleappearscript.posGhost[num];
                 moleButton[num].transform.GetChild(0).gameObject.SetActive(false);
                 score++;
 
             }
             else if (moleButton[num].transform.GetChild(1).gameObject.activeSelf)
             {
+                moleButton[num].transform.GetChild(1).GetChild(0).localPosition = moleappearscript.posDummy[num];
                 moleButton[num].transform.GetChild(1).gameObject.SetActive(false);
-                score--;
+                if (score >= 1)
+                {
+                    score--;
+                }
             }
         
 
