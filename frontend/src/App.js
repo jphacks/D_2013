@@ -16,9 +16,9 @@ const StackNavigatorProps = {
 const App = () => (
   <>
     <NavigationContainer>
-        <Stack.Navigator {...StackNavigatorProps}>
-          <Stack.Screen name="Title" component={Title} />
-        </Stack.Navigator>
+      <Stack.Navigator {...StackNavigatorProps}>
+        <Stack.Screen name="Title" component={Title} />
+      </Stack.Navigator>
     </NavigationContainer>
   </>
 );

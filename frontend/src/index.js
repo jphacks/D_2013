@@ -15,12 +15,12 @@ const auth = firebase.auth();
 
 const Root = () => (
   <FireclientProvider firestoreDB={db}>
-      <AuthProvider auth={auth}>
-        <ApplicationProvider {...eva} theme={eva.light}>
-          <App />
-        </ApplicationProvider>
-      </AuthProvider>
-    </FireclientProvider>
+    <AuthProvider auth={auth}>
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <App />
+      </ApplicationProvider>
+    </AuthProvider>
+  </FireclientProvider>
 );
 
 registerRootComponent(Root);
