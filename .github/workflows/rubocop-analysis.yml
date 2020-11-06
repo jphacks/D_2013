@@ -1,9 +1,9 @@
 # pulled from repo
 name: "Rubocop"
 
-on: push
-  branches:
-    only:
+on:
+  push:
+    branches:
       - master
 
 jobs:
