@@ -15,11 +15,13 @@ namespace Mole
         [SerializeField] private AudioSource _clearSource;
         [SerializeField] private AudioSource _clickSource;
 
+        public int missCount;
         public int score=0;
         private int _clearScore = 15;
         // Start is called before the first frame update
         void Start()
         {
+            missCount = 0;
             scoretext.text = score.ToString();
 
             
@@ -74,6 +76,7 @@ namespace Mole
 
                 if (score >= 1)
                 {
+                    missCount++;
                     score--;
                 }
 

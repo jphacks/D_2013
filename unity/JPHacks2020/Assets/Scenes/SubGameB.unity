@@ -439,7 +439,10 @@ MonoBehaviour:
   okbutton: {fileID: 310980267}
   how2Image: {fileID: 237217580}
   moleappscript: {fileID: 1434281118}
+  scorescript: {fileID: 490703633}
   finalOkButton: {fileID: 2134661576}
+  timerText: {fileID: 2009846376}
+  missText: {fileID: 1162496994}
 --- !u!4 &92974439
 Transform:
   m_ObjectHideFlags: 0
@@ -1974,6 +1977,7 @@ MonoBehaviour:
   moleappearscript: {fileID: 1434281118}
   _clearSource: {fileID: 490703636}
   _clickSource: {fileID: 490703635}
+  missCount: 0
   score: 0
 --- !u!4 &490703634
 Transform:
@@ -4838,18 +4842,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fb6907c001dd945debb8754d180cac32, type: 3}
-    m_FontSize: 58
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 58
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "\u30DF\u30B9\u56DE\u6570 : XXX"
 --- !u!222 &1162496995
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5116,7 +5120,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: ac086fec10321461faa461b9be2bb3ac, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -6093,6 +6097,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  spenttimer: 0
 --- !u!4 &1434281119
 Transform:
   m_ObjectHideFlags: 0
@@ -8171,18 +8176,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fb6907c001dd945debb8754d180cac32, type: 3}
-    m_FontSize: 58
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 58
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "\u7D4C\u904E\u6642\u9593 : XXX"
 --- !u!222 &2009846377
 CanvasRenderer:
   m_ObjectHideFlags: 0
