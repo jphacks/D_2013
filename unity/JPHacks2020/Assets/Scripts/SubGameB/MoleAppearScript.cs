@@ -17,12 +17,15 @@ namespace Mole
         private float _interval;
         private float _timer = 0;
         private float _dummyrate;
+
+        public float spenttimer;
         
         
         // Start is called before the first frame update
         void Start()
         {
             _interval = 2f;
+            spenttimer = 0;
 
             for (int i =0;i<9;i++) {
                 posGhost[i] = moles[i].transform.GetChild(0).GetComponent<Transform>().localPosition;
@@ -35,7 +38,7 @@ namespace Mole
         void Update()
         {
             _timer += Time.deltaTime;
-
+            spenttimer += Time.deltaTime;
             if (scorescript.score >= 7) {
 
                 _interval = 1f;
