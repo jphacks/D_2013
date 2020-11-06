@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Maze
 {
@@ -9,7 +7,6 @@ namespace Maze
         [SerializeField] private int PlayerId;
         [SerializeField] private int _collisionNum;
         [SerializeField] private MazePlayer mazePlayer;
-
 
         private void OnCollisionStay(Collision collision)
         {
@@ -33,7 +30,6 @@ namespace Maze
                         break;
                 }
             }
-            
         }
 
         private void OnCollisionExit(Collision collision)
@@ -58,4 +54,3 @@ namespace Maze
         }
     }
 }
-

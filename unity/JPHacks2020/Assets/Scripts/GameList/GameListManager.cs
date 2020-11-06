@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameListManager : MonoBehaviour
@@ -91,6 +89,7 @@ public class GameListManager : MonoBehaviour
 
     void OnClickLoadScene(int id)
     {
+        Common.DefineData.Reset();
         switch (id)
         {
             case 0:

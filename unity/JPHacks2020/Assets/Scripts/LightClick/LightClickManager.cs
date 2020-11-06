@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Common;
 
 public class LightClickManager : MonoBehaviour
 {
@@ -156,5 +157,6 @@ public class LightClickManager : MonoBehaviour
     {
         _clickSource.Play();
         Debug.Log("HOGEHOGE");
+        DefineData.SetData(true, DefineData.SCENE_NAME.GAME_C);
     }
 }

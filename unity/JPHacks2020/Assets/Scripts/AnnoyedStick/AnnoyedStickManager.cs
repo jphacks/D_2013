@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Common;
 
 namespace AnnoyedStick
 {
@@ -77,6 +78,7 @@ namespace AnnoyedStick
         {
             _clickSource.Play();
             Debug.Log("HOGEHOGE");
+            DefineData.SetData(true, DefineData.SCENE_NAME.GAME_E);
         }
         void Restart()
         {

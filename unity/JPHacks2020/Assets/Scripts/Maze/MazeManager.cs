@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityConnection;
+using Common;
 
 namespace Maze
 {
@@ -24,7 +23,6 @@ namespace Maze
         public bool isPlay = false;
         private bool _isTimerCount = true;
         public bool isClear = false;
-
 
         // Start is called before the first frame update
         void Start()
@@ -58,6 +56,7 @@ namespace Maze
                 scooreView.SetActive(true);
                 isPlay = false;
                 isClear = false;
+                DefineData.SetData(true, DefineData.SCENE_NAME.GAME_A);
             }
         }
 
@@ -103,4 +102,3 @@ namespace Maze
         }
     }
 }
-

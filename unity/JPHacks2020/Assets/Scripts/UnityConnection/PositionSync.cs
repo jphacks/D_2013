@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using WebSocketSharp;
 using UniRx;
 using Common;
 
 namespace UnityConnection
 {
-
     public class PositionSync : SingletonMonoBehaviour<PositionSync>
     {
         [SerializeField] private string _serverAddress;
@@ -17,9 +14,6 @@ namespace UnityConnection
 
         public Transform _syncObjTransform { private get; set; }
         [SerializeField] private SYNC_PHASE _nowPhase;
-
-        //[SerializeField] private Button _startButton;
-        //[SerializeField] private Button _stopButton;
 
         public Queue<Vector3> PosQueue = new Queue<Vector3>();
 
@@ -40,9 +34,6 @@ namespace UnityConnection
             cTransformValue.ThrottleFirstFrame(5).Subscribe(pos => OnChangedTargetTransformValue(pos));
 
             OnSyncStartButtonDown();
-
-            //_startButton.onClick.AddListener(OnSyncStartButtonDown);
-            //_stopButton.onClick.AddListener(OnSyncStopButtonDown);
         }
 
         public void OnSyncStartButtonDown()
@@ -83,13 +74,9 @@ namespace UnityConnection
         {
             if (_nowPhase == SYNC_PHASE.Syncing)
             {
-                //Debug.Log(pos);
                 string data = JsonMaker.SendStringData(pos);
-                //Debug.Log(data);
                 _ws.Send(data);
-                //ws.Send(pos.ToString());
             }
         }
     }
-    
 }
