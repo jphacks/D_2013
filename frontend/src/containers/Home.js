@@ -71,13 +71,13 @@ const HomeScreen = ({ navigation }) => {
           style={{ width: width, height: height }}
         >
           <View style={Styles.image}>
-            <TouchableOpacity style={{marginTop: 450}} onPress={onUnityPress}>
-                <Image style={Styles.image} source={btnUnity} />
-              </TouchableOpacity>
+            <TouchableOpacity style={{ marginTop: 450 }} onPress={onUnityPress}>
+              <Image style={Styles.image} source={btnUnity} />
+            </TouchableOpacity>
 
-              <TouchableOpacity onPress={onSettingTimePress}>
-                <Image style={Styles.image} source={btnSetting} />
-              </TouchableOpacity>
+            <TouchableOpacity onPress={onSettingTimePress}>
+              <Image style={Styles.image} source={btnSetting} />
+            </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>
