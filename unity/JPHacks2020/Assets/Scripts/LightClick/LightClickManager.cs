@@ -148,7 +148,7 @@ public class LightClickManager : MonoBehaviour
                 Debug.Log("ALERT");
                 _isPlay = false;
                 Invoke("SetNum", 1.5f);
-                _restartCount++;
+                
                 _restartNum2.text = _restartCount.ToString() + "回";
                 _gameTime2.text =  _gameTimer.ToString("f1") + "秒";
             }
