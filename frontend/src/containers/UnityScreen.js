@@ -20,7 +20,9 @@ const UnityScreen = () => {
           <WebView
             originWhitelist={["*"]}
             // ここに使用URLを流す
-            source={{ uri: `https://desolate-ocean-79020.herokuapp.com/setting_game?uid=${currentUser.uid}` }}
+            source={{
+              uri: `https://desolate-ocean-79020.herokuapp.com/setting_game?uid=${currentUser.uid}`,
+            }}
             style={{ marginTop: 50, marginBottom: 50 }}
           />
           <Text>Hello JPHacks2020</Text>
