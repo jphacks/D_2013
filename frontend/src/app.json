@@ -5,9 +5,9 @@
     "privacy": "public",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon_enoslee.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash_enoslee.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,17 +19,18 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "jp.youardomain.myapp"
+      "bundleIdentifier": "jp.ramenmashi.enoslee"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon_enoslee.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "jp.yourdomain.myapp"
+      "package": "jp.ramenmashi.enoslee",
+      "permissions": []
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/titleScene/home_icon2.png"
     },
     "description": ""
   }

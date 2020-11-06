@@ -6,7 +6,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "ios-build":"expo ",
+    "android-build":"expo build:android -t apk"
   },
   "dependencies": {
     "@asmadsen/react-native-unity-view": "^0.0.7",
