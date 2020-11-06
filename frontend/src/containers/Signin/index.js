@@ -9,15 +9,7 @@ import {
   TextInput,
   Dimensions,
 } from "react-native";
-import {
-  Container,
-  Form,
-  Input,
-  Item,
-  Label,
-  Header,
-  Button,
-} from "native-base";
+import { Container, Form } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import * as Facebook from "expo-facebook";
@@ -27,7 +19,6 @@ import BgImage from "src/assets/corr2_settingAccount.png";
 import btnLogin from "src/assets/titleScene/createUser_btnNewCreateAccount.png";
 import btnLogin2 from "src/assets/titleScene/createUser_btnLogin2.png";
 import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
-import modal from "src/assets/titleScene/createUser_modal.png";
 import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
@@ -36,7 +27,7 @@ import "firebase/firestore";
 
 const Stack = createStackNavigator();
 
-const { width, height, scale } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 const StackNavigatorProps = {
   mode: "modal",
@@ -65,7 +56,6 @@ const SigninScreen = ({ navigation }) => {
           rootSetting();
         },
         (error) => {
-          // error
           setErrorMsg(error);
         }
       );
@@ -82,8 +72,7 @@ const SigninScreen = ({ navigation }) => {
         () => {
           rootSetting();
         },
-        (error) => {
-          // error
+        () => {
           setErrorMsg("パスワードが間違えています。");
         }
       );
@@ -107,7 +96,6 @@ const SigninScreen = ({ navigation }) => {
             rootSetting();
           },
           (error) => {
-            // error
             setErrorMsg(error);
           }
         ))
@@ -167,11 +155,8 @@ const SigninScreen = ({ navigation }) => {
 };
 
 const Signin = () => {
-  const [errorMsg, setErrorMsg] = useState(null);
-
   return (
     <>
-      {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Stack.Navigator {...StackNavigatorProps}>
         <Stack.Screen name="SigninScreen" component={SigninScreen} />
         <Stack.Screen name="SettingUser" component={SettingUser} />
