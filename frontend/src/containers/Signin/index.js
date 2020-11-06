@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import {
   Container,
   Form,
@@ -15,6 +15,10 @@ import * as Facebook from "expo-facebook";
 import * as firebase from "firebase";
 
 import BgImage from "src/assets/bg.png";
+import btnLogin from "src/assets/titleScene/createUser_btnNewCreateAccount.png";
+import btnLogin2 from "src/assets/titleScene/createUser_btnLogin2.png";
+import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
+import modal from "src/assets/titleScene/createUser_modal.png";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
 
@@ -103,9 +107,6 @@ const SigninScreen = ({ navigation }) => {
       {errorMsg !== null && <Text>{errorMsg}</Text>}
       <Container style={Styles.container}>
         <ImageBackground source={BgImage} style={Styles.image}>
-          <Text style={{ color: "#888", fontSize: 18 }}>
-            タコ天にちょっと勝ちたい
-          </Text>
           <Form>
             <Item>
               <Label>Eメール</Label>
@@ -125,38 +126,32 @@ const SigninScreen = ({ navigation }) => {
                 onChangeText={(password) => setPassword(password)}
               />
             </Item>
+            <TouchableOpacity
+                    onPress={loginUser}>
+                    <Image
+                        style={Styles.image}
+                        source={btnLogin2}
+                    />
+            </TouchableOpacity>
 
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              success
-              onPress={loginUser}
-            >
-              <Text style={{ color: "white" }}>ログイン</Text>
-            </Button>
+            <TouchableOpacity
+                    onPress={signUpUser}>
+                    <Image
+                        style={Styles.image}
+                        source={btnLogin3}
+                    />
+            </TouchableOpacity>
 
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              primary
-              onPress={signUpUser}
-            >
-              <Text style={{ color: "white" }}>サインアップ</Text>
-            </Button>
+            <TouchableOpacity
+                    onPress={loginWithFacebook}>
+                    <Image
+                        style={Styles.image}
+                        source={btnLogin}
+                    />
+            </TouchableOpacity>
 
-            <Button
-              style={{ marginTop: 10 }}
-              full
-              rounded
-              primary
-              onPress={loginWithFacebook}
-            >
-              <Text style={{ color: "white" }}>Facebookログイン</Text>
-            </Button>
-          </Form>
-        </ImageBackground>
+            </Form>
+            </ImageBackground>
       </Container>
     </>
   );
@@ -183,9 +178,8 @@ const Styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    flex: 1,
-    resizeMode: "cover",
     justifyContent: "center",
+    alignItems: "center",
   },
 });
 
