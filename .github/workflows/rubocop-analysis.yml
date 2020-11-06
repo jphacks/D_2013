@@ -2,7 +2,7 @@
 name: "Rubocop"
 
 on: push
-  branches:
+  only:
       - master
     paths:
       - 'backend/**'
