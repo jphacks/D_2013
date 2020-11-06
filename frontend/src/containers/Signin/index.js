@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   Image,
+  TextInput,
 } from "react-native";
 import {
   Container,
@@ -26,6 +27,7 @@ import btnLogin from "src/assets/titleScene/createUser_btnNewCreateAccount.png";
 import btnLogin2 from "src/assets/titleScene/createUser_btnLogin2.png";
 import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
 import modal from "src/assets/titleScene/createUser_modal.png";
+import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
 
@@ -115,24 +117,33 @@ const SigninScreen = ({ navigation }) => {
       <Container style={Styles.container}>
         <ImageBackground source={BgImage} style={Styles.image}>
           <Form>
-            <Item>
-              <Label>Eメール</Label>
-              <Input
-                autoCorrect={false}
-                autoCapitalize="none"
+            <Text style={Styles.textStyle}>Eメール</Text>
+            <ImageBackground
+                source={form}
+                style={Styles.image}
+              >
+            <View style={Styles.sectionStyle}>
+              <TextInput
+                style={{flex: 1}}
+                placeholder="Enter Your Email"
                 onChangeText={(email) => setEmail(email)}
               />
-            </Item>
+              </View>
+              </ImageBackground>
 
-            <Item>
-              <Label>パスワード</Label>
-              <Input
-                secureTextEntry={true}
-                autoCorrect={false}
-                autoCapitalize="none"
+            <Text style={Styles.textStyle}>パスワード</Text>
+            <ImageBackground
+                source={form}
+                style={Styles.image}
+              >
+            <View style={Styles.sectionStyle}>
+              <TextInput
+                style={{flex: 1}}
+                placeholder="Enter Your Password"
                 onChangeText={(password) => setPassword(password)}
               />
-            </Item>
+              </View>
+              </ImageBackground>
             <TouchableOpacity onPress={loginUser}>
               <Image style={Styles.image} source={btnLogin2} />
             </TouchableOpacity>
@@ -174,6 +185,25 @@ const Styles = StyleSheet.create({
   image: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  sectionStyle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    height: 22,
+    borderRadius: 5,
+    margin: 10,
+  },
+  formImageStyle: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
+  },
+  textStyle: {
+    margin: 10,
   },
 });
 
