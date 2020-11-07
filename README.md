@@ -20,7 +20,7 @@
 毎日規則正しく、同じ時間に就寝と起床をするために、様々な工夫をしています。
 
 ### リリースURL
-URL：[-]
+URL：[https://expo.io/@usename/projects/enoslee]
 (※Expoアプリのインストールが必要です。
 -> [Expo インストールはこちら](https://expo.io/tools))
 
