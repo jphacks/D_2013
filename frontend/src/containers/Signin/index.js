@@ -107,10 +107,6 @@ const SigninScreen = ({ navigation }) => {
     checkpointFont: require("src/assets/fonts/checkpointfont.ttf"),
   });
 
-  if (!loaded) {
-    return null;
-  }
-
   return (
     <>
       <Container style={Styles.container}>
