@@ -22,6 +22,7 @@ import btnSetting from "src/assets/titleScene/home_btnQOL.png";
 import avatar from "src/assets/titleScene/home_icon.png";
 import mask from "src/assets/maskA10_2.png";
 import { AuthContext } from "src/utils/auth";
+import { useFonts } from "expo-font";
 
 import * as firebase from "firebase";
 import "firebase/firestore";
@@ -43,26 +44,49 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate("UnityScreen");
     var db = firebase.firestore();
     var date = new Date();
-    db.collection("events")
-      .add({
-        user_id: currentUser.uid,
-        getup_time: formatTZ(
-          date,
-          "yyyy-MM-dd HH:mm:ss xxx",
-          {
-            timeZone: "Asia/Tokyo",
-          },
-          { merge: true }
-        ),
+    console.log(db.collection("events"));
+
+    let eventsRef = db.collection("events");
+
+    eventsRef
+      .where("user_id", "==", currentUser.uid)
+      .limit(1)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.empty) {
+          console.log("No matching documents.");
+          return;
+        }
+        snapshot.forEach((doc) => {
+          db.collection("events")
+            .doc(doc.id)
+            .update({
+              get_up_time: formatTZ(
+                date,
+                "yyyy-MM-dd HH:mm:ss xxx",
+                {
+                  timeZone: "Asia/Tokyo",
+                },
+                { merge: true }
+              ),
+            });
+          db.collection("users").doc(currentUser.uid).update({
+            on_game: true,
+          });
+        });
       })
-      .catch((error) => {
-        setErrorMsg(error);
+      .catch((err) => {
+        console.log("Error getting documents", err);
       });
   };
 
   const onSettingTimePress = () => {
     navigation.navigate("SettingScreen");
   };
+
+  const [loaded] = useFonts({
+    checkpointFont: require("src/assets/fonts/checkpointfont.ttf"),
+  });
 
   return (
     <>
@@ -137,8 +161,8 @@ const Styles = StyleSheet.create({
   },
   profileText: {
     flexDirection: "row",
-    fontSize: 36,
-    fontWeight: "bold",
+    fontSize: 24,
+    fontFamily: "checkpointFont",
     color: "white",
   },
   maskStyle: {

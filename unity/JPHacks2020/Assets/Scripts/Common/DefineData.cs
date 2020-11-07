@@ -6,7 +6,7 @@ namespace Common
     public static class DefineData
     {
         public static List<GameResultData> resultData = new List<GameResultData>();
-        public static string userName;
+        public static string userName = "watayo";
 
         public enum SCENE_NAME {
             TITLE,
@@ -56,7 +56,6 @@ namespace Common
         public static void Reset()
         {
             resultData.Clear();
-            userName = null;
         }
 
         public static void SetUserName(string name)

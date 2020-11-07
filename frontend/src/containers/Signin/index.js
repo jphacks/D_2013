@@ -22,6 +22,7 @@ import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
 import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
+import { useFonts } from "expo-font";
 
 import "firebase/firestore";
 
@@ -102,6 +103,10 @@ const SigninScreen = ({ navigation }) => {
       : setErrorMsg(error);
   };
 
+  const [loaded] = useFonts({
+    checkpointFont: require("src/assets/fonts/checkpointfont.ttf"),
+  });
+
   return (
     <>
       <Container style={Styles.container}>
@@ -112,7 +117,9 @@ const SigninScreen = ({ navigation }) => {
           <View style={Styles.image}>
             <Form>
               <View style={{ marginTop: 170 }}></View>
-              {errorMsg !== null && <Text>{errorMsg}</Text>}
+              {errorMsg !== null && (
+                <Text style={Styles.textStyle}>{errorMsg}</Text>
+              )}
               <Text style={Styles.textStyle}>Eメール</Text>
               <ImageBackground source={form} style={Styles.image}>
                 <View style={Styles.sectionStyle}>
@@ -140,11 +147,11 @@ const SigninScreen = ({ navigation }) => {
               </TouchableOpacity>
 
               <TouchableOpacity onPress={signUpUser}>
-                <Image style={Styles.image} source={btnLogin3} />
+                <Image style={Styles.image} source={btnLogin} />
               </TouchableOpacity>
 
               <TouchableOpacity onPress={loginWithFacebook}>
-                <Image style={Styles.image} source={btnLogin} />
+                <Image style={Styles.image} source={btnLogin3} />
               </TouchableOpacity>
             </Form>
           </View>
@@ -193,6 +200,8 @@ const Styles = StyleSheet.create({
   },
   textStyle: {
     margin: 10,
+    fontSize: 18,
+    fontFamily: "checkpointFont",
   },
 });
 

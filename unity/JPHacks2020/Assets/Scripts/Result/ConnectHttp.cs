@@ -5,7 +5,7 @@ using Common;
 
 public class ConnectHttp : MonoBehaviour
 {
-    private const string URL = "http://ea54ec449d93.ngrok.io/unity_score";
+    private const string URL = "https://desolate-ocean-79020.herokuapp.com/unity_score";
 
     void Start()
     {
@@ -18,6 +18,9 @@ public class ConnectHttp : MonoBehaviour
         var sendNum = DefineData.resultData[0].isClear ? 1 : 0;
         DefineData.resultData.RemoveAt(0);
         form.AddField("user_score", sendNum);
+        var uName = DefineData.userName;
+        Debug.Log(uName);
+        form.AddField("user_id", uName);
 
         UnityWebRequest webRequest = UnityWebRequest.Post(url, form);
         webRequest.downloadHandler = new DownloadHandlerBuffer();

@@ -31,6 +31,7 @@ namespace UnityConnection
         void Start()
         {
             _nowPhase = SYNC_PHASE.Idling;
+            DefineData.userName = "watayo";
 
             StartSync();
 
