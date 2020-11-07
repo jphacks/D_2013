@@ -22,7 +22,7 @@ import btnLogin3 from "src/assets/titleScene/createUser_btnFacebook.png";
 import form from "src/assets/titleScene/factionborder.png";
 import { AuthContext } from "src/utils/auth";
 import SettingUser from "src/containers/SettingUser";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 
 import "firebase/firestore";
 
