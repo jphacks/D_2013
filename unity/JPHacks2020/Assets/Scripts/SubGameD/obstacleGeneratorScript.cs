@@ -15,7 +15,7 @@ namespace Run
         // Start is called before the first frame update
         void Start()
         {
-            for (int i = 1;i<=7;i++) {
+            for (int i = 1;i<=15;i++) {
                 _generatePos = Random.Range(0,3);
                 _double = Random.Range(0,3);
                 int par = Random.RandomRange(0, obstacle.Length);
