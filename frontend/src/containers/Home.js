@@ -44,20 +44,33 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate("UnityScreen");
     var db = firebase.firestore();
     var date = new Date();
-    db.collection("events")
-      .where("user_id", "==", `${currentUser.uid}`)
-      .set(
-        {
-          user_id: currentUser.uid,
-          getup_time: formatTZ(date, "yyyy-MM-dd HH:mm:ss xxx", {
-            timeZone: "Asia/Tokyo",
-          }),
-        },
-        { merge: true }
-      )
-      .catch((error) => {
-        setErrorMsg(error);
-      });
+    console.log(db.collection("events"));
+
+    let eventsRef = db.collection('events');
+
+    eventsRef.where('user_id', '==', currentUser.uid).limit(1).get().then(snapshot => {
+      if (snapshot.empty) {
+        console.log('No matching documents.');
+        return
+      }
+      snapshot.forEach((doc) => {
+
+        db.collection('events').doc(doc.id).update({
+          get_up_time: formatTZ(
+            date,
+            "yyyy-MM-dd HH:mm:ss xxx",
+            {
+              timeZone: "Asia/Tokyo",
+            }, { merge: true }
+          )
+        });
+        db.collection('users').doc(currentUser.uid).update({
+          on_game: true,
+        })
+      })
+    }).catch((err) => {
+      console.log('Error getting documents', err);
+    });
   };
 
   const onSettingTimePress = () => {
