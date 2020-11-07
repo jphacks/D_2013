@@ -5,6 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Title from "src/containers/Title";
 
+process.cwd = function () {
+  return "/";
+};
+
 const Stack = createStackNavigator();
 
 const StackNavigatorProps = {
