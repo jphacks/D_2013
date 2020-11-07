@@ -147,11 +147,11 @@ const SigninScreen = ({ navigation }) => {
               </TouchableOpacity>
 
               <TouchableOpacity onPress={signUpUser}>
-                <Image style={Styles.image} source={btnLogin3} />
+                <Image style={Styles.image} source={btnLogin} />
               </TouchableOpacity>
 
               <TouchableOpacity onPress={loginWithFacebook}>
-                <Image style={Styles.image} source={btnLogin} />
+                <Image style={Styles.image} source={btnLogin3} />
               </TouchableOpacity>
             </Form>
           </View>
