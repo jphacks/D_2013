@@ -16,7 +16,6 @@ const UnityScreen = () => {
       {errorMsg !== null && <Text style={Styles.textStyle}>{errorMsg}</Text>}
       <View style={Styles.container}>
         <ImageBackground source={BgImage} style={Styles.image}>
-          <Text>Hello JPHacks2020!</Text>
           <WebView
             originWhitelist={["*"]}
             // ここに使用URLを流す
@@ -28,7 +27,6 @@ const UnityScreen = () => {
             }}
             style={{ marginTop: 50, marginBottom: 50 }}
           />
-          <Text>Hello JPHacks2020</Text>
         </ImageBackground>
       </View>
     </>

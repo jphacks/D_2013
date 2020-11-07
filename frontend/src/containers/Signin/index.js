@@ -202,6 +202,7 @@ const Styles = StyleSheet.create({
   },
   textStyle: {
     margin: 10,
+    fontSize: 18,
     fontFamily: "checkpointFont",
   },
 });
