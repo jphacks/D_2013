@@ -27,7 +27,7 @@ URL：[https://expo.io/@usename/projects/enoslee]
 -> [Expo インストールはこちら](https://expo.io/tools))
 
 ### 動画URL
-URL：[-]
+URL：[Enoslee Movie](https://www.youtube.com/watch?v=oERUOLSp6Mw&feature=youtu.be)
 
 ### 特長
 #### 1. できないことを「エンタメ」を使って
