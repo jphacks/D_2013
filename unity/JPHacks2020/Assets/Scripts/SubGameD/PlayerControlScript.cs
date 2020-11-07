@@ -24,7 +24,7 @@ namespace Run
         [SerializeField] private GameObject restartView;
         [SerializeField] private AudioSource _clearSource;
         [SerializeField] private AudioSource _clickSource;
-        public int life = 0;
+        public int lifeCount = 0;
         private float _gameTimer = 0;
         private Vector3 _startPos;
         int count;
@@ -60,10 +60,13 @@ namespace Run
         // Update is called once per frame
         void Update()
         {
+
+
             if (_start)
             {
                 transform.position += new Vector3(0, 0, _speed);
                 transform.position = new Vector3(stages[_currentPos].transform.position.x, transform.position.y, transform.position.z);
+                _gameTimer += Time.deltaTime;
             }
             //Debug.Log(_currentPos);
             if (isRestart)
@@ -90,6 +93,7 @@ namespace Run
                     restartView.SetActive(true);
                 }
             }
+            _gameTime.text = "経過時間 :" +_gameTimer.ToString("f1") + "秒"; 
         }
 
 
@@ -118,7 +122,7 @@ namespace Run
 
                 _clearSource.Play();
                 scooreView.SetActive(true);
-                _restartNum2.text = life.ToString() + "回";
+                _restartNum2.text = lifeCount.ToString() + "回";
                 _gameTime2.text = _gameTimer.ToString("f1") + "秒";
             } 
         }
@@ -126,16 +130,16 @@ namespace Run
         {
             if (other.gameObject.tag == "obstacle")
             {
-                life++;
-                _restartNum.text = "リスタート回数：" + life.ToString();
+                lifeCount++;
+                _restartNum.text = "リスタート回数：" + lifeCount.ToString() + "回";
 
-                if (life >= 2)
-                {
+                //if (lifeCount >= 2)
+                //{
                     isRestart = true;
                     _start = false;
                     
                     Debug.Log("Alert");
-                }
+                //}
                 //else
                 //{
                 //    isRestart = true;
