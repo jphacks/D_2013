@@ -54,11 +54,11 @@ const SettingUserScreen = ({ navigation }) => {
   const db = firebase.firestore();
 
   const onTakePress = () => {
-    navigation.navigate("Home");
+    console.log("takenoko");
   };
 
   const onKinokoPress = () => {
-    navigation.navigate("Home");
+    console.log("kinoko");
   };
 
   const showDateTimePicker_Sleep = () => {
