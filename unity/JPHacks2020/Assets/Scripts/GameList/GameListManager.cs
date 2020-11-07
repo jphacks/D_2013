@@ -7,6 +7,7 @@ public class GameListManager : MonoBehaviour
     [SerializeField] private Button[] _toMazeButton;
     [SerializeField] private Button[] _toAnnoyedButton;
     [SerializeField] private Button[] _toClickButton;
+    [SerializeField] private Button[] _toRunButton;
     [SerializeField] private Button[] _toMainButton;
 
     [SerializeField] private Button[] _subGame;
@@ -15,7 +16,7 @@ public class GameListManager : MonoBehaviour
     [SerializeField] private GameObject _MazeView;
     [SerializeField] private GameObject _AnnoyedView;
     [SerializeField] private GameObject _ClickView;
-
+    [SerializeField] private GameObject _RunView;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,10 @@ public class GameListManager : MonoBehaviour
         {
             _toMainButton[i].onClick.AddListener(() => ChangeView(4));
         }
-
+        for (int i = 0; i < _toRunButton.Length; i++)
+        {
+            _toRunButton[i].onClick.AddListener(() => ChangeView(5));
+        }
         //Element3はじろけんゲームマージ後アタッチを必ず変更！！忘れないように！！
         for (int i = 0; i < _subGame.Length; i++)
         {
@@ -55,6 +59,7 @@ public class GameListManager : MonoBehaviour
     void ChangeView(int id)
     {
         //ViewFalse();
+        Debug.Log(id);
         switch (id)
         {
             case 0:
@@ -76,6 +81,10 @@ public class GameListManager : MonoBehaviour
             case 4:
                 Debug.Log("HOGE!HOGE!HOGE!!!!!");
                 break;
+            case 5:
+                ViewFalse();
+                _RunView.SetActive(true);
+                break;
         }
     }
 
@@ -85,6 +94,7 @@ public class GameListManager : MonoBehaviour
         _MazeView.SetActive(false);
         _AnnoyedView.SetActive(false);
         _ClickView.SetActive(false);
+        _RunView.SetActive(false);
     }
 
     void OnClickLoadScene(int id)
