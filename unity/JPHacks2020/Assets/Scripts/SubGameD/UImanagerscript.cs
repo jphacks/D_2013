@@ -14,13 +14,13 @@ namespace Run
     // Start is called before the first frame update
     void Start()
     {
-            lifeText.text = "ライフ : " + playerscript.life.ToString();
+     //       lifeText.text = "ライフ : " + playerscript.life.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-            lifeText.text = "ライフ : " + playerscript.life.ToString();
+            //lifeText.text = "ライフ : " + playerscript.life.ToString();
         }
 }
 }
