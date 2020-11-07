@@ -1569,7 +1569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &332757813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4737,7 +4737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14999f72635d14bc3887dcaefa512ac5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 520da9ece63194dd2b741634b8022587, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6116,7 +6116,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480049505}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecb6caeca54fd4bfa8a7e6645abd6bc2, type: 3}
   m_Name: 
@@ -8123,7 +8123,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: fb6907c001dd945debb8754d180cac32, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
@@ -8135,7 +8135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30E6\u30FC\u30B6\u30FC\u540D"
+  m_Text: watayo
 --- !u!222 &2030673759
 CanvasRenderer:
   m_ObjectHideFlags: 0
