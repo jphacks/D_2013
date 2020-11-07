@@ -11,7 +11,7 @@
 作るサービス、アプリ。<br>
 </div>
 
-![Enoslee Title Image](https://user-images.githubusercontent.com/35944165/98428543-5e805380-20e5-11eb-9c87-a87609b99551.png)
+![Enoslee Title Image](https://user-images.githubusercontent.com/50067752/98429838-9a6ae700-20ec-11eb-88a2-85e01486bf66.png)
 
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）
