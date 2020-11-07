@@ -14,7 +14,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { format as formatTZ } from "date-fns-tz";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 
 import BgImage from "src/assets/corr2_createAccount.png";
 import btnClick from "src/assets/titleScene/btnClick.png";
@@ -139,7 +139,7 @@ const SettingUserScreen = ({ navigation }) => {
   };
 
   const [loaded] = useFonts({
-    checkpointFont: require('src/assets/fonts/checkpointfont.ttf'),
+    checkpointFont: require("src/assets/fonts/checkpointfont.ttf"),
   });
 
   return (
@@ -152,7 +152,9 @@ const SettingUserScreen = ({ navigation }) => {
           <View style={Styles.image}>
             <Form>
               <View style={{ marginTop: 180 }}></View>
-              {errorMsg !== null && <Text style={Styles.textStyle}>{errorMsg}</Text>}
+              {errorMsg !== null && (
+                <Text style={Styles.textStyle}>{errorMsg}</Text>
+              )}
               <Text style={Styles.textStyle}>プレイヤー名</Text>
               <ImageBackground source={form} style={Styles.image}>
                 <View style={Styles.sectionStyle}>
