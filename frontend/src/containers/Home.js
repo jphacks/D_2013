@@ -22,6 +22,7 @@ import btnSetting from "src/assets/titleScene/home_btnQOL.png";
 import avatar from "src/assets/titleScene/home_icon.png";
 import mask from "src/assets/maskA10_2.png";
 import { AuthContext } from "src/utils/auth";
+import { useFonts } from "expo-font";
 
 import * as firebase from "firebase";
 import "firebase/firestore";
@@ -63,6 +64,10 @@ const HomeScreen = ({ navigation }) => {
   const onSettingTimePress = () => {
     navigation.navigate("SettingScreen");
   };
+
+  const [loaded] = useFonts({
+    checkpointFont: require("src/assets/fonts/checkpointfont.ttf"),
+  });
 
   return (
     <>
@@ -137,8 +142,8 @@ const Styles = StyleSheet.create({
   },
   profileText: {
     flexDirection: "row",
-    fontSize: 36,
-    fontWeight: "bold",
+    fontSize: 24,
+    fontFamily: "checkpointFont",
     color: "white",
   },
   maskStyle: {
