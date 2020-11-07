@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | JPHacks2020</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+    UnityLoader.instantiate("unityContainer", "Build/JPHacksBuild.json");
+    </script>
+  </head>
+  <body>
+    <div id="mobile" class="cover"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    var div = document.getElementById('mobile');
+    if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)){
+      var mobileHeight = $(window).height();
+      var mobileWidth = $(window).width();
+      var tempData = '<center><div id="unityContainer" style="width: '+mobileWidth+'px; height: '+mobileHeight+'px; margin: auto"></div></center>'
+      div.innerHTML = tempData;
+    }
+    else {
+      div.innerHTML = '<center><div id="unityContainer" style="width: 360px; height: 640px; margin: auto"></div></center>';
+    }
+    </script>
+  </body>
+</html>
