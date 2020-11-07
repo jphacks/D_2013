@@ -56,7 +56,6 @@ namespace Common
         public static void Reset()
         {
             resultData.Clear();
-            userName = null;
         }
 
         public static void SetUserName(string name)
