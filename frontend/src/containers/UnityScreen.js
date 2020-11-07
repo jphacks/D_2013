@@ -13,7 +13,7 @@ const UnityScreen = () => {
 
   return (
     <>
-      {errorMsg !== null && <Text>{errorMsg}</Text>}
+      {errorMsg !== null && <Text style={Styles.textStyle}>{errorMsg}</Text>}
       <View style={Styles.container}>
         <ImageBackground source={BgImage} style={Styles.image}>
           <Text>Hello JPHacks2020!</Text>

@@ -104,7 +104,7 @@ const SigninScreen = ({ navigation }) => {
   };
 
   const [loaded] = useFonts({
-    checkpointFont: require('./assets/fonts/checkpointfont.ttf'),
+    checkpointFont: require('src/assets/fonts/checkpointfont.ttf'),
   });
 
   if (!loaded) {
@@ -121,7 +121,7 @@ const SigninScreen = ({ navigation }) => {
           <View style={Styles.image}>
             <Form>
               <View style={{ marginTop: 170 }}></View>
-              {errorMsg !== null && <Text>{errorMsg}</Text>}
+              {errorMsg !== null && <Text style={Styles.textStyle}>{errorMsg}</Text>}
               <Text style={Styles.textStyle}>Eメール</Text>
               <ImageBackground source={form} style={Styles.image}>
                 <View style={Styles.sectionStyle}>
