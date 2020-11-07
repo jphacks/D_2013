@@ -24,7 +24,7 @@ const renderUnityScreen = ({ navigation }) => {
 
   useEffect(() => {
     (async () => {
-      let { status } = user.data.on_Game
+      let { status } = user.data.on_Game;
       if (status == false) {
         navHome();
       }
@@ -53,7 +53,6 @@ const renderUnityScreen = ({ navigation }) => {
     </>
   );
 };
-
 
 const UnityScreen = () => {
   return (
