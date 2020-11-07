@@ -44,8 +44,7 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate("UnityScreen");
     var db = firebase.firestore();
     var date = new Date();
-    db.collection("events")
-      .add({
+    db.collection("events").where("user_id","==",`${currentUser.uid}`).set({
         user_id: currentUser.uid,
         getup_time: formatTZ(
           date,
@@ -53,12 +52,12 @@ const HomeScreen = ({ navigation }) => {
           {
             timeZone: "Asia/Tokyo",
           },
-          { merge: true }
         ),
-      })
-      .catch((error) => {
-        setErrorMsg(error);
-      });
+      },
+        { merge: true })
+        .catch((error) => {
+          setErrorMsg(error);
+        });
   };
 
   const onSettingTimePress = () => {
